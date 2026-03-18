@@ -28,9 +28,10 @@ export default function Navbar() {
     alignItems: 'center',
     textDecoration: 'none',
   }}
+  aria-label="Ir al inicio"
 >
   <img
-    src="public/logo/logo.png"
+    src="/logo/logo.png"
     alt="Arte Terapia"
     style={{
       height: '44px',

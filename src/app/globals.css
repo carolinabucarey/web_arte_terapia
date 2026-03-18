@@ -8,13 +8,13 @@
   --primary-green: #5E8F7E;
   --primary-green-soft: #8FBFB0;
 
-  /* Emotional accents */
-  --accent: #C9826B;
-  --accent-soft: #EAD7CF;
+  /* Emotional accents (lavanda first priority) */
   --lavender: #C7B8D6;
+  --accent: #C9826B;
   --rose: #E6CFC9;
+  --accent-soft: #EAD7CF;
 
-  /* Neutrals */
+  /* Neutrals terapéuticos */
   --text: #3B2F2F;
   --muted: #7A6D68;
   --border: #E8DDD5;

@@ -69,17 +69,32 @@ export default function HomePage() {
         </section>
 
         {/* HERO IMAGE */}
-        <section>
-          <img
-            src="/images/hero-acuarela.jpg"
-            alt="Acuarela"
+        <section className="container">
+          <div
             style={{
               width: '100%',
-              height: '400px',
-              objectFit: 'cover',
-              borderRadius: '0 0 24px 24px'
+              minHeight: '320px',
+              borderRadius: '24px',
+              overflow: 'hidden',
+              background: 'linear-gradient(135deg, #f6efe8 0%, #ebe2d8 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '32px'
             }}
-          />
+          >
+            <img
+              src="/fotos/foto1.jpg"
+              alt="Acuarela"
+              style={{
+                width: '100%',
+                height: '100%',
+                maxHeight: '480px',
+                objectFit: 'cover',
+                borderRadius: '20px'
+              }}
+            />
+          </div>
         </section>
 
         {/* DESCRIPCIÓN */}
@@ -398,10 +413,12 @@ export default function HomePage() {
                 href="https://www.instagram.com/arteyterapiasalud/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Ver Instagram de Arte y Terapia Salud"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  gap: '10px',
                   width: 'fit-content',
                   padding: '12px 18px',
                   borderRadius: '999px',
@@ -411,7 +428,14 @@ export default function HomePage() {
                   fontWeight: 600
                 }}
               >
-                Ver Instagram
+                <span style={{ display: 'inline-flex', alignItems: 'center' }} aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="2"/>
+                    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2"/>
+                    <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span>Ver Instagram</span>
               </a>
             </div>
           </div>
