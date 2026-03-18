@@ -30,7 +30,7 @@ export default function Navbar() {
   }}
 >
   <img
-    src="/logo/logo.png"
+    src="public/logo/logo.png"
     alt="Arte Terapia"
     style={{
       height: '44px',

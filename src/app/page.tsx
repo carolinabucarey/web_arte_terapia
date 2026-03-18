@@ -115,6 +115,7 @@ export default function HomePage() {
           <div
             style={{
               display: 'flex',
+              flexWrap: 'wrap',
               gap: '32px',
               alignItems: 'center',
               marginTop: '8px'
@@ -124,14 +125,15 @@ export default function HomePage() {
               src="/fotos/jose.png"
               alt="Josefina Fainé"
               style={{
-                width: '140px',
-                height: '140px',
+                width: 'clamp(140px, 24vw, 180px)',
+                height: 'clamp(140px, 24vw, 180px)',
                 borderRadius: '50%',
-                objectFit: 'cover'
+                objectFit: 'cover',
+                flexShrink: 0
               }}
             />
 
-            <div style={{ maxWidth: '520px' }}>
+            <div style={{ maxWidth: '520px', flex: '1 1 320px', minWidth: '280px' }}>
               <h2
                 className="sectionTitle"
                 style={{
@@ -240,54 +242,179 @@ export default function HomePage() {
         </section>
 
         {/* CONTACTO */}
-        <section className="container">
+        <section id="contacto" className="container" style={{ maxWidth: '900px' }}>
           <h2 className="sectionTitle">Contacto</h2>
 
-          <form style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '12px',
-            marginTop: '24px',
-            maxWidth: '400px'
-          }}>
-            <input placeholder="Nombre" style={{ padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }} />
-            <input placeholder="Email" style={{ padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }} />
-            <textarea placeholder="Mensaje" rows={4} style={{ padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+          <p
+            className="sectionText"
+            style={{
+              marginTop: '8px',
+              maxWidth: '620px'
+            }}
+          >
+            Si quieres más información sobre los talleres, reservar tu cupo o conocer próximas fechas,
+            puedes escribirme a través del formulario o visitar Instagram.
+          </p>
 
-            <a
-              href="https://www.instagram.com/arteyterapiasalud/"
-              target="_blank"
-              rel="noopener noreferrer"
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '24px',
+              alignItems: 'start',
+              marginTop: '24px'
+            }}
+          >
+            <form
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '10px 18px',
-                borderRadius: '999px',
-                background: 'var(--accent)',
-                color: '#fff',
-                textDecoration: 'none',
-                fontWeight: 600,
-                transition: 'opacity 0.2s ease'
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '14px',
+                width: '100%',
+                padding: '24px',
+                borderRadius: '20px',
+                border: '1px solid var(--border)',
+                background: 'var(--surface)'
               }}
             >
-              Ver Instagram
-            </a>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label htmlFor="nombre" style={{ fontWeight: 600, color: 'var(--text)' }}>
+                  Nombre
+                </label>
+                <input
+                  id="nombre"
+                  name="nombre"
+                  placeholder="Tu nombre"
+                  style={{
+                    padding: '14px 16px',
+                    borderRadius: '12px',
+                    border: '1px solid var(--border)',
+                    background: '#fff',
+                    width: '100%'
+                  }}
+                />
+              </div>
 
-            <button
-              type="submit"
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label htmlFor="email" style={{ fontWeight: 600, color: 'var(--text)' }}>
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="tuemail@correo.com"
+                  style={{
+                    padding: '14px 16px',
+                    borderRadius: '12px',
+                    border: '1px solid var(--border)',
+                    background: '#fff',
+                    width: '100%'
+                  }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label htmlFor="mensaje" style={{ fontWeight: 600, color: 'var(--text)' }}>
+                  Mensaje
+                </label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  placeholder="Cuéntame qué te gustaría saber"
+                  rows={5}
+                  style={{
+                    padding: '14px 16px',
+                    borderRadius: '12px',
+                    border: '1px solid var(--border)',
+                    background: '#fff',
+                    width: '100%',
+                    resize: 'vertical'
+                  }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                style={{
+                  padding: '14px 18px',
+                  borderRadius: '999px',
+                  border: 'none',
+                  background: 'var(--accent)',
+                  color: 'white',
+                  fontWeight: 700,
+                  cursor: 'pointer'
+                }}
+              >
+                Enviar mensaje
+              </button>
+            </form>
+
+            <div
               style={{
-                padding: '12px',
-                borderRadius: '999px',
-                border: 'none',
-                background: 'var(--accent)',
-                color: 'white',
-                fontWeight: 'bold'
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+                padding: '24px',
+                borderRadius: '20px',
+                border: '1px solid var(--border)',
+                background: 'linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(248,244,239,0.95) 100%)'
               }}
             >
-              Enviar
-            </button>
-          </form>
+              <p
+                style={{
+                  fontSize: '0.82rem',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'var(--accent)',
+                  margin: 0
+                }}
+              >
+                Más información
+              </p>
+
+              <h3
+                style={{
+                  fontSize: '1.5rem',
+                  lineHeight: 1.2,
+                  margin: 0,
+                  color: 'var(--text)'
+                }}
+              >
+                También puedes seguir el proyecto en Instagram
+              </h3>
+
+              <p
+                style={{
+                  margin: 0,
+                  lineHeight: 1.8,
+                  color: 'var(--text)'
+                }}
+              >
+                Ahí encontrarás más imágenes, procesos, inspiración y novedades sobre los talleres.
+              </p>
+
+              <a
+                href="https://www.instagram.com/arteyterapiasalud/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 'fit-content',
+                  padding: '12px 18px',
+                  borderRadius: '999px',
+                  background: 'var(--accent)',
+                  color: '#fff',
+                  textDecoration: 'none',
+                  fontWeight: 600
+                }}
+              >
+                Ver Instagram
+              </a>
+            </div>
+          </div>
         </section>
 
       </main>
