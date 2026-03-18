@@ -1,11 +1,72 @@
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function HomePage() {
   return (
     <>
-      <Header />
-      <main style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+      <main id="inicio" style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
+
+        {/* FOTO PRINCIPAL */}
+        <section className="container">
+          <img
+            src="/fotos/foto1.jpg"
+            alt="Foto taller"
+            style={{
+              width: '100%',
+              height: '300px',
+              objectFit: 'cover',
+              borderRadius: '16px'
+            }}
+          />
+        </section>
+
+        {/* INTRO TALLERES */}
+        <section
+          id="talleres"
+          className="container"
+          style={{
+            maxWidth: '900px',
+            paddingTop: '8px'
+          }}
+        >
+          <p
+            style={{
+              fontSize: '0.82rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--accent)',
+              marginBottom: '16px'
+            }}
+          >
+            Acuarela · Autocuidado · Expresión
+          </p>
+
+          <h2
+            className="sectionTitle"
+            style={{
+              fontSize: 'clamp(2rem, 5vw, 3.75rem)',
+              lineHeight: 1.08,
+              marginBottom: '20px',
+              maxWidth: '720px'
+            }}
+          >
+            Talleres para crear, sentir y habitar tu mundo interior a través del color.
+          </h2>
+
+          <p
+            className="sectionText"
+            style={{
+              fontSize: '1.1rem',
+              lineHeight: 1.9,
+              maxWidth: '760px',
+              color: 'var(--text)'
+            }}
+          >
+            Estos talleres están orientados al autocuidado y a la expresión artística sin exigencias ni límites.
+            La acuarela nos invita a trabajar con la transparencia, la suavidad de las capas, la mezcla de color
+            y el gesto espontáneo, permitiendo explorar tanto técnicas básicas como recursos más sensibles y
+            expresivos en un espacio íntimo, creativo y libre de juicio.
+          </p>
+        </section>
 
         {/* HERO IMAGE */}
         <section>
@@ -32,48 +93,149 @@ export default function HomePage() {
         </section>
 
         {/* PROFESORA */}
-        <section className="container">
-          <h2 className="sectionTitle">La profesora</h2>
+        <section
+          id="sobre-mi"
+          className="container"
+          style={{
+            maxWidth: '900px'
+          }}
+        >
+          <p
+            style={{
+              fontSize: '0.82rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--accent)',
+              marginBottom: '16px'
+            }}
+          >
+            Sobre la guía
+          </p>
 
-          <div style={{
-            display: 'flex',
-            gap: '24px',
-            alignItems: 'center',
-            marginTop: '24px'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              gap: '32px',
+              alignItems: 'center',
+              marginTop: '8px'
+            }}
+          >
             <img
-              src="/images/josefina.jpg"
-              alt="Josefina"
+              src="/fotos/jose.png"
+              alt="Josefina Fainé"
               style={{
-                width: '120px',
-                height: '120px',
+                width: '140px',
+                height: '140px',
                 borderRadius: '50%',
                 objectFit: 'cover'
               }}
             />
 
-            <p className="sectionText">
-              Josefina es artista y guía de procesos creativos. Su enfoque une
-              la acuarela con el desarrollo personal, creando un espacio seguro
-              para explorar emociones a través del arte.
-            </p>
+            <div style={{ maxWidth: '520px' }}>
+              <h2
+                className="sectionTitle"
+                style={{
+                  fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
+                  marginBottom: '12px'
+                }}
+              >
+                Josefina Fainé
+              </h2>
+
+              <p
+                className="sectionText"
+                style={{
+                  fontSize: '1.05rem',
+                  lineHeight: 1.8
+                }}
+              >
+                Artista visual titulada de la Universidad de Chile, magíster en Arteterapia y especialista en acuarela contemporánea.
+                Su trabajo integra técnicas tradicionales con exploración emocional, acompañando procesos creativos desde una mirada
+                sensible, intuitiva y profundamente humana.
+                
+                En sus talleres invita a soltar la exigencia, conectar con el cuerpo y permitir que el color se convierta en lenguaje,
+                creando un espacio seguro donde cada persona puede expresarse libremente y reconectar con su mundo interior.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* TALLERES */}
-        <section className="container">
-          <h2 className="sectionTitle">Talleres disponibles</h2>
+        {/* HORARIOS TALLERES */}
+        <section
+          className="container"
+          style={{
+            maxWidth: '900px'
+          }}
+        >
+          <p
+            style={{
+              fontSize: '0.82rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--accent)',
+              marginBottom: '16px'
+            }}
+          >
+            Horarios
+          </p>
 
-          <div style={{
-            marginTop: '24px',
-            padding: '24px',
-            borderRadius: '16px',
-            border: '1px solid var(--border)',
-            background: 'var(--surface)'
-          }}>
-            <p><strong>Lunes:</strong> 19:00 - 21:00</p>
-            <p><strong>Miércoles:</strong> 18:00 - 20:00</p>
-            <p><strong>Sábado:</strong> 11:00 - 13:00</p>
+          <h2
+            className="sectionTitle"
+            style={{
+              fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+              marginBottom: '20px'
+            }}
+          >
+            Horarios de los talleres
+          </h2>
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '14px',
+              marginTop: '8px'
+            }}
+          >
+            {[
+              { dia: 'Lunes', horario: '16:30 hrs' },
+              { dia: 'Martes', horario: 'Por definir' },
+              { dia: 'Miércoles', horario: 'Por definir' },
+              { dia: 'Jueves', horario: 'Por definir' },
+              { dia: 'Viernes', horario: 'Por definir' },
+              { dia: 'Sábado', horario: 'Por definir' }
+            ].map((item) => (
+              <div
+                key={item.dia}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '18px 22px',
+                  borderRadius: '16px',
+                  border: '1px solid var(--border)',
+                  background: 'var(--surface)'
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    color: 'var(--text)'
+                  }}
+                >
+                  {item.dia}
+                </span>
+                <span
+                  style={{
+                    fontSize: '0.98rem',
+                    color: 'var(--muted, #6b625d)'
+                  }}
+                >
+                  {item.horario}
+                </span>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -91,6 +253,26 @@ export default function HomePage() {
             <input placeholder="Nombre" style={{ padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }} />
             <input placeholder="Email" style={{ padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }} />
             <textarea placeholder="Mensaje" rows={4} style={{ padding: '12px', borderRadius: '8px', border: '1px solid var(--border)' }} />
+
+            <a
+              href="https://www.instagram.com/arteyterapiasalud/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '10px 18px',
+                borderRadius: '999px',
+                background: 'var(--accent)',
+                color: '#fff',
+                textDecoration: 'none',
+                fontWeight: 600,
+                transition: 'opacity 0.2s ease'
+              }}
+            >
+              Ver Instagram
+            </a>
 
             <button
               type="submit"
