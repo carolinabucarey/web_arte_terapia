@@ -4,7 +4,13 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.logo}>Arte Terapia Acuarela</div>
+        <div className={styles.logo}>
+          <img
+            src="/logo/Logo.png"
+            alt="Logo Taller de Acuarela y Arteterapia"
+            className={styles.logoImage}
+          />
+        </div>
 
         <nav className={styles.nav}>
           <a href="#galeria">Galería</a>
