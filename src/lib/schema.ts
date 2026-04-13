@@ -1,17 +1,35 @@
-import { SITE_NAME, SITE_URL, INSTAGRAM_BRAND, INSTAGRAM_PERSONAL } from './constants';
+import { SITE_NAME, SITE_URL, INSTAGRAM_BRAND, INSTAGRAM_PERSONAL, WHATSAPP_NUMBER, EMAIL } from './constants';
 
 export function getLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: SITE_NAME,
-    description: 'Talleres de acuarela terapéutica y arteterapia en Santiago, Chile.',
+    description: 'Talleres de acuarela terapéutica y arteterapia en Santiago, Chile. Un espacio de autocuidado y expresión creativa.',
     url: SITE_URL,
+    telephone: `+${WHATSAPP_NUMBER}`,
+    email: EMAIL,
+    image: `${SITE_URL}/fotos/foto1.jpg`,
+    logo: `${SITE_URL}/logo/logo.png`,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Traiguén 2260',
       addressLocality: 'Santiago',
+      addressRegion: 'Región Metropolitana',
       addressCountry: 'CL',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: -33.44,
+      longitude: -70.61,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Monday',
+      opens: '16:30',
+      closes: '18:30',
+    },
+    priceRange: '$$',
     sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],
   };
 }
@@ -22,12 +40,19 @@ export function getPersonSchema() {
     '@type': 'Person',
     name: 'Josefina Faine',
     jobTitle: 'Artista Visual y Arteterapeuta',
+    description: 'Licenciada en Artes Visuales de la Universidad de Chile, magíster en Artes en la Salud y Arteterapia. Guía creativa de talleres de acuarela en Santiago.',
     alumniOf: {
       '@type': 'CollegeOrUniversity',
       name: 'Universidad de Chile',
     },
     url: `${SITE_URL}/sobre-josefina`,
+    image: `${SITE_URL}/fotos/jose.png`,
     sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],
+    worksFor: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
   };
 }
 
@@ -37,11 +62,8 @@ export function getWebSiteSchema() {
     '@type': 'WebSite',
     name: SITE_NAME,
     url: SITE_URL,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
+    description: 'Talleres de acuarela y arteterapia en Santiago, Chile. Reserva tu lugar con Josefina Faine.',
+    inLanguage: 'es',
   };
 }
 
@@ -57,16 +79,25 @@ export function getEventSchema(workshop: {
     name: workshop.name,
     description: workshop.description,
     startDate: workshop.date,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
     location: {
       '@type': 'Place',
       name: 'Taller Arte y Terapia Salud',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'Traiguén 2260',
         addressLocality: 'Santiago',
+        addressRegion: 'Región Metropolitana',
         addressCountry: 'CL',
       },
     },
     organizer: {
+      '@type': 'Person',
+      name: 'Josefina Faine',
+      url: `${SITE_URL}/sobre-josefina`,
+    },
+    performer: {
       '@type': 'Person',
       name: 'Josefina Faine',
     },
@@ -75,6 +106,21 @@ export function getEventSchema(workshop: {
       price: workshop.price,
       priceCurrency: 'CLP',
       url: `${SITE_URL}/contacto`,
+      availability: 'https://schema.org/InStock',
     },
+    image: `${SITE_URL}/fotos/foto1.jpg`,
+  };
+}
+
+export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 }

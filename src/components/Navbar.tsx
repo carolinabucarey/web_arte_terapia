@@ -16,6 +16,13 @@ export default function Navbar() {
   }, []);
 
   return (
+    <>
+    <a
+      href="#main-content"
+      className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[1100] focus:bg-brand-green focus:text-white focus:px-4 focus:py-2 focus:rounded-pill focus:text-sm focus:font-body"
+    >
+      Saltar al contenido principal
+    </a>
     <header
       className={`fixed top-0 w-full z-[1000] transition-shadow duration-300 border-b border-border backdrop-blur-[10px] bg-bg-cream/92 ${
         scrolled ? 'shadow-card' : ''
@@ -109,5 +116,6 @@ export default function Navbar() {
         </nav>
       </div>
     </header>
+    </>
   );
 }

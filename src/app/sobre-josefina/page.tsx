@@ -4,17 +4,39 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
+import { getPersonSchema, getBreadcrumbSchema } from '@/lib/schema';
+import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Josefina Faine — Artista Visual y Arteterapeuta | Santiago',
   description:
     'Conoce a Josefina Faine, licenciada en Artes Visuales de la U. de Chile y magíster en Arteterapia. Guía creativa de talleres de acuarela en Santiago.',
+  openGraph: {
+    title: 'Josefina Faine — Artista Visual y Arteterapeuta',
+    description: 'Conoce a Josefina Faine, guía creativa de talleres de acuarela en Santiago.',
+    url: 'https://artejosefaine.cl/sobre-josefina',
+    type: 'profile',
+  },
 };
 
 export default function SobreJosefinaPage() {
+  const personSchema = getPersonSchema();
+  const breadcrumb = getBreadcrumbSchema([
+    { name: 'Inicio', url: SITE_URL },
+    { name: 'Sobre Josefina', url: `${SITE_URL}/sobre-josefina` },
+  ]);
+
   return (
     <>
-      <main className="pt-[88px]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <main id="main-content" className="pt-[88px]">
         <section className="section-padding">
           <div className="max-w-section mx-auto">
             <AnimateOnScroll>

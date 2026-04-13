@@ -3,17 +3,43 @@ import WorkshopGrid from '@/components/WorkshopGrid';
 import Footer from '@/components/Footer';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Link from 'next/link';
+import { getEventSchema, getBreadcrumbSchema } from '@/lib/schema';
+import { WORKSHOPS, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Próximos Talleres de Acuarela | artejosefaine.cl',
   description:
     'Descubre los próximos talleres de acuarela y arteterapia en Santiago. Grupos pequeños, experiencia boutique. Sin experiencia previa necesaria.',
+  openGraph: {
+    title: 'Próximos Talleres de Acuarela | artejosefaine.cl',
+    description: 'Descubre los próximos talleres de acuarela y arteterapia en Santiago.',
+    url: 'https://artejosefaine.cl/talleres',
+    type: 'website',
+  },
 };
 
 export default function TalleresPage() {
+  const breadcrumb = getBreadcrumbSchema([
+    { name: 'Inicio', url: SITE_URL },
+    { name: 'Talleres', url: `${SITE_URL}/talleres` },
+  ]);
+
   return (
     <>
-      <main className="pt-[88px]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      {WORKSHOPS.map((w) => (
+        <script
+          key={w.id}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getEventSchema({ name: w.name, description: w.description, date: w.date, price: w.price })),
+          }}
+        />
+      ))}
+      <main id="main-content" className="pt-[88px]">
         <WorkshopGrid />
 
         <section className="section-padding bg-bg-warm">
