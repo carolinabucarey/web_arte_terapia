@@ -1,3 +1,0 @@
-module.exports=[29478,a=>{"use strict";var b=a.i(7997);function c({children:a}){return(0,b.jsx)("html",{lang:"es",children:(0,b.jsx)("body",{children:a})})}a.s(["default",()=>c,"metadata",0,{title:"Taller de Acuarela y Arteterapia",description:"Un espacio para reconectar contigo a través del color, el agua y la expresión creativa."}])}];
-
-//# sourceMappingURL=development_web_arte_terapia_src_app_layout_tsx_ee02e08e._.js.map

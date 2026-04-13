@@ -1,10 +1,39 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import Navbar from '../components/Navbar';
+import { Playfair_Display, Montserrat } from 'next/font/google';
+import Navbar from '@/components/Navbar';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import { getLocalBusinessSchema, getWebSiteSchema } from '@/lib/schema';
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700'],
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+  weight: ['300', '400', '500', '600', '700'],
+});
 
 export const metadata: Metadata = {
-  title: 'Taller de Acuarela y Arteterapia',
-  description: 'Un espacio para reconectar contigo a través del color, el agua y la expresión creativa.',
+  metadataBase: new URL('https://artejosefaine.cl'),
+  title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
+  description:
+    'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Faine.',
+  openGraph: {
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+    locale: 'es_CL',
+    type: 'website',
+    siteName: 'Arte y Terapia Salud',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -13,10 +42,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body>
+    <html lang="es" className={`${playfair.variable} ${montserrat.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getWebSiteSchema()) }}
+        />
+      </head>
+      <body className="bg-bg-cream text-text-main font-body">
         <Navbar />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
