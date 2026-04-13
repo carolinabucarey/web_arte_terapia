@@ -16,25 +16,37 @@ export const NAV_LINKS = [
 
 export interface Workshop {
   id: string;
+  slug: string;
   name: string;
+  tagline: string;
   description: string;
   date: string;
   time: string;
+  duration: string;
   price: number;
+  groupSize: number;
+  level: string;
   image: string;
   ctaLink: string;
+  badge?: string;
 }
 
 export const WORKSHOPS: Workshop[] = [
   {
-    id: 'lunes-acuarela',
-    name: 'Taller de Acuarela Semanal',
-    description: 'Si sientes que necesitas una pausa, este espacio es para ti. Un taller íntimo de acuarela para reconectar contigo, liberar emociones y crear desde tu propio imaginario.',
+    id: 'semanal-acuarela',
+    slug: 'semanal',
+    name: 'Talleres Semanales de Acuarela',
+    tagline: 'Semanal · Grupos reducidos',
+    description: 'Si sientes que necesitas una pausa, este espacio es para ti. Un encuentro semanal para explorar la acuarela a tu ritmo, en grupos de máximo seis personas, con acompañamiento cercano y personalizado. No necesitas experiencia previa.',
     date: 'Lunes',
     time: '16:30 hrs',
+    duration: '2 horas por sesión',
     price: 25000,
+    groupSize: 6,
+    level: 'Todos los niveles',
     image: '/fotos/foto1.jpg',
-    ctaLink: '/contacto',
+    ctaLink: '/talleres/semanal',
+    badge: 'Nuestro taller más querido',
   },
 ];
 
