@@ -30,7 +30,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-3 text-[0.82rem] tracking-[0.18em] uppercase text-bg-cream/90 font-body"
+          className="mb-3 text-[0.82rem] tracking-[0.18em] uppercase text-brand-deep/80 font-body"
         >
           Acuarela · Autocuidado · Expresión
         </motion.p>
@@ -39,8 +39,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="font-display font-bold text-[clamp(2rem,5vw,4.2rem)] leading-[1.06] text-bg-cream mb-6"
-          style={{ textShadow: '0 6px 24px rgba(31,58,95,0.18)' }}
+          className="font-display font-bold text-[clamp(2rem,5vw,4.2rem)] leading-[1.06] text-brand-deep mb-6"
+          style={{ textShadow: '0 2px 12px rgba(255,255,255,0.4)' }}
         >
           Talleres para crear, sentir y habitar tu mundo interior a través del arte
         </motion.h1>
@@ -59,7 +59,7 @@ export default function Hero() {
           </Link>
           <Link
             href="/contacto"
-            className="border border-white/40 text-bg-cream rounded-pill px-7 py-3.5 font-body font-semibold text-sm hover:bg-white/10 transition-colors"
+            className="border border-brand-deep/30 text-brand-deep rounded-pill px-7 py-3.5 font-body font-semibold text-sm hover:bg-brand-deep/5 transition-colors"
           >
             Reservar mi lugar
           </Link>
