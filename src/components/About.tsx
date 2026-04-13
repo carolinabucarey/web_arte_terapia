@@ -11,17 +11,19 @@ export default function About() {
 
         <AnimateOnScroll delay={0.15}>
           <p className="text-text-muted font-body text-base leading-relaxed text-center">
-            Describir la experiencia del taller es describir lo que se siente al llegar, el ambiente,
-            el proceso. No es una clase, es un encuentro contigo. Un espacio donde el color se convierte
-            en lenguaje y la acuarela en una herramienta de autoconocimiento y expresión emocional.
+            La acuarela tiene un carácter sensible y fluido que permite soltar el control, liberar
+            emociones y bajar el ritmo. Desde una mirada cercana al arteterapia, el proceso creativo
+            se vuelve una herramienta para expresar lo que a veces no se puede poner en palabras,
+            favoreciendo el bienestar emocional y la reconexión con una misma.
           </p>
         </AnimateOnScroll>
 
         <AnimateOnScroll delay={0.3}>
           <p className="text-text-muted font-body text-base leading-relaxed text-center mt-6">
-            Cada sesión es una invitación a soltar la exigencia, conectar con el presente y permitirte
-            explorar sin juicio. Una experiencia boutique de bienestar creativo donde el arte se
-            transforma en camino de vuelta a ti.
+            Cada sesión es una invitación a aprender desde un lugar libre, respetando tus tiempos,
+            tu sensibilidad y tu propia búsqueda. Con el tiempo, estos talleres también se han
+            transformado en un lugar de encuentro — donde se comparte no solo el proceso creativo,
+            sino también un espacio de confianza y conexión con otras.
           </p>
         </AnimateOnScroll>
       </div>
