@@ -36,7 +36,7 @@ export default function Navbar() {
             alt="Arte y Terapia Salud"
             width={52}
             height={52}
-            className="h-[52px] w-auto object-contain"
+            className="h-[52px] w-[52px] rounded-full object-cover"
           />
           <span className="font-bold text-brand-deep tracking-wide font-body hidden sm:inline">
             Arte y Terapia Salud
