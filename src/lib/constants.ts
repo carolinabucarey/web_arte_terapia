@@ -1,6 +1,6 @@
 export const SITE_NAME = 'Arte y Terapia Salud';
 export const SITE_URL = 'https://artejosefaine.cl';
-export const WHATSAPP_NUMBER = '56XXXXXXXXX'; // Reemplazar con número real
+export const WHATSAPP_NUMBER = '56956900447';
 export const WHATSAPP_MESSAGE = 'Hola! Me gustaría saber sobre los talleres';
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 export const INSTAGRAM_BRAND = 'https://www.instagram.com/arteyterapiasalud/';
