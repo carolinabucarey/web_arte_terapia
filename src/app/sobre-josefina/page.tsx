@@ -10,7 +10,7 @@ import { SITE_URL } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'Josefina Faine — Artista Visual y Arteterapeuta | Santiago',
   description:
-    'Conoce a Josefina Faine, licenciada en Artes Visuales de la U. de Chile y magíster en Arteterapia. Guía creativa de talleres de acuarela en Santiago.',
+    'Conoce a Josefina Fainé, licenciada en Artes Visuales (U. Mayor) y magíster en Arteterapia (U. Finis Terrae). 15 años de experiencia. Guía creativa de talleres de acuarela en Santiago.',
   openGraph: {
     title: 'Josefina Faine — Artista Visual y Arteterapeuta',
     description: 'Conoce a Josefina Faine, guía creativa de talleres de acuarela en Santiago.',
@@ -132,8 +132,39 @@ export default function SobreJosefinaPage() {
           </div>
         </section>
 
-        {/* Formación */}
+        {/* Mi obra */}
         <section className="section-padding">
+          <div className="max-w-reading mx-auto">
+            <AnimateOnScroll>
+              <h3 className="font-display font-semibold text-xl text-text-main mb-4">Mi obra</h3>
+              <div className="flex flex-col gap-4 font-body text-text-muted text-base leading-relaxed">
+                <p>
+                  Mi trabajo nace de una curiosidad profunda por el mundo interno y la mente humana.
+                  A través de rostros y formas orgánicas, exploro lo que no vemos: pensamientos,
+                  emociones y memorias que habitan bajo la superficie.
+                </p>
+                <p>
+                  Me interesa el rostro como máscara, una envoltura que contiene un universo interno
+                  invisible. Trabajo con acuarela y escultura en técnica mixta: lo tridimensional
+                  contiene y da forma; la acuarela abre un espacio libre, donde la imagen se vuelve
+                  etérea, emocional y en constante transformación.
+                </p>
+              </div>
+              <a
+                href="https://www.instagram.com/arte.jose.fa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-brand-water font-body font-medium text-sm mt-5 hover:text-brand-deep transition-colors"
+              >
+                Ver más en @arte.jose.fa
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+              </a>
+            </AnimateOnScroll>
+          </div>
+        </section>
+
+        {/* Formación */}
+        <section className="section-padding bg-bg-warm">
           <div className="max-w-reading mx-auto">
             <AnimateOnScroll>
               <h3 className="font-display font-semibold text-xl text-text-main mb-4">Formación</h3>
@@ -162,7 +193,7 @@ export default function SobreJosefinaPage() {
         </section>
 
         {/* CTA */}
-        <section className="section-padding bg-gradient-to-b from-bg-warm to-bg-cream">
+        <section className="section-padding bg-gradient-to-b from-bg-cream to-bg-warm">
           <div className="max-w-reading mx-auto text-center">
             <AnimateOnScroll>
               <h2 className="font-display font-semibold text-2xl text-text-main mb-4">
