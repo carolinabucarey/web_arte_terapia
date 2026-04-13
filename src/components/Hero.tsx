@@ -13,7 +13,7 @@ export default function Hero() {
         alt="Taller de acuarela y arteterapia"
         fill
         priority
-        className="object-cover"
+        className="object-cover -scale-x-100"
         sizes="100vw"
       />
 
