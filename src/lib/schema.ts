@@ -10,7 +10,7 @@ export function getLocalBusinessSchema() {
     telephone: `+${WHATSAPP_NUMBER}`,
     email: EMAIL,
     image: `${SITE_URL}/fotos/foto1.jpg`,
-    logo: `${SITE_URL}/logo/logo.png`,
+    logo: `${SITE_URL}/logo/logo.jpeg`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Traiguén 2260',

@@ -41,7 +41,7 @@ export default function Hero() {
           className="font-display font-bold text-[clamp(2rem,5vw,4.2rem)] leading-[1.06] text-bg-cream mb-6"
           style={{ textShadow: '0 6px 24px rgba(31,58,95,0.18)' }}
         >
-          Talleres para crear, sentir y habitar tu mundo interior a través del color
+          Talleres para crear, sentir y habitar tu mundo interior a través del arte
         </motion.h1>
 
         <motion.div

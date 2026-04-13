@@ -32,7 +32,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 min-h-[44px]">
           <Image
-            src="/logo/logo.png"
+            src="/logo/logo.jpeg"
             alt="Arte y Terapia Salud"
             width={52}
             height={52}
