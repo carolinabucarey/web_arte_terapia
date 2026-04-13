@@ -42,7 +42,7 @@ export default function InstructorProfile() {
               </div>
 
               <p className="text-sm text-text-muted font-body mt-4">
-                Licenciada en Artes Visuales, Universidad de Chile · Magíster en Artes en la Salud y Arteterapia
+                Licenciada en Artes Visuales, Universidad Mayor · Magíster en Artes en la Salud y Arteterapia, Universidad Finis Terrae · 15 años de experiencia
               </p>
 
               <Link

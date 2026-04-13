@@ -40,11 +40,11 @@ export function getPersonSchema() {
     '@type': 'Person',
     name: 'Josefina Faine',
     jobTitle: 'Artista Visual y Arteterapeuta',
-    description: 'Licenciada en Artes Visuales de la Universidad de Chile, magíster en Artes en la Salud y Arteterapia. Guía creativa de talleres de acuarela en Santiago.',
-    alumniOf: {
-      '@type': 'CollegeOrUniversity',
-      name: 'Universidad de Chile',
-    },
+    description: 'Licenciada en Artes Visuales de la Universidad Mayor, magíster en Artes en la Salud y Arteterapia de la Universidad Finis Terrae. Guía creativa de talleres de acuarela en Santiago.',
+    alumniOf: [
+      { '@type': 'CollegeOrUniversity', name: 'Universidad Mayor' },
+      { '@type': 'CollegeOrUniversity', name: 'Universidad Finis Terrae' },
+    ],
     url: `${SITE_URL}/sobre-josefina`,
     image: `${SITE_URL}/fotos/jose.png`,
     sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],

@@ -142,13 +142,19 @@ export default function SobreJosefinaPage() {
                   <span className="text-brand-green mt-1.5 flex-shrink-0">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
                   </span>
-                  Licenciada en Artes Visuales — Universidad de Chile
+                  Licenciada en Artes Visuales — Universidad Mayor
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-green mt-1.5 flex-shrink-0">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
                   </span>
-                  Magíster en Artes en la Salud y Arteterapia
+                  Magíster en Artes en la Salud y Arteterapia — Universidad Finis Terrae
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-brand-green mt-1.5 flex-shrink-0">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
+                  </span>
+                  15 años de experiencia
                 </li>
               </ul>
             </AnimateOnScroll>
