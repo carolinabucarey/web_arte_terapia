@@ -17,9 +17,9 @@ export default function Hero() {
         sizes="100vw"
       />
 
-      {/* White fade at top + gradient overlay */}
-      <div className="absolute inset-x-0 top-0 h-[120px] bg-gradient-to-b from-white to-transparent z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-deep/[0.18] to-brand-deep/[0.48]" />
+      {/* White fade at top + subtle overlay only at bottom for text readability */}
+      <div className="absolute inset-x-0 top-0 h-[100px] bg-gradient-to-b from-white/80 to-transparent z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-deep/[0.35]" />
 
       {/* Glassmorphism card */}
       <div
