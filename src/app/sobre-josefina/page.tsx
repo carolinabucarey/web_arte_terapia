@@ -125,7 +125,7 @@ export default function SobreJosefinaPage() {
             <AnimateOnScroll>
               <blockquote className="font-display italic text-xl md:text-2xl text-text-main leading-relaxed">
                 &ldquo;La acuarela invita a soltar el control y confiar en el proceso
-                — y ahí es donde empieza algo hermoso.&rdquo;
+                — y ahí es donde empieza la magia.&rdquo;
               </blockquote>
               <p className="text-text-muted font-body text-sm mt-4">— Josefina Fainé</p>
             </AnimateOnScroll>
