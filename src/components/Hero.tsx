@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="relative w-full h-screen min-h-[420px] overflow-hidden">
       {/* Background image */}
       <Image
-        src="/fotos/foto1.jpg"
+        src="/fotos/foto1.jpeg"
         alt="Taller de acuarela y arteterapia"
         fill
         priority

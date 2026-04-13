@@ -44,7 +44,7 @@ export const WORKSHOPS: Workshop[] = [
     price: 25000,
     groupSize: 6,
     level: 'Todos los niveles',
-    image: '/fotos/foto1.jpg',
+    image: '/fotos/foto1.jpeg',
     ctaLink: '/talleres/semanal',
     badge: 'Nuestro taller más querido',
   },

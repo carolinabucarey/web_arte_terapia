@@ -9,7 +9,7 @@ export function getLocalBusinessSchema() {
     url: SITE_URL,
     telephone: `+${WHATSAPP_NUMBER}`,
     email: EMAIL,
-    image: `${SITE_URL}/fotos/foto1.jpg`,
+    image: `${SITE_URL}/fotos/foto1.jpeg`,
     logo: `${SITE_URL}/logo/logo.jpeg`,
     address: {
       '@type': 'PostalAddress',
@@ -108,7 +108,7 @@ export function getEventSchema(workshop: {
       url: `${SITE_URL}/contacto`,
       availability: 'https://schema.org/InStock',
     },
-    image: `${SITE_URL}/fotos/foto1.jpg`,
+    image: `${SITE_URL}/fotos/foto1.jpeg`,
   };
 }
 
