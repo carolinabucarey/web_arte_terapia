@@ -37,43 +37,41 @@ export default function SobreJosefinaPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
       <main id="main-content" className="pt-[88px]">
+        {/* Header + foto */}
         <section className="section-padding">
           <div className="max-w-section mx-auto">
             <AnimateOnScroll>
-              <SectionHeader label="Tu guía creativa" title="Josefina Fainé" />
+              <SectionHeader label="Sobre mí" title="Josefina Fainé" />
+              <p className="text-brand-water font-body text-sm font-medium -mt-2 mb-6">
+                Artista visual · Arteterapeuta · Guía creativa
+              </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={0.15}>
-              <div className="flex flex-wrap gap-10 items-start mt-4">
+              <div className="flex flex-wrap gap-10 items-start">
                 <Image
                   src="/fotos/jose.png"
                   alt="Josefina Fainé — Artista visual y arteterapeuta"
-                  width={280}
-                  height={280}
-                  className="rounded-2xl object-cover w-[clamp(200px,30vw,280px)] flex-shrink-0"
+                  width={320}
+                  height={320}
+                  className="rounded-2xl object-cover w-[clamp(220px,35vw,320px)] flex-shrink-0"
                 />
 
                 <div className="flex-1 min-w-[300px]">
-                  <p className="font-body text-text-muted text-base leading-relaxed mb-4">
-                    Artista visual titulada de la Universidad de Chile, magíster en Artes en la Salud y
-                    Arteterapia. Integra técnicas tradicionales con exploración emocional, acompañando
-                    procesos creativos desde una mirada sensible, intuitiva y profundamente humana.
-                  </p>
-                  <p className="font-body text-text-muted text-base leading-relaxed mb-4">
-                    En sus talleres invita a soltar la exigencia, conectar con el cuerpo y permitir que
-                    el color se convierta en lenguaje, creando un espacio seguro donde cada persona puede
-                    expresarse libremente y reconectar con su mundo interior.
-                  </p>
-                  <p className="font-body text-text-muted text-base leading-relaxed mb-8">
-                    Su enfoque no es enseñar a pintar, sino acompañar un proceso de autoconocimiento
-                    a través de la acuarela. Una experiencia donde el resultado importa menos que el
-                    camino — y donde el arte se transforma en herramienta de bienestar.
-                  </p>
-
-                  <div className="flex flex-col gap-2 text-sm font-body text-text-muted">
-                    <p><strong className="text-text-main">Formación:</strong> Licenciada en Artes Visuales, Universidad de Chile</p>
-                    <p><strong className="text-text-main">Posgrado:</strong> Magíster en Artes en la Salud y Arteterapia</p>
-                    <p><strong className="text-text-main">Especialización:</strong> Acuarela contemporánea y expresión emocional</p>
+                  <h3 className="font-display font-semibold text-xl text-text-main mb-4">Mi camino</h3>
+                  <div className="flex flex-col gap-4 font-body text-text-muted text-base leading-relaxed">
+                    <p>Creo en el arte como un espacio de pausa, conexión y sanación.</p>
+                    <p>
+                      Soy Josefina, artista visual y arteterapeuta. Desde una mirada cercana al arteterapia,
+                      acompaño procesos creativos donde el acto de pintar se convierte en una herramienta
+                      para expresar lo que a veces no se puede poner en palabras.
+                    </p>
+                    <p>
+                      La acuarela me eligió a mí tanto como yo la elegí a ella. Tiene un carácter sensible
+                      y fluido que invita a soltar el control, a confiar en el proceso, a bajar el ritmo.
+                      Y eso es exactamente lo que busco transmitir en cada taller: un espacio donde crear
+                      sea también una forma de reconectar contigo.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -81,7 +79,84 @@ export default function SobreJosefinaPage() {
           </div>
         </section>
 
+        {/* Lo que me mueve */}
         <section className="section-padding bg-bg-warm">
+          <div className="max-w-reading mx-auto">
+            <AnimateOnScroll>
+              <h3 className="font-display font-semibold text-xl text-text-main mb-4">Lo que me mueve</h3>
+              <div className="flex flex-col gap-4 font-body text-text-muted text-base leading-relaxed">
+                <p>
+                  Me motiva acompañar los procesos de cada persona. Ver cómo alguien llega con miedo a
+                  &ldquo;no saber dibujar&rdquo; y poco a poco se suelta, explora y descubre nuevas formas de expresarse.
+                </p>
+                <p>
+                  En mis talleres no busco un resultado técnico perfecto. Busco que el proceso creativo
+                  favorezca el bienestar emocional y la reconexión con una misma. Que cada pincelada sea
+                  un momento de presencia, no de exigencia.
+                </p>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </section>
+
+        {/* Mi enfoque */}
+        <section className="section-padding">
+          <div className="max-w-reading mx-auto">
+            <AnimateOnScroll>
+              <h3 className="font-display font-semibold text-xl text-text-main mb-4">Mi enfoque</h3>
+              <div className="flex flex-col gap-4 font-body text-text-muted text-base leading-relaxed">
+                <p>
+                  Trabajo desde la acuarela como lenguaje expresivo, integrando herramientas del arteterapia
+                  en un formato de taller grupal e íntimo. Cada persona elige su propio camino dentro del
+                  taller, y mi rol es guiar ese proceso con cercanía, respeto y sensibilidad.
+                </p>
+                <p>
+                  No es terapia clínica. No es una clase tradicional de técnica. Es un espacio donde el
+                  arte y el bienestar se encuentran de forma natural.
+                </p>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </section>
+
+        {/* Quote destacada */}
+        <section className="section-padding bg-bg-warm">
+          <div className="max-w-reading mx-auto text-center">
+            <AnimateOnScroll>
+              <blockquote className="font-display italic text-xl md:text-2xl text-text-main leading-relaxed">
+                &ldquo;La acuarela invita a soltar el control y confiar en el proceso
+                — y ahí es donde empieza algo hermoso.&rdquo;
+              </blockquote>
+              <p className="text-text-muted font-body text-sm mt-4">— Josefina Fainé</p>
+            </AnimateOnScroll>
+          </div>
+        </section>
+
+        {/* Formación */}
+        <section className="section-padding">
+          <div className="max-w-reading mx-auto">
+            <AnimateOnScroll>
+              <h3 className="font-display font-semibold text-xl text-text-main mb-4">Formación</h3>
+              <ul className="flex flex-col gap-2 font-body text-text-muted text-base">
+                <li className="flex items-start gap-2">
+                  <span className="text-brand-green mt-1.5 flex-shrink-0">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
+                  </span>
+                  Licenciada en Artes Visuales — Universidad de Chile
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-brand-green mt-1.5 flex-shrink-0">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
+                  </span>
+                  Magíster en Artes en la Salud y Arteterapia
+                </li>
+              </ul>
+            </AnimateOnScroll>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="section-padding bg-gradient-to-b from-bg-warm to-bg-cream">
           <div className="max-w-reading mx-auto text-center">
             <AnimateOnScroll>
               <h2 className="font-display font-semibold text-2xl text-text-main mb-4">

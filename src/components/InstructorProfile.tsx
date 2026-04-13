@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import SectionHeader from './SectionHeader';
 import AnimateOnScroll from './AnimateOnScroll';
 
@@ -25,12 +26,34 @@ export default function InstructorProfile() {
                 Josefina Fainé
               </h2>
 
-              <p className="font-body text-[1.05rem] leading-[1.8] text-text-muted">
-                Artista visual titulada de la Universidad de Chile, magíster en Artes en la Salud y
-                Arteterapia. Integra técnicas tradicionales con exploración emocional. En sus talleres
-                invita a soltar la exigencia, conectar con el cuerpo y permitir que el color se convierta
-                en lenguaje.
+              <div className="flex flex-col gap-3 font-body text-[1.05rem] leading-[1.8] text-text-muted">
+                <p>
+                  Creo en el arte como un espacio de pausa, conexión y sanación.
+                </p>
+                <p>
+                  Soy artista visual y arteterapeuta, y en mis talleres acompaño procesos creativos
+                  desde un lugar cercano y respetuoso. La acuarela tiene un carácter sensible y fluido
+                  que permite soltar el control, liberar emociones y bajar el ritmo — y eso es exactamente
+                  lo que busco ofrecer en cada encuentro.
+                </p>
+                <p>
+                  Disfruto ver cómo cada persona se suelta, explora y descubre nuevas formas de expresarse.
+                </p>
+              </div>
+
+              <p className="text-sm text-text-muted font-body mt-4">
+                Licenciada en Artes Visuales, Universidad de Chile · Magíster en Artes en la Salud y Arteterapia
               </p>
+
+              <Link
+                href="/sobre-josefina"
+                className="inline-flex items-center gap-1 text-brand-water font-body font-medium text-sm mt-4 hover:text-brand-deep transition-colors"
+              >
+                Conocer más sobre Josefina
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
           </div>
         </AnimateOnScroll>

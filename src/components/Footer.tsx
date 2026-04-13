@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <p className="font-display font-bold text-xl mb-3">Arte y Terapia Salud</p>
             <p className="font-display italic text-bg-cream/80 text-sm leading-relaxed">
-              El arte como camino de vuelta a ti
+              Crear también es una forma de volver a ti
             </p>
           </div>
 
