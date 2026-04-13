@@ -181,6 +181,31 @@ export default function ContactForm() {
                   @arteyterapiasalud
                 </a>
               </div>
+
+              {/* Mapa */}
+              <div className="border-t border-border pt-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-brand-water">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <p className="text-text-main font-body text-sm font-semibold">
+                    Traiguén 2260, Santiago
+                  </p>
+                </div>
+                <div className="rounded-xl overflow-hidden border border-border">
+                  <iframe
+                    src="https://maps.google.com/maps?q=Traigu%C3%A9n+2260,+Santiago,+Chile&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="200"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Ubicación del taller — Traiguén 2260, Santiago"
+                  />
+                </div>
+              </div>
             </div>
           </AnimateOnScroll>
         </div>
