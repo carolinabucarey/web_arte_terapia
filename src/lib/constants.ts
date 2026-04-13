@@ -29,7 +29,7 @@ export const WORKSHOPS: Workshop[] = [
   {
     id: 'lunes-acuarela',
     name: 'Taller de Acuarela Semanal',
-    description: 'Sesión grupal de acuarela terapéutica. Explora el color como herramienta de expresión emocional.',
+    description: 'Si sientes que necesitas una pausa, este espacio es para ti. Un taller íntimo de acuarela para reconectar contigo, liberar emociones y crear desde tu propio imaginario.',
     date: 'Lunes',
     time: '16:30 hrs',
     price: 25000,
