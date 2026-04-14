@@ -14,7 +14,7 @@ export default function About() {
             La acuarela tiene un carácter sensible y fluido que permite soltar el control, liberar
             emociones y bajar el ritmo. Desde una mirada cercana al arteterapia, el proceso creativo
             se vuelve una herramienta para expresar lo que a veces no se puede poner en palabras,
-            favoreciendo el bienestar emocional y la reconexión con una misma.
+            favoreciendo el bienestar emocional y la reconexión con uno mismo.
           </p>
         </AnimateOnScroll>
 

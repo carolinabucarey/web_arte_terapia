@@ -50,7 +50,7 @@ La acuarela me eligió a mí tanto como yo la elegí a ella. Tiene un carácter 
 
 Me motiva acompañar los procesos de cada persona. Ver cómo alguien llega con miedo a "no saber dibujar" y poco a poco se suelta, explora y descubre nuevas formas de expresarse.
 
-En mis talleres no busco un resultado técnico perfecto. Busco que el proceso creativo favorezca el bienestar emocional y la reconexión con una misma. Que cada pincelada sea un momento de presencia, no de exigencia.
+En mis talleres no busco un resultado técnico perfecto. Busco que el proceso creativo favorezca el bienestar emocional y la reconexión con uno mismo. Que cada pincelada sea un momento de presencia, no de exigencia.
 
 ---
 

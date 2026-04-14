@@ -91,7 +91,7 @@ export default function SobreJosefinaPage() {
                 </p>
                 <p>
                   En mis talleres no busco un resultado técnico perfecto. Busco que el proceso creativo
-                  favorezca el bienestar emocional y la reconexión con una misma. Que cada pincelada sea
+                  favorezca el bienestar emocional y la reconexión con uno mismo. Que cada pincelada sea
                   un momento de presencia, no de exigencia.
                 </p>
               </div>
