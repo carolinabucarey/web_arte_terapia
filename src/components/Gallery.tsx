@@ -3,12 +3,12 @@ import SectionHeader from './SectionHeader';
 import AnimateOnScroll from './AnimateOnScroll';
 
 const GALLERY_IMAGES = [
+  { src: '/fotos/taller-grupal.jpeg', alt: 'Grupo del taller riendo mientras pintan acuarela', caption: 'Risas compartidas' },
   { src: '/fotos/foto1.jpeg', alt: 'Acuarelas en proceso durante el taller', caption: 'Proceso creativo' },
   { src: '/fotos/jose.png', alt: 'Josefina guiando una sesión del taller', caption: 'Guía creativa' },
-  { src: '/fotos/foto1.jpeg', alt: 'Materiales de acuarela — pinceles y pigmentos', caption: 'Materiales' },
-  { src: '/fotos/jose.png', alt: 'Momento de concentración durante el taller', caption: 'Atención plena' },
-  { src: '/fotos/foto1.jpeg', alt: 'Obra terminada de acuarela', caption: 'Obras del taller' },
-  { src: '/fotos/jose.png', alt: 'Grupo trabajando en el taller', caption: 'Comunidad' },
+  { src: '/fotos/mano-paisaje.jpeg', alt: 'Pincelada sobre un paisaje de acuarela', caption: 'Atención plena' },
+  { src: '/fotos/pinceles-corazon.jpeg', alt: 'Pinceles de acuarela dentro de un corazón rosa', caption: 'Nuestros materiales' },
+  { src: '/fotos/pincel-oscuro.jpeg', alt: 'Pincel aplicando acuarela sobre fondo oscuro', caption: 'Color y textura' },
 ];
 
 export default function Gallery() {

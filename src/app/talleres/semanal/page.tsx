@@ -198,7 +198,7 @@ export default function TallerSemanalPage() {
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Día</td>
-                        <td className="py-3 text-sm text-text-muted">{workshop.date} · {workshop.time}</td>
+                        <td className="py-3 text-sm text-text-muted">{[workshop.date, workshop.time].filter(Boolean).join(' · ')}</td>
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Duración</td>
@@ -222,7 +222,7 @@ export default function TallerSemanalPage() {
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Precio</td>
-                        <td className="py-3 text-sm text-text-main font-semibold">{formatCLP(workshop.price)} por sesión</td>
+                        <td className="py-3 text-sm text-text-main font-semibold">{typeof workshop.price === 'number' ? `${formatCLP(workshop.price)} por sesión` : 'Consultar'}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -248,12 +248,14 @@ export default function TallerSemanalPage() {
                 Si quieres reservar tu lugar o tienes preguntas, escríbenos.
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
-                <Link
-                  href="/contacto"
+                <a
+                  href={workshop.ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-brand-green text-white rounded-pill px-7 py-3.5 font-body font-semibold text-sm hover:opacity-90 transition-opacity"
                 >
                   Reservar mi lugar
-                </Link>
+                </a>
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"

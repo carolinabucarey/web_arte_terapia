@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import SectionHeader from './SectionHeader';
 import AnimateOnScroll from './AnimateOnScroll';
-import { WHATSAPP_LINK, INSTAGRAM_BRAND } from '@/lib/constants';
+import { WHATSAPP_LINK, WHATSAPP_NUMBER, INSTAGRAM_BRAND } from '@/lib/constants';
 
 interface FormData {
   nombre: string;
@@ -19,18 +19,34 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     setStatus('loading');
+
+    // Compose WhatsApp message with form data
+    const lines = [
+      `Hola Josefina! Soy ${data.nombre}.`,
+      '',
+      data.mensaje,
+      '',
+      `📧 ${data.email}`,
+      data.telefono ? `📱 ${data.telefono}` : null,
+    ].filter(Boolean);
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+
+    // Open WhatsApp in a new tab (primary channel)
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+    // Send email as backup (best-effort, don't block UX if it fails)
     try {
-      const res = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error();
-      setStatus('success');
-      reset();
     } catch {
-      setStatus('error');
+      // Silent — WhatsApp is the primary channel
     }
+
+    setStatus('success');
+    reset();
   };
 
   const inputClass =
@@ -120,12 +136,16 @@ export default function ContactForm() {
                 disabled={status === 'loading'}
                 className="mt-2 bg-brand-green text-white rounded-pill px-6 py-3.5 font-body font-semibold text-sm hover:opacity-90 transition-opacity disabled:opacity-50"
               >
-                {status === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
+                {status === 'loading' ? 'Abriendo WhatsApp...' : 'Enviar por WhatsApp'}
               </button>
+
+              <p className="text-text-muted font-body text-xs text-center">
+                Al enviar se abrirá WhatsApp con tu mensaje listo para enviar.
+              </p>
 
               {status === 'success' && (
                 <p className="text-brand-green text-sm font-body">
-                  Gracias por escribirnos. Te responderemos pronto.
+                  ¡Listo! Revisa la pestaña de WhatsApp para enviar tu mensaje.
                 </p>
               )}
               {status === 'error' && (
@@ -190,7 +210,7 @@ export default function ContactForm() {
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                   <p className="text-text-main font-body text-sm font-semibold">
-                    Traiguén 2260, Santiago
+                    Traiguén, Santiago
                   </p>
                 </div>
                 <div className="rounded-xl overflow-hidden border border-border">
@@ -202,7 +222,7 @@ export default function ContactForm() {
                     allowFullScreen={false}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Ubicación del taller — Traiguén 2260, Santiago"
+                    title="Ubicación del taller — Traiguén, Santiago"
                   />
                 </div>
               </div>

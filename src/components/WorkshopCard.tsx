@@ -4,8 +4,12 @@ import { formatCLP } from '@/lib/utils';
 import type { Workshop } from '@/lib/constants';
 
 export default function WorkshopCard({
-  name, tagline, description, date, time, duration, price, groupSize, level, image, ctaLink, badge,
+  name, tagline, description, date, time, duration, price, groupSize, level, image, ctaLink, ctaText, badge,
 }: Workshop) {
+  const priceLabel = price === 'consultar' ? 'Consultar' : formatCLP(price);
+  const isExternal = /^https?:\/\//.test(ctaLink);
+  const buttonText = ctaText ?? 'Reservar mi lugar';
+  const dateTime = [date, time].filter(Boolean).join(' · ');
   return (
     <div className="bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">
       <div className="relative aspect-[4/3]">
@@ -34,7 +38,7 @@ export default function WorkshopCard({
               <rect x="3" y="4" width="18" height="18" rx="2" />
               <path d="M16 2v4M8 2v4M3 10h18" />
             </svg>
-            {date} · {time}
+            {dateTime}
           </span>
           <span className="flex items-center gap-1.5">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -49,13 +53,14 @@ export default function WorkshopCard({
           Máx. {groupSize} personas · {level}
         </p>
 
-        <p className="font-semibold text-text-main font-body text-lg">{formatCLP(price)}</p>
+        <p className="font-semibold text-text-main font-body text-lg">{priceLabel}</p>
 
         <Link
           href={ctaLink}
+          {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           className="mt-1 bg-brand-green text-white rounded-pill px-5 py-2.5 font-body font-semibold text-sm text-center hover:opacity-90 transition-opacity"
         >
-          Reservar mi lugar
+          {buttonText}
         </Link>
       </div>
     </div>

@@ -13,7 +13,7 @@ export function getLocalBusinessSchema() {
     logo: `${SITE_URL}/logo/logo.jpeg`,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Traiguén 2260',
+      streetAddress: 'Traiguén',
       addressLocality: 'Santiago',
       addressRegion: 'Región Metropolitana',
       addressCountry: 'CL',
@@ -22,12 +22,6 @@ export function getLocalBusinessSchema() {
       '@type': 'GeoCoordinates',
       latitude: -33.44,
       longitude: -70.61,
-    },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Monday',
-      opens: '16:30',
-      closes: '18:30',
     },
     priceRange: '$$',
     sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],
@@ -71,7 +65,7 @@ export function getEventSchema(workshop: {
   name: string;
   description: string;
   date: string;
-  price: number;
+  price: number | 'consultar';
 }) {
   return {
     '@context': 'https://schema.org',
@@ -86,7 +80,7 @@ export function getEventSchema(workshop: {
       name: 'Taller Arte y Terapia Salud',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Traiguén 2260',
+        streetAddress: 'Traiguén',
         addressLocality: 'Santiago',
         addressRegion: 'Región Metropolitana',
         addressCountry: 'CL',
@@ -103,7 +97,7 @@ export function getEventSchema(workshop: {
     },
     offers: {
       '@type': 'Offer',
-      price: workshop.price,
+      price: workshop.price === 'consultar' ? 0 : workshop.price,
       priceCurrency: 'CLP',
       url: `${SITE_URL}/contacto`,
       availability: 'https://schema.org/InStock',
