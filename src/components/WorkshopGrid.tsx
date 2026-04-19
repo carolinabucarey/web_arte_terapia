@@ -12,9 +12,9 @@ export default function WorkshopGrid() {
         </AnimateOnScroll>
 
         {WORKSHOPS.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {WORKSHOPS.map((workshop, index) => (
-              <AnimateOnScroll key={workshop.id} delay={index * 0.15}>
+              <AnimateOnScroll key={workshop.id} delay={index * 0.15} className="h-full">
                 <WorkshopCard {...workshop} />
               </AnimateOnScroll>
             ))}

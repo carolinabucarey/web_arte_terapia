@@ -11,7 +11,7 @@ export default function WorkshopCard({
   const buttonText = ctaText ?? 'Reservar mi lugar';
   const dateTime = [date, time].filter(Boolean).join(' · ');
   return (
-    <div className="bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">
+    <div className="h-full flex flex-col bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">
       <div className="relative aspect-[4/3]">
         <Image
           src={image}
@@ -27,7 +27,7 @@ export default function WorkshopCard({
         )}
       </div>
 
-      <div className="p-6 flex flex-col gap-3">
+      <div className="p-6 flex flex-col gap-3 flex-1">
         <p className="text-brand-green text-xs font-body font-medium tracking-wide">{tagline}</p>
         <h3 className="font-display font-medium text-lg text-text-main">{name}</h3>
         <p className="text-text-muted text-sm font-body line-clamp-3">{description}</p>
@@ -53,7 +53,7 @@ export default function WorkshopCard({
           Máx. {groupSize} personas · {level}
         </p>
 
-        <p className="font-semibold text-text-main font-body text-lg">{priceLabel}</p>
+        <p className="font-semibold text-text-main font-body text-lg mt-auto">{priceLabel}</p>
 
         <Link
           href={ctaLink}
