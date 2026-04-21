@@ -3,10 +3,10 @@ import { formatCLP } from '@/lib/utils';
 import type { Workshop } from '@/lib/constants';
 import WorkshopImageCarousel from './WorkshopImageCarousel';
 import WorkshopCTA from './WorkshopCTA';
+import WorkshopDetailsModal from './WorkshopDetailsModal';
 
-export default function WorkshopCard({
-  id, name, tagline, description, date, time, duration, price, groupSize, level, image, images, ctaLink, ctaText, badge,
-}: Workshop) {
+export default function WorkshopCard(workshop: Workshop) {
+  const { id, name, tagline, description, date, time, duration, price, groupSize, level, image, images, ctaLink, ctaText, badge } = workshop;
   const priceLabel = price === 'consultar' ? 'Consultar' : formatCLP(price);
   const buttonText = ctaText ?? 'Reservar mi lugar';
   const dateTime = [date, time].filter(Boolean).join(' · ');
@@ -36,6 +36,8 @@ export default function WorkshopCard({
         <p className="text-brand-green text-xs font-body font-medium tracking-wide">{tagline}</p>
         <h3 className="font-display font-medium text-lg text-text-main">{name}</h3>
         <p className="text-text-muted text-sm font-body line-clamp-3">{description}</p>
+
+        <WorkshopDetailsModal workshop={workshop} />
 
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-text-muted font-body">
           <span className="flex items-center gap-1.5">

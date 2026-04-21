@@ -1,9 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { getLocalBusinessSchema, getWebSiteSchema } from '@/lib/schema';
+
+const GA_ID = 'G-MXQHRV8XFY';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -58,6 +61,18 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-bg-cream text-text-main font-body">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         <Navbar />
         {children}
         <WhatsAppButton />
