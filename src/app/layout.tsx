@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import WorkshopPromoPopup from '@/components/WorkshopPromoPopup';
 import { getLocalBusinessSchema, getWebSiteSchema } from '@/lib/schema';
 
 const GA_ID = 'G-MXQHRV8XFY';
@@ -76,6 +77,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <WhatsAppButton />
+        <WorkshopPromoPopup />
       </body>
     </html>
   );
