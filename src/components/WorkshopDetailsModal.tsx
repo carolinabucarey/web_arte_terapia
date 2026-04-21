@@ -62,10 +62,10 @@ export default function WorkshopDetailsModal({ workshop }: { workshop: Workshop 
           role="dialog"
           aria-modal="true"
           aria-labelledby={`workshop-${workshop.id}-title`}
-          className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-brand-deep/60 backdrop-blur-sm animate-in fade-in"
+          className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-brand-deep/60 backdrop-blur-sm animate-modal-backdrop"
           onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
         >
-          <div className="relative bg-white rounded-card shadow-card-hover max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="relative bg-white rounded-card shadow-card-hover max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-modal-content">
             <button
               type="button"
               onClick={() => setOpen(false)}
@@ -81,9 +81,9 @@ export default function WorkshopDetailsModal({ workshop }: { workshop: Workshop 
               {images.map((src, i) => (
                 <div
                   key={src}
-                  className={`absolute inset-0 transition-opacity duration-400 ${i === imgIdx ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                  className={`absolute inset-0 transition-opacity duration-500 ${i === imgIdx ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 >
-                  <Image src={src} alt={`${workshop.name} — imagen ${i + 1}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 640px" />
+                  <Image src={src} alt={`${workshop.name} — imagen ${i + 1}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 640px" priority={i === 0} />
                 </div>
               ))}
               {images.length > 1 && (
