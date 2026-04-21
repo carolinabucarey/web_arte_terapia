@@ -12,8 +12,18 @@ const SHOW_DELAY_MS = 1200;
 
 export default function WorkshopPromoPopup() {
   const [open, setOpen] = useState(false);
+  const [imgIdx, setImgIdx] = useState(0);
 
   const workshop = WORKSHOPS.find((w) => w.id === PROMO_ID);
+  const images = workshop?.images && workshop.images.length > 0 ? workshop.images : workshop ? [workshop.image] : [];
+
+  useEffect(() => {
+    if (!open || images.length <= 1) return;
+    const t = window.setInterval(() => {
+      setImgIdx((i) => (i + 1) % images.length);
+    }, 3500);
+    return () => window.clearInterval(t);
+  }, [open, images.length]);
 
   useEffect(() => {
     if (!workshop) return;
@@ -59,7 +69,6 @@ export default function WorkshopPromoPopup() {
 
   if (!open) return null;
 
-  const image = workshop.images?.[0] ?? workshop.image;
   const priceLabel = workshop.price === 'consultar' ? 'Consultar' : formatCLP(workshop.price);
 
   return (
@@ -82,19 +91,39 @@ export default function WorkshopPromoPopup() {
           </svg>
         </button>
 
-        <div className="relative aspect-[4/3] bg-bg-warm">
-          <Image
-            src={image}
-            alt={workshop.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 448px"
-            priority
-          />
+        <div className="relative aspect-[4/3] bg-bg-warm overflow-hidden">
+          {images.map((src, i) => (
+            <div
+              key={src}
+              className={`absolute inset-0 transition-opacity duration-700 ${i === imgIdx ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            >
+              <Image
+                src={src}
+                alt={`${workshop.name} — imagen ${i + 1}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 448px"
+                priority={i === 0}
+              />
+            </div>
+          ))}
           {workshop.badge && (
             <span className="absolute top-3 left-3 bg-brand-lavender/90 text-brand-deep text-xs font-body font-semibold px-3 py-1 rounded-pill backdrop-blur-sm">
               {workshop.badge}
             </span>
+          )}
+          {images.length > 1 && (
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setImgIdx(i)}
+                  aria-label={`Imagen ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all ${i === imgIdx ? 'w-6 bg-white' : 'w-1.5 bg-white/60 hover:bg-white/80'}`}
+                />
+              ))}
+            </div>
           )}
         </div>
 
