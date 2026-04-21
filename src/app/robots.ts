@@ -3,6 +3,6 @@ import { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: '*', allow: '/' },
-    sitemap: 'https://artejosefaine.cl/sitemap.xml',
+    sitemap: 'https://www.josefinafainearte.com/sitemap.xml',
   };
 }

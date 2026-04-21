@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Josefina Faine — Artista Visual y Arteterapeuta',
     description: 'Conoce a Josefina Faine, guía creativa de talleres de acuarela en Santiago.',
-    url: 'https://artejosefaine.cl/sobre-josefina',
+    url: 'https://www.josefinafainearte.com/sobre-josefina',
     type: 'profile',
   },
 };

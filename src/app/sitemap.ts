@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://artejosefaine.cl';
+  const baseUrl = 'https://www.josefinafainearte.com';
   return [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
     { url: `${baseUrl}/talleres`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
