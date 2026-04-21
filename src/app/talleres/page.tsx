@@ -35,7 +35,20 @@ export default function TalleresPage() {
           key={w.id}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getEventSchema({ name: w.name, description: w.description, date: w.date, price: w.price })),
+            __html: JSON.stringify(
+              getEventSchema({
+                name: w.name,
+                description: w.description,
+                date: w.date,
+                price: w.price,
+                image: w.image,
+                images: w.images,
+                startIso: w.startIso,
+                endIso: w.endIso,
+                location: w.location,
+                offerUrl: w.offerUrl ?? w.ctaLink,
+              })
+            ),
           }}
         />
       ))}

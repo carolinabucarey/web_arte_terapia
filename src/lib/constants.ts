@@ -27,12 +27,43 @@ export interface Workshop {
   groupSize: number;
   level: string;
   image: string;
+  images?: string[];
   ctaLink: string;
   ctaText?: string;
   badge?: string;
+  startIso?: string;
+  endIso?: string;
+  location?: string;
+  offerUrl?: string;
 }
 
 export const WORKSHOPS: Workshop[] = [
+  {
+    id: 'pinta-tu-mascota',
+    slug: 'pinta-tu-mascota',
+    name: 'Pinta Tu Mascota en Acuarela',
+    tagline: 'Sesión única · Tu mascota en arte',
+    description: 'Un espacio para desconectarte, crear y transformar el amor por tu mascota en arte. Pintarás un retrato en acuarela de tu compañero(a) peludo, guiada paso a paso. No necesitas experiencia previa — los materiales y el coffee break están incluidos.',
+    date: 'Sábado 25 de abril',
+    time: '15:00 a 19:00 hrs',
+    duration: '4 horas · sesión única',
+    price: 38000,
+    groupSize: 6,
+    level: 'Todos los niveles',
+    image: '/fotos/mascota-nina.jpeg',
+    images: [
+      '/fotos/mascota-nina.jpeg',
+      '/fotos/mascota-gato.jpeg',
+      '/fotos/mascota-chiara.jpeg',
+    ],
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el taller Pinta Tu Mascota en Acuarela del sábado 25 de abril.')}`,
+    ctaText: 'Reserva tu cupo',
+    badge: 'Metro Los Leones',
+    startIso: '2026-04-25T15:00:00-04:00',
+    endIso: '2026-04-25T19:00:00-04:00',
+    location: 'Metro Los Leones, Providencia, Santiago',
+    offerUrl: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el taller Pinta Tu Mascota en Acuarela del sábado 25 de abril.')}`,
+  },
   {
     id: 'semanal-acuarela',
     slug: 'semanal',

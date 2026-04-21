@@ -1,31 +1,36 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { formatCLP } from '@/lib/utils';
 import type { Workshop } from '@/lib/constants';
+import WorkshopImageCarousel from './WorkshopImageCarousel';
+import WorkshopCTA from './WorkshopCTA';
 
 export default function WorkshopCard({
-  name, tagline, description, date, time, duration, price, groupSize, level, image, ctaLink, ctaText, badge,
+  id, name, tagline, description, date, time, duration, price, groupSize, level, image, images, ctaLink, ctaText, badge,
 }: Workshop) {
   const priceLabel = price === 'consultar' ? 'Consultar' : formatCLP(price);
-  const isExternal = /^https?:\/\//.test(ctaLink);
   const buttonText = ctaText ?? 'Reservar mi lugar';
   const dateTime = [date, time].filter(Boolean).join(' · ');
+  const hasCarousel = images && images.length > 1;
   return (
     <div className="h-full flex flex-col bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">
-      <div className="relative aspect-[4/3]">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover rounded-t-card"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
-        {badge && (
-          <span className="absolute top-3 left-3 bg-brand-lavender/90 text-brand-deep text-xs font-body font-semibold px-3 py-1 rounded-pill backdrop-blur-sm">
-            {badge}
-          </span>
-        )}
-      </div>
+      {hasCarousel ? (
+        <WorkshopImageCarousel images={images!} alt={name} badge={badge} />
+      ) : (
+        <div className="relative aspect-[4/3]">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover rounded-t-card"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+          {badge && (
+            <span className="absolute top-3 left-3 bg-brand-lavender/90 text-brand-deep text-xs font-body font-semibold px-3 py-1 rounded-pill backdrop-blur-sm">
+              {badge}
+            </span>
+          )}
+        </div>
+      )}
 
       <div className="p-6 flex flex-col gap-3 flex-1">
         <p className="text-brand-green text-xs font-body font-medium tracking-wide">{tagline}</p>
@@ -55,13 +60,9 @@ export default function WorkshopCard({
 
         <p className="font-semibold text-text-main font-body text-lg mt-auto">{priceLabel}</p>
 
-        <Link
-          href={ctaLink}
-          {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-          className="mt-1 bg-brand-green text-white rounded-pill px-5 py-2.5 font-body font-semibold text-sm text-center hover:opacity-90 transition-opacity"
-        >
+        <WorkshopCTA href={ctaLink} workshopId={id} workshopName={name}>
           {buttonText}
-        </Link>
+        </WorkshopCTA>
       </div>
     </div>
   );

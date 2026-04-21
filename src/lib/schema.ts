@@ -66,22 +66,34 @@ export function getEventSchema(workshop: {
   description: string;
   date: string;
   price: number | 'consultar';
+  image?: string;
+  images?: string[];
+  startIso?: string;
+  endIso?: string;
+  location?: string;
+  offerUrl?: string;
 }) {
+  const imgs = (workshop.images && workshop.images.length > 0 ? workshop.images : [workshop.image ?? '/fotos/foto1.jpeg'])
+    .map((src) => `${SITE_URL}${src}`);
+
+  const locationName = workshop.location ?? 'Taller Arte y Terapia Salud';
+  const addressLocality = /los leones/i.test(workshop.location ?? '') ? 'Providencia' : 'Santiago';
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Event',
     name: workshop.name,
     description: workshop.description,
-    startDate: workshop.date,
+    startDate: workshop.startIso ?? workshop.date,
+    ...(workshop.endIso ? { endDate: workshop.endIso } : {}),
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     eventStatus: 'https://schema.org/EventScheduled',
     location: {
       '@type': 'Place',
-      name: 'Taller Arte y Terapia Salud',
+      name: locationName,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Traiguén',
-        addressLocality: 'Santiago',
+        addressLocality,
         addressRegion: 'Región Metropolitana',
         addressCountry: 'CL',
       },
@@ -99,10 +111,11 @@ export function getEventSchema(workshop: {
       '@type': 'Offer',
       price: workshop.price === 'consultar' ? 0 : workshop.price,
       priceCurrency: 'CLP',
-      url: `${SITE_URL}/contacto`,
+      url: workshop.offerUrl ?? `${SITE_URL}/contacto`,
       availability: 'https://schema.org/InStock',
+      ...(workshop.startIso ? { validFrom: workshop.startIso } : {}),
     },
-    image: `${SITE_URL}/fotos/foto1.jpeg`,
+    image: imgs,
   };
 }
 
