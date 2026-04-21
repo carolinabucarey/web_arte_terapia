@@ -27,8 +27,8 @@ export default function HomePage() {
       <main id="main-content">
         <Hero />
         <About />
-        <InstructorProfile />
         <WorkshopGrid />
+        <InstructorProfile />
         <Benefits />
         <Gallery />
         <Testimonials />

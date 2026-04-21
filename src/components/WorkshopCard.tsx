@@ -4,6 +4,7 @@ import type { Workshop } from '@/lib/constants';
 import WorkshopImageCarousel from './WorkshopImageCarousel';
 import WorkshopCTA from './WorkshopCTA';
 import WorkshopDetailsModal from './WorkshopDetailsModal';
+import WorkshopShareButton from './WorkshopShareButton';
 
 export default function WorkshopCard(workshop: Workshop) {
   const { id, name, tagline, description, date, time, duration, price, groupSize, level, image, images, ctaLink, ctaText, badge } = workshop;
@@ -12,7 +13,7 @@ export default function WorkshopCard(workshop: Workshop) {
   const dateTime = [date, time].filter(Boolean).join(' · ');
   const hasCarousel = images && images.length > 1;
   return (
-    <div className="h-full flex flex-col bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">
+    <div id={id} className="scroll-mt-28 h-full flex flex-col bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">
       {hasCarousel ? (
         <WorkshopImageCarousel images={images!} alt={name} badge={badge} />
       ) : (
@@ -37,7 +38,10 @@ export default function WorkshopCard(workshop: Workshop) {
         <h3 className="font-display font-medium text-lg text-text-main">{name}</h3>
         <p className="text-text-muted text-sm font-body line-clamp-3">{description}</p>
 
-        <WorkshopDetailsModal workshop={workshop} />
+        <div className="flex items-center gap-4">
+          <WorkshopDetailsModal workshop={workshop} />
+          <WorkshopShareButton workshopId={id} workshopName={name} tagline={tagline} />
+        </div>
 
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-text-muted font-body">
           <span className="flex items-center gap-1.5">

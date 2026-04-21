@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { trackEvent } from '@/lib/analytics';
 import { formatCLP } from '@/lib/utils';
 import type { Workshop } from '@/lib/constants';
+import WorkshopShareButton from './WorkshopShareButton';
 
 export default function WorkshopDetailsModal({ workshop }: { workshop: Workshop }) {
   const [open, setOpen] = useState(false);
@@ -146,6 +147,15 @@ export default function WorkshopDetailsModal({ workshop }: { workshop: Workshop 
               >
                 {workshop.ctaText ?? 'Reservar mi lugar'}
               </a>
+
+              <div className="flex justify-center pt-1">
+                <WorkshopShareButton
+                  workshopId={workshop.id}
+                  workshopName={workshop.name}
+                  tagline={workshop.tagline}
+                  variant="modal"
+                />
+              </div>
             </div>
           </div>
         </div>
