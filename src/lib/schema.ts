@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL, INSTAGRAM_BRAND, INSTAGRAM_PERSONAL, WHATSAPP_NUMBER, EMAIL } from './constants';
+import { SITE_NAME, SITE_URL, INSTAGRAM_BRAND, INSTAGRAM_PERSONAL, WHATSAPP_NUMBER } from './constants';
 
 export function getLocalBusinessSchema() {
   return {
@@ -8,7 +8,6 @@ export function getLocalBusinessSchema() {
     description: 'Talleres de acuarela terapéutica y arteterapia en Santiago, Chile. Un espacio de autocuidado y expresión creativa.',
     url: SITE_URL,
     telephone: `+${WHATSAPP_NUMBER}`,
-    email: EMAIL,
     image: `${SITE_URL}/fotos/foto1.jpeg`,
     logo: `${SITE_URL}/logo/logo.jpeg`,
     address: {

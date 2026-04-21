@@ -15,15 +15,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true });
     }
 
+    const notificationEmail = process.env.NOTIFICATION_EMAIL;
+    if (!notificationEmail) {
+      console.log('NOTIFICATION_EMAIL not configured. Form data:', { nombre, email, telefono });
+      return NextResponse.json({ success: true });
+    }
+
     const resend = new Resend(apiKey);
 
     // Send notification to Josefina
     await resend.emails.send({
       from: 'Formulario Web <onboarding@resend.dev>',
-      to: process.env.NOTIFICATION_EMAIL || 'contacto@artejosefaine.cl',
+      to: notificationEmail,
       subject: `Nuevo mensaje de ${nombre}`,
       html: `
-        <h2>Nuevo mensaje desde artejosefaine.cl</h2>
+        <h2>Nuevo mensaje desde josefinafainearte.com</h2>
         <p><strong>Nombre:</strong> ${nombre}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Teléfono:</strong> ${telefono || 'No proporcionado'}</p>
