@@ -30,6 +30,12 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Arte y Terapia Salud',
   },
+  other: {
+    'geo.region': 'CL-RM',
+    'geo.placename': 'Santiago',
+    'geo.position': '-33.44;-70.61',
+    'ICBM': '-33.44, -70.61',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
@@ -46,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${playfair.variable} ${montserrat.variable}`}>
+    <html lang="es-CL" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
         <script
           type="application/ld+json"

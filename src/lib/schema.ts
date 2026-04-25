@@ -23,6 +23,18 @@ export function getLocalBusinessSchema() {
       latitude: -33.44,
       longitude: -70.61,
     },
+    areaServed: [
+      { '@type': 'City', name: 'Santiago' },
+      { '@type': 'AdministrativeArea', name: 'Región Metropolitana' },
+      { '@type': 'Country', name: 'Chile' },
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: `+${WHATSAPP_NUMBER}`,
+      contactType: 'customer service',
+      areaServed: 'CL',
+      availableLanguage: ['Spanish'],
+    },
     priceRange: '$$',
     sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],
   };
@@ -57,7 +69,7 @@ export function getWebSiteSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description: 'Talleres de acuarela y arteterapia en Santiago, Chile. Reserva tu lugar con Josefina Faine.',
-    inLanguage: 'es',
+    inLanguage: 'es-CL',
   };
 }
 
