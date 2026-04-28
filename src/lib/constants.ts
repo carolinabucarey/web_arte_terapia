@@ -30,6 +30,7 @@ export interface Workshop {
   ctaLink: string;
   ctaText?: string;
   badge?: string;
+  detailLink?: string;
 }
 
 export const WORKSHOPS: Workshop[] = [
@@ -48,6 +49,7 @@ export const WORKSHOPS: Workshop[] = [
     image: '/fotos/foto1.jpeg',
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber horarios y reservar mi lugar en el taller semanal de acuarela.')}`,
     badge: 'Nuestro taller más querido',
+    detailLink: '/talleres/semanal',
   },
   {
     id: 'grupos-cerrados',

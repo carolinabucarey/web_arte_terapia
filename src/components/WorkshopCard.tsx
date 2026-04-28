@@ -4,7 +4,7 @@ import { formatCLP } from '@/lib/utils';
 import type { Workshop } from '@/lib/constants';
 
 export default function WorkshopCard({
-  name, tagline, description, date, time, duration, price, groupSize, level, image, ctaLink, ctaText, badge,
+  name, tagline, description, date, time, duration, price, groupSize, level, image, ctaLink, ctaText, badge, detailLink,
 }: Workshop) {
   const priceLabel = price === 'consultar' ? 'Consultar' : formatCLP(price);
   const isExternal = /^https?:\/\//.test(ctaLink);
@@ -62,6 +62,15 @@ export default function WorkshopCard({
         >
           {buttonText}
         </Link>
+
+        {detailLink && (
+          <Link
+            href={detailLink}
+            className="text-center text-brand-green text-sm font-body font-medium hover:underline underline-offset-4"
+          >
+            Ver detalles del taller →
+          </Link>
+        )}
       </div>
     </div>
   );
