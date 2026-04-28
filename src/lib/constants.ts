@@ -10,6 +10,7 @@ export const EMAIL = 'contacto@artejosefaine.cl';
 export const NAV_LINKS = [
   { label: 'Inicio', href: '/' },
   { label: 'Talleres', href: '/#talleres' },
+  { label: 'Arte terapia', href: '/arte-terapia' },
   { label: 'Sobre mí', href: '/sobre-josefina' },
   { label: 'Contacto', href: '/contacto' },
 ];
