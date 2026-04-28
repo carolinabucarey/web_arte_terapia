@@ -116,20 +116,20 @@ export const WORKSHOPS: Workshop[] = [
     badge: 'Tu mascota en acuarela',
   },
   {
-    id: 'fotobordado',
-    slug: 'fotobordado',
-    name: 'Workshop de Fotobordado — "Mi infancia en hilos"',
-    tagline: 'Sesión única · Arte como terapia',
-    description: 'Una invitación a detenerte, mirar hacia adentro y dejar que el arte te abrace. A partir de una foto de tu infancia, el bordado y la fotografía se unen para transformar recuerdos en creaciones llenas de significado. No necesitas saber bordar — nosotras nos encargamos del resto.',
+    id: 'flores',
+    slug: 'flores',
+    name: 'Workshop de Flores en Acuarela',
+    tagline: 'Sesión única · Pintamos flores',
+    description: 'Un taller para liberar el estrés pintando flores en acuarela. Aprenderás tips para el manejo del agua, ejercicios para soltar bloqueos creativos y verás paso a paso cómo crear la flor que elijamos para la sesión, con sus ramas, hojas y composiciones florales. Trabajamos con papel de 300 gramos y te llevas tu obra terminada.',
     date: 'Próximamente',
     time: 'A confirmar',
     duration: '3 horas · sesión única',
     price: 'consultar',
-    groupSize: 8,
+    groupSize: 7,
     level: 'Todos los niveles',
     image: '/fotos/foto2.jpeg',
-    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop de Fotobordado.')}`,
-    badge: 'Arte terapéutico',
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop de Flores en Acuarela.')}`,
+    badge: 'Flores en acuarela',
   },
   {
     id: 'hada-protectora',
@@ -148,6 +148,31 @@ export const WORKSHOPS: Workshop[] = [
     badge: 'Arte terapéutico',
   },
 ];
+
+export interface SemanalArtwork {
+  image: string;
+  author: string;
+  title: string;
+  testimonial: string;
+}
+
+const SEMANAL_PLACEHOLDER_IMAGES = [
+  '/fotos/foto1.jpeg',
+  '/fotos/foto2.jpeg',
+  '/fotos/mano-paisaje.jpeg',
+  '/fotos/pincel-oscuro.jpeg',
+  '/fotos/pinceles-corazon.jpeg',
+];
+
+const SEMANAL_PLACEHOLDER_TESTIMONIAL =
+  'Testimonio breve sobre la experiencia en el taller — pendiente de completar.';
+
+export const SEMANAL_GALLERY: SemanalArtwork[] = Array.from({ length: 20 }, (_, i) => ({
+  image: SEMANAL_PLACEHOLDER_IMAGES[i % SEMANAL_PLACEHOLDER_IMAGES.length],
+  author: `Alumna ${i + 1}`,
+  title: `Obra ${i + 1}`,
+  testimonial: SEMANAL_PLACEHOLDER_TESTIMONIAL,
+}));
 
 export interface Benefit {
   icon: 'calm' | 'expression' | 'explore' | 'mindfulness';
