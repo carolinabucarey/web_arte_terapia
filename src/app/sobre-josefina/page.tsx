@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { getPersonSchema, getBreadcrumbSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/constants';
 
@@ -11,20 +12,24 @@ export const metadata: Metadata = {
   title: 'Josefina Faine — Artista Visual y Arteterapeuta | Santiago',
   description:
     'Conoce a Josefina Fainé, licenciada en Artes Visuales (U. Mayor) y magíster en Arteterapia (U. Finis Terrae). 15 años de experiencia. Guía creativa de talleres de acuarela en Santiago.',
+  alternates: { canonical: '/sobre-josefina' },
   openGraph: {
     title: 'Josefina Faine — Artista Visual y Arteterapeuta',
     description: 'Conoce a Josefina Faine, guía creativa de talleres de acuarela en Santiago.',
     url: 'https://artejosefaine.cl/sobre-josefina',
     type: 'profile',
+    images: ['/og-image.jpg'],
   },
 };
 
+const BREADCRUMB_ITEMS = [
+  { name: 'Inicio', url: SITE_URL },
+  { name: 'Sobre Josefina', url: `${SITE_URL}/sobre-josefina` },
+];
+
 export default function SobreJosefinaPage() {
   const personSchema = getPersonSchema();
-  const breadcrumb = getBreadcrumbSchema([
-    { name: 'Inicio', url: SITE_URL },
-    { name: 'Sobre Josefina', url: `${SITE_URL}/sobre-josefina` },
-  ]);
+  const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
 
   return (
     <>
@@ -40,10 +45,11 @@ export default function SobreJosefinaPage() {
         {/* Header + foto */}
         <section className="section-padding">
           <div className="max-w-section mx-auto">
+            <Breadcrumbs items={BREADCRUMB_ITEMS} />
             <AnimateOnScroll>
-              <SectionHeader label="Sobre mí" title="Josefina Fainé" />
+              <SectionHeader as="h1" label="Sobre mí" title="Josefina Fainé" />
               <p className="text-brand-water font-body text-sm font-medium -mt-2 mb-6">
-                Artista visual · Arteterapeuta · Guía creativa
+                Artista visual · Arteterapeuta · Guía creativa en Santiago
               </p>
             </AnimateOnScroll>
 
@@ -51,14 +57,14 @@ export default function SobreJosefinaPage() {
               <div className="flex flex-wrap gap-10 items-start">
                 <Image
                   src="/fotos/jose.png"
-                  alt="Josefina Fainé — Artista visual y arteterapeuta"
+                  alt="Josefina Fainé, arteterapeuta y guía de talleres de acuarela en Santiago"
                   width={320}
                   height={320}
                   className="rounded-2xl object-cover w-[clamp(220px,35vw,320px)] flex-shrink-0"
                 />
 
                 <div className="flex-1 min-w-[300px]">
-                  <h3 className="font-display font-semibold text-xl text-text-main mb-4">Mi camino</h3>
+                  <h2 className="font-display font-semibold text-xl text-text-main mb-4">Mi camino</h2>
                   <div className="flex flex-col gap-4 font-body text-text-muted text-base leading-relaxed">
                     <p>Creo en el arte como un espacio de pausa, conexión y sanación.</p>
                     <p>
@@ -83,7 +89,7 @@ export default function SobreJosefinaPage() {
         <section className="section-padding bg-bg-warm">
           <div className="max-w-reading mx-auto">
             <AnimateOnScroll>
-              <h3 className="font-display font-semibold text-xl text-text-main mb-4">Lo que me mueve</h3>
+              <h2 className="font-display font-semibold text-xl text-text-main mb-4">Lo que me mueve</h2>
               <div className="flex flex-col gap-4 font-body text-text-muted text-base leading-relaxed">
                 <p>
                   Me motiva acompañar los procesos de cada persona. Ver cómo alguien llega con miedo a
@@ -103,7 +109,7 @@ export default function SobreJosefinaPage() {
         <section className="section-padding">
           <div className="max-w-reading mx-auto">
             <AnimateOnScroll>
-              <h3 className="font-display font-semibold text-xl text-text-main mb-4">Mi enfoque</h3>
+              <h2 className="font-display font-semibold text-xl text-text-main mb-4">Mi enfoque</h2>
               <div className="flex flex-col gap-4 font-body text-text-muted text-base leading-relaxed">
                 <p>
                   Trabajo desde la acuarela como lenguaje expresivo, integrando herramientas del arteterapia
@@ -136,7 +142,7 @@ export default function SobreJosefinaPage() {
         <section className="section-padding">
           <div className="max-w-reading mx-auto">
             <AnimateOnScroll>
-              <h3 className="font-display font-semibold text-xl text-text-main mb-4">Mi obra</h3>
+              <h2 className="font-display font-semibold text-xl text-text-main mb-4">Mi obra</h2>
               <div className="flex flex-col gap-4 font-body text-text-muted text-base leading-relaxed">
                 <p>
                   Mi trabajo nace de una curiosidad profunda por el mundo interno y la mente humana.
@@ -167,7 +173,7 @@ export default function SobreJosefinaPage() {
         <section className="section-padding bg-bg-warm">
           <div className="max-w-reading mx-auto">
             <AnimateOnScroll>
-              <h3 className="font-display font-semibold text-xl text-text-main mb-4">Formación</h3>
+              <h2 className="font-display font-semibold text-xl text-text-main mb-4">Formación</h2>
               <ul className="flex flex-col gap-2 font-body text-text-muted text-base">
                 <li className="flex items-start gap-2">
                   <span className="text-brand-green mt-1.5 flex-shrink-0">

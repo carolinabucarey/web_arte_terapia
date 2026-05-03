@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
-import { getEventSchema, getBreadcrumbSchema } from '@/lib/schema';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import { getCourseSchema, getBreadcrumbSchema } from '@/lib/schema';
 import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, SEMANAL_GALLERY } from '@/lib/constants';
 import { formatCLP } from '@/lib/utils';
 
@@ -14,33 +15,38 @@ export const metadata: Metadata = {
   title: 'Talleres Semanales de Acuarela | artejosefaine.cl',
   description:
     'Un encuentro semanal para explorar la acuarela a tu ritmo, en grupos de máximo 6 personas. Acompañamiento cercano y personalizado. Sin experiencia previa necesaria.',
+  alternates: { canonical: '/talleres/semanal' },
   openGraph: {
     title: 'Talleres Semanales de Acuarela | Josefina Faine',
     description:
       'Grupos de máximo 6 personas. Acompañamiento personalizado. Sin experiencia previa necesaria.',
     url: 'https://artejosefaine.cl/talleres/semanal',
     type: 'website',
+    images: ['/og-image.jpg'],
   },
 };
 
+const BREADCRUMB_ITEMS = [
+  { name: 'Inicio', url: SITE_URL },
+  { name: 'Talleres', url: `${SITE_URL}/talleres` },
+  { name: 'Taller Semanal', url: `${SITE_URL}/talleres/semanal` },
+];
+
 export default function TallerSemanalPage() {
-  const eventSchema = getEventSchema({
+  const courseSchema = getCourseSchema({
     name: workshop.name,
     description: workshop.description,
-    date: workshop.date,
+    url: `${SITE_URL}/talleres/semanal`,
+    image: workshop.image,
     price: workshop.price,
   });
-  const breadcrumb = getBreadcrumbSchema([
-    { name: 'Inicio', url: SITE_URL },
-    { name: 'Talleres', url: `${SITE_URL}/talleres` },
-    { name: 'Taller Semanal', url: `${SITE_URL}/talleres/semanal` },
-  ]);
+  const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
       />
       <script
         type="application/ld+json"
@@ -50,6 +56,7 @@ export default function TallerSemanalPage() {
         {/* Hero del taller */}
         <section className="section-padding bg-gradient-to-b from-bg-cream to-white">
           <div className="max-w-section mx-auto">
+            <Breadcrumbs items={BREADCRUMB_ITEMS} />
             <AnimateOnScroll>
               <p className="text-[13px] uppercase tracking-[0.18em] text-brand-lavender-dark font-body mb-3">
                 Talleres semanales

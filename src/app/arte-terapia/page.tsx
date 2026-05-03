@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { getBreadcrumbSchema } from '@/lib/schema';
 import { SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
 
@@ -11,20 +12,24 @@ export const metadata: Metadata = {
   title: 'Arte terapia con Josefina Fainé | Santiago',
   description:
     'Sesiones de arteterapia con Josefina Fainé, magíster en Artes en la Salud y Arteterapia (U. Finis Terrae). Un espacio para acompañar tu proceso a través del arte en Santiago.',
+  alternates: { canonical: '/arte-terapia' },
   openGraph: {
     title: 'Arte terapia con Josefina Fainé',
     description:
       'Acompañamiento terapéutico a través del arte. Sesiones con Josefina Fainé, arteterapeuta titulada en Santiago.',
     url: 'https://artejosefaine.cl/arte-terapia',
     type: 'website',
+    images: ['/og-image.jpg'],
   },
 };
 
+const BREADCRUMB_ITEMS = [
+  { name: 'Inicio', url: SITE_URL },
+  { name: 'Arte terapia', url: `${SITE_URL}/arte-terapia` },
+];
+
 export default function ArteTerapiaPage() {
-  const breadcrumb = getBreadcrumbSchema([
-    { name: 'Inicio', url: SITE_URL },
-    { name: 'Arte terapia', url: `${SITE_URL}/arte-terapia` },
-  ]);
+  const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
 
   return (
     <>
@@ -36,6 +41,7 @@ export default function ArteTerapiaPage() {
         {/* Hero */}
         <section className="section-padding bg-gradient-to-b from-bg-cream to-white">
           <div className="max-w-section mx-auto">
+            <Breadcrumbs items={BREADCRUMB_ITEMS} />
             <AnimateOnScroll>
               <p className="text-[13px] uppercase tracking-[0.18em] text-brand-lavender-dark font-body mb-3">
                 Arte terapia
