@@ -3,12 +3,12 @@ import SectionHeader from './SectionHeader';
 import AnimateOnScroll from './AnimateOnScroll';
 
 const GALLERY_IMAGES = [
-  { src: '/fotos/taller-grupal.jpeg', alt: 'Grupo del taller riendo mientras pintan acuarela', caption: 'Risas compartidas' },
-  { src: '/fotos/foto1.jpeg', alt: 'Acuarelas en proceso durante el taller', caption: 'Proceso creativo' },
-  { src: '/fotos/jose.png', alt: 'Josefina guiando una sesión del taller', caption: 'Guía creativa' },
-  { src: '/fotos/mano-paisaje.jpeg', alt: 'Pincelada sobre un paisaje de acuarela', caption: 'Atención plena' },
-  { src: '/fotos/pinceles-corazon.jpeg', alt: 'Pinceles de acuarela dentro de un corazón rosa', caption: 'Nuestros materiales' },
-  { src: '/fotos/pincel-oscuro.jpeg', alt: 'Pincel aplicando acuarela sobre fondo oscuro', caption: 'Color y textura' },
+  { src: '/fotos/taller-grupal.jpeg', alt: 'Grupo del taller de acuarela en Santiago riendo mientras pintan', caption: 'Risas compartidas' },
+  { src: '/fotos/foto1.jpeg', alt: 'Acuarelas en proceso durante el taller de Josefina Faine', caption: 'Proceso creativo' },
+  { src: '/fotos/jose.png', alt: 'Josefina Faine guiando una sesión del taller de acuarela', caption: 'Guía creativa' },
+  { src: '/fotos/mano-paisaje.jpeg', alt: 'Pincelada de acuarela sobre un paisaje en proceso', caption: 'Atención plena' },
+  { src: '/fotos/pinceles-corazon.jpeg', alt: 'Pinceles de acuarela dentro de un corazón rosa — materiales del taller', caption: 'Nuestros materiales' },
+  { src: '/fotos/pincel-oscuro.jpeg', alt: 'Pincel aplicando acuarela metálica sobre fondo oscuro', caption: 'Color y textura' },
 ];
 
 export default function Gallery() {

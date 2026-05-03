@@ -10,7 +10,7 @@ export default function Hero() {
       {/* Background image */}
       <Image
         src="/fotos/foto2.jpeg"
-        alt="Taller de acuarela y arteterapia"
+        alt="Taller de acuarela y arteterapia con Josefina Faine en Santiago"
         fill
         priority
         className="object-cover -scale-x-100"

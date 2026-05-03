@@ -15,7 +15,7 @@ export default function InstructorProfile() {
           <div className="flex flex-wrap gap-8 items-center">
             <Image
               src="/fotos/jose.png"
-              alt="Josefina Fainé — Artista visual y arteterapeuta"
+              alt="Josefina Faine, artista visual y arteterapeuta en Santiago"
               width={180}
               height={180}
               className="rounded-full object-cover w-[clamp(140px,24vw,180px)] h-[clamp(140px,24vw,180px)] flex-shrink-0"
