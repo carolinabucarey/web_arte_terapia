@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
     description: 'Talleres de acuarela terapéutica en Santiago, Chile. Reserva tu lugar.',
-    url: 'https://artejosefaine.cl',
+    url: 'https://www.josefinafainearte.cl',
     type: 'website',
     images: ['/og-image.jpg'],
   },

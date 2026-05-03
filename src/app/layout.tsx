@@ -20,7 +20,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://artejosefaine.cl'),
+  metadataBase: new URL('https://www.josefinafainearte.cl'),
   title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
   description:
     'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Faine.',

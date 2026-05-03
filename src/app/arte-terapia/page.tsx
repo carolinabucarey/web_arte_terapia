@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Arte terapia con Josefina Fainé',
     description:
       'Acompañamiento terapéutico a través del arte. Sesiones con Josefina Fainé, arteterapeuta titulada en Santiago.',
-    url: 'https://artejosefaine.cl/arte-terapia',
+    url: 'https://www.josefinafainearte.cl/arte-terapia',
     type: 'website',
     images: ['/og-image.jpg'],
   },

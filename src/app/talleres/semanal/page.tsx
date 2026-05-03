@@ -12,7 +12,7 @@ import { formatCLP } from '@/lib/utils';
 const workshop = WORKSHOPS.find((w) => w.slug === 'semanal')!;
 
 export const metadata: Metadata = {
-  title: 'Talleres Semanales de Acuarela | artejosefaine.cl',
+  title: 'Talleres Semanales de Acuarela | josefinafainearte.cl',
   description:
     'Un encuentro semanal para explorar la acuarela a tu ritmo, en grupos de máximo 6 personas. Acompañamiento cercano y personalizado. Sin experiencia previa necesaria.',
   alternates: { canonical: '/talleres/semanal' },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: 'Talleres Semanales de Acuarela | Josefina Faine',
     description:
       'Grupos de máximo 6 personas. Acompañamiento personalizado. Sin experiencia previa necesaria.',
-    url: 'https://artejosefaine.cl/talleres/semanal',
+    url: 'https://www.josefinafainearte.cl/talleres/semanal',
     type: 'website',
     images: ['/og-image.jpg'],
   },

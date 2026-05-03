@@ -7,14 +7,14 @@ import { getBreadcrumbSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Contacto — Reserva tu Taller de Acuarela | artejosefaine.cl',
+  title: 'Contacto — Reserva tu Taller de Acuarela | josefinafainearte.cl',
   description:
     'Contacta a Josefina Faine para reservar tu lugar en los talleres de acuarela y arteterapia en Santiago. WhatsApp y formulario de contacto.',
   alternates: { canonical: '/contacto' },
   openGraph: {
     title: 'Contacto — Reserva tu Taller de Acuarela',
     description: 'Contacta a Josefina Faine para reservar tu lugar en los talleres de acuarela.',
-    url: 'https://artejosefaine.cl/contacto',
+    url: 'https://www.josefinafainearte.cl/contacto',
     type: 'website',
     images: ['/og-image.jpg'],
   },

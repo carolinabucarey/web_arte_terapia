@@ -7,14 +7,14 @@ import { getBreadcrumbSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Galería — Acuarelas y Momentos del Taller | artejosefaine.cl',
+  title: 'Galería — Acuarelas y Momentos del Taller | josefinafainearte.cl',
   description:
     'Explora las acuarelas y momentos de los talleres de Josefina Faine. Arte terapéutico, expresión emocional y creatividad en Santiago.',
   alternates: { canonical: '/galeria' },
   openGraph: {
     title: 'Galería — Acuarelas y Momentos del Taller',
     description: 'Explora las acuarelas y momentos de los talleres de Josefina Faine en Santiago.',
-    url: 'https://artejosefaine.cl/galeria',
+    url: 'https://www.josefinafainearte.cl/galeria',
     type: 'website',
     images: ['/og-image.jpg'],
   },

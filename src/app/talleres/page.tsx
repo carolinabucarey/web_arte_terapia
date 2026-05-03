@@ -9,14 +9,14 @@ import { WORKSHOPS, SITE_URL } from '@/lib/constants';
 import { TALLERES_FAQS } from '@/lib/faqs';
 
 export const metadata: Metadata = {
-  title: 'Próximos Talleres de Acuarela | artejosefaine.cl',
+  title: 'Próximos Talleres de Acuarela | josefinafainearte.cl',
   description:
     'Descubre los próximos talleres de acuarela y arteterapia en Santiago. Grupos pequeños, experiencia boutique. Sin experiencia previa necesaria.',
   alternates: { canonical: '/talleres' },
   openGraph: {
-    title: 'Próximos Talleres de Acuarela | artejosefaine.cl',
+    title: 'Próximos Talleres de Acuarela | josefinafainearte.cl',
     description: 'Descubre los próximos talleres de acuarela y arteterapia en Santiago.',
-    url: 'https://artejosefaine.cl/talleres',
+    url: 'https://www.josefinafainearte.cl/talleres',
     type: 'website',
     images: ['/og-image.jpg'],
   },
