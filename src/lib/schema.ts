@@ -1,4 +1,6 @@
-import { SITE_NAME, SITE_URL, INSTAGRAM_BRAND, INSTAGRAM_PERSONAL, WHATSAPP_NUMBER, EMAIL } from './constants';
+import { SITE_NAME, SITE_URL, INSTAGRAM_BRAND, INSTAGRAM_PERSONAL, WHATSAPP_NUMBER } from './constants';
+
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}/;
 
 export function getLocalBusinessSchema() {
   return {
@@ -8,12 +10,10 @@ export function getLocalBusinessSchema() {
     description: 'Talleres de acuarela terapéutica y arteterapia en Santiago, Chile. Un espacio de autocuidado y expresión creativa.',
     url: SITE_URL,
     telephone: `+${WHATSAPP_NUMBER}`,
-    email: EMAIL,
     image: `${SITE_URL}/fotos/foto1.jpeg`,
     logo: `${SITE_URL}/logo/logo.jpeg`,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Traiguén',
       addressLocality: 'Santiago',
       addressRegion: 'Región Metropolitana',
       addressCountry: 'CL',
@@ -79,6 +79,8 @@ export function getEventSchema(workshop: {
   date: string;
   price: number | 'consultar';
 }) {
+  if (!ISO_DATE_RE.test(workshop.date)) return null;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Event',
@@ -92,7 +94,6 @@ export function getEventSchema(workshop: {
       name: 'Taller Arte y Terapia Salud',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Traiguén',
         addressLocality: 'Santiago',
         addressRegion: 'Región Metropolitana',
         addressCountry: 'CL',
@@ -118,6 +119,60 @@ export function getEventSchema(workshop: {
   };
 }
 
+export function getCourseSchema(workshop: {
+  name: string;
+  description: string;
+  url: string;
+  image?: string;
+  price?: number | 'consultar';
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: workshop.name,
+    description: workshop.description,
+    url: workshop.url,
+    image: workshop.image ? `${SITE_URL}${workshop.image}` : `${SITE_URL}/fotos/foto1.jpeg`,
+    inLanguage: 'es-CL',
+    coursePrerequisites: 'Sin experiencia previa requerida',
+    educationalLevel: 'Beginner to Intermediate',
+    provider: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+      sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],
+    },
+    offers: {
+      '@type': 'Offer',
+      category: 'Paid',
+      priceCurrency: 'CLP',
+      ...(typeof workshop.price === 'number' ? { price: workshop.price } : {}),
+      url: `${SITE_URL}/contacto`,
+      availability: 'https://schema.org/InStock',
+    },
+    hasCourseInstance: {
+      '@type': 'CourseInstance',
+      courseMode: 'In-person',
+      courseWorkload: 'PT2H',
+      location: {
+        '@type': 'Place',
+        name: 'Taller Arte y Terapia Salud',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Santiago',
+          addressRegion: 'Región Metropolitana',
+          addressCountry: 'CL',
+        },
+      },
+      instructor: {
+        '@type': 'Person',
+        name: 'Josefina Faine',
+        url: `${SITE_URL}/sobre-josefina`,
+      },
+    },
+  };
+}
+
 export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     '@context': 'https://schema.org',
@@ -127,6 +182,21 @@ export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
       position: index + 1,
       name: item.name,
       item: item.url,
+    })),
+  };
+}
+
+export function getFAQSchema(items: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
     })),
   };
 }

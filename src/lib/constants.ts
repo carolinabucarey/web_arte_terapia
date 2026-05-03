@@ -5,7 +5,6 @@ export const WHATSAPP_MESSAGE = 'Hola! Me gustaría saber sobre los talleres';
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 export const INSTAGRAM_BRAND = 'https://www.instagram.com/arteyterapiasalud/';
 export const INSTAGRAM_PERSONAL = 'https://www.instagram.com/arte.jose.fa/';
-export const EMAIL = 'contacto@artejosefaine.cl';
 
 export const NAV_LINKS = [
   { label: 'Inicio', href: '/' },

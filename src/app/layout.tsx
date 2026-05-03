@@ -24,8 +24,9 @@ export const metadata: Metadata = {
   title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
   description:
     'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Faine.',
+  alternates: { canonical: '/' },
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Talleres de acuarela y arteterapia en Santiago — Josefina Faine' }],
     locale: 'es_CL',
     type: 'website',
     siteName: 'Arte y Terapia Salud',
@@ -54,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang="es-CL" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
+        <link rel="dns-prefetch" href="https://wa.me" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema()) }}
