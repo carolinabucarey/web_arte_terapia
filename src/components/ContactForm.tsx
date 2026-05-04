@@ -45,6 +45,15 @@ export default function ContactForm() {
       // Silent — WhatsApp is the primary channel
     }
 
+    // Google Ads conversion event (lead form submission)
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18139986626/fodHCO7ut6ccEML16MlD',
+        value: 1.0,
+        currency: 'CLP',
+      });
+    }
+
     setStatus('success');
     reset();
   };

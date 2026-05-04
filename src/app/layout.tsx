@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Playfair_Display, Montserrat } from 'next/font/google';
-import Script from 'next/script';
 import Navbar from '@/components/Navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { getLocalBusinessSchema, getWebSiteSchema } from '@/lib/schema';
@@ -57,6 +56,16 @@ export default function RootLayout({
     <html lang="es-CL" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
         <link rel="dns-prefetch" href="https://wa.me" />
+        {/* Google tag (gtag.js) — Google Ads AW-18139986626 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18139986626" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18139986626');`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(getLocalBusinessSchema()) }}
@@ -70,18 +79,6 @@ export default function RootLayout({
         <Navbar />
         {children}
         <WhatsAppButton />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18139986626"
-          strategy="afterInteractive"
-        />
-        <Script id="google-ads" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-18139986626');
-          `}
-        </Script>
       </body>
     </html>
   );
