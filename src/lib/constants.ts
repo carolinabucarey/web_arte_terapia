@@ -151,30 +151,18 @@ export const WORKSHOPS: Workshop[] = [
   },
 ];
 
-export interface SemanalArtwork {
-  image: string;
-  author: string;
-  title: string;
-  testimonial: string;
-}
-
-const SEMANAL_PLACEHOLDER_IMAGES = [
-  '/fotos/foto1.jpeg',
-  '/fotos/foto2.jpeg',
-  '/fotos/mano-paisaje.jpeg',
-  '/fotos/pincel-oscuro.jpeg',
-  '/fotos/pinceles-corazon.jpeg',
+export const SEMANAL_GALLERY: string[] = [
+  '/fotos/alumnas/obra-1.jpg',
+  '/fotos/alumnas/obra-2.jpg',
+  '/fotos/alumnas/obra-3.jpg',
+  '/fotos/alumnas/obra-4.jpg',
+  '/fotos/alumnas/obra-5.jpg',
+  '/fotos/alumnas/obra-6.jpg',
+  '/fotos/alumnas/obra-7.jpg',
+  '/fotos/alumnas/obra-8.jpg',
+  '/fotos/alumnas/obra-9.jpg',
+  '/fotos/alumnas/obra-10.jpg',
 ];
-
-const SEMANAL_PLACEHOLDER_TESTIMONIAL =
-  'Testimonio breve sobre la experiencia en el taller — pendiente de completar.';
-
-export const SEMANAL_GALLERY: SemanalArtwork[] = Array.from({ length: 20 }, (_, i) => ({
-  image: SEMANAL_PLACEHOLDER_IMAGES[i % SEMANAL_PLACEHOLDER_IMAGES.length],
-  author: `Alumna ${i + 1}`,
-  title: `Obra ${i + 1}`,
-  testimonial: SEMANAL_PLACEHOLDER_TESTIMONIAL,
-}));
 
 export interface Benefit {
   icon: 'calm' | 'expression' | 'explore' | 'mindfulness';

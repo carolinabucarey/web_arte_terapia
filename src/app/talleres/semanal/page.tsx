@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import SemanalCarousel from '@/components/SemanalCarousel';
 import { getCourseSchema, getBreadcrumbSchema } from '@/lib/schema';
 import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, SEMANAL_GALLERY } from '@/lib/constants';
 import { formatCLP } from '@/lib/utils';
@@ -117,6 +118,25 @@ export default function TallerSemanalPage() {
           </div>
         </section>
 
+        {/* Galería — Obras de alumnas */}
+        <section className="section-padding">
+          <div className="max-w-section mx-auto">
+            <AnimateOnScroll>
+              <SectionHeader
+                label="Obras de alumnas"
+                title="Lo que se crea en este espacio"
+                centered
+              />
+            </AnimateOnScroll>
+
+            <AnimateOnScroll delay={0.1}>
+              <div className="mt-8">
+                <SemanalCarousel images={SEMANAL_GALLERY} />
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </section>
+
         {/* Sección 2 — Para quién es */}
         <section className="section-padding bg-bg-warm">
           <div className="max-w-reading mx-auto">
@@ -182,49 +202,6 @@ export default function TallerSemanalPage() {
                 <p>
                   Es un lugar de encuentro donde lo humano y lo artístico se cruzan de forma natural.
                 </p>
-              </div>
-            </AnimateOnScroll>
-          </div>
-        </section>
-
-        {/* Galería — Obras de alumnas */}
-        <section className="section-padding">
-          <div className="max-w-section mx-auto">
-            <AnimateOnScroll>
-              <SectionHeader
-                label="Obras de alumnas"
-                title="Lo que se crea en este espacio"
-                centered
-              />
-            </AnimateOnScroll>
-
-            <AnimateOnScroll delay={0.1}>
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {SEMANAL_GALLERY.map((item, index) => (
-                  <article
-                    key={index}
-                    className="bg-white rounded-card border border-border overflow-hidden h-full flex flex-col"
-                  >
-                    <div className="relative aspect-[4/3]">
-                      <Image
-                        src={item.image}
-                        alt={`${item.title} — ${item.author}`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </div>
-                    <div className="p-5 flex flex-col gap-2 flex-1">
-                      <p className="text-brand-green text-xs font-body font-medium tracking-wide uppercase">
-                        {item.title}
-                      </p>
-                      <p className="font-display text-base text-text-main">{item.author}</p>
-                      <p className="text-text-muted text-sm font-body italic leading-relaxed">
-                        “{item.testimonial}”
-                      </p>
-                    </div>
-                  </article>
-                ))}
               </div>
             </AnimateOnScroll>
           </div>
