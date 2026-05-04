@@ -32,12 +32,11 @@ export default function InstructorProfile() {
                 </p>
                 <p>
                   Soy artista visual y arteterapeuta, y en mis talleres acompaño procesos creativos
-                  desde un lugar cercano y respetuoso. La acuarela tiene un carácter sensible y fluido
-                  que permite soltar el control, liberar emociones y bajar el ritmo — y eso es exactamente
-                  lo que busco ofrecer en cada encuentro.
+                  desde un lugar cercano y respetuoso.
                 </p>
                 <p>
-                  Disfruto ver cómo cada persona se suelta, explora y descubre nuevas formas de expresarse.
+                  Lo que busco transmitir en cada taller — un espacio donde el acto de crear
+                  también sea una forma de volver a ti.
                 </p>
               </div>
 

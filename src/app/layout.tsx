@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Playfair_Display, Montserrat } from 'next/font/google';
+import Script from 'next/script';
 import Navbar from '@/components/Navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { getLocalBusinessSchema, getWebSiteSchema } from '@/lib/schema';
@@ -69,6 +70,18 @@ export default function RootLayout({
         <Navbar />
         {children}
         <WhatsAppButton />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18139986626"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18139986626');
+          `}
+        </Script>
       </body>
     </html>
   );

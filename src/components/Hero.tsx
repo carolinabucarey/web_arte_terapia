@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { INSTAGRAM_BRAND } from '@/lib/constants';
 
 export default function Hero() {
   return (
@@ -62,6 +63,28 @@ export default function Hero() {
             className="border border-brand-deep/30 text-brand-deep rounded-pill px-7 py-3.5 font-body font-semibold text-sm hover:bg-brand-deep/5 transition-colors"
           >
             Reservar mi lugar
+          </Link>
+          <Link
+            href={INSTAGRAM_BRAND}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram @arteyterapiasalud"
+            className="inline-flex items-center justify-center w-[52px] h-[52px] border border-brand-deep/30 rounded-full hover:bg-brand-deep/5 transition-colors"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#ig-gradient)" strokeWidth="2">
+              <defs>
+                <linearGradient id="ig-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stopColor="#FEDA75" />
+                  <stop offset="0.25" stopColor="#FA7E1E" />
+                  <stop offset="0.5" stopColor="#D62976" />
+                  <stop offset="0.75" stopColor="#962FBF" />
+                  <stop offset="1" stopColor="#4F5BD5" />
+                </linearGradient>
+              </defs>
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-gradient)" stroke="none" />
+            </svg>
           </Link>
         </motion.div>
       </div>

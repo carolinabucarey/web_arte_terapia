@@ -23,7 +23,7 @@ export default function About() {
             Cada sesión es una invitación a aprender desde un lugar libre, respetando tus tiempos,
             tu sensibilidad y tu propia búsqueda. Con el tiempo, estos talleres también se han
             transformado en un lugar de encuentro — donde se comparte no solo el proceso creativo,
-            sino también un espacio de confianza y conexión con otras.
+            sino también un espacio de confianza y conexión con otras personas.
           </p>
         </AnimateOnScroll>
       </div>
