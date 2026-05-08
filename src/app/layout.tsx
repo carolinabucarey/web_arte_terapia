@@ -56,13 +56,14 @@ export default function RootLayout({
     <html lang="es-CL" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
         <link rel="dns-prefetch" href="https://wa.me" />
-        {/* Google tag (gtag.js) — Google Ads AW-18139986626 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18139986626" />
+        {/* Google tag (gtag.js) — GA4 G-MXQHRV8XFY + Google Ads AW-18139986626 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MXQHRV8XFY" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
+gtag('config', 'G-MXQHRV8XFY');
 gtag('config', 'AW-18139986626');`,
           }}
         />
