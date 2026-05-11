@@ -11,7 +11,16 @@ export default function WorkshopCard({
   const buttonText = ctaText ?? 'Reservar mi lugar';
   const dateTime = [date, time].filter(Boolean).join(' · ');
   return (
-    <div className="h-full flex flex-col bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">
+    <div className="relative h-full flex flex-col bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">
+      {/* Card-wide link a la página de detalle. Cubre toda la card; los botones internos tienen z-index arriba. */}
+      {detailLink && (
+        <Link
+          href={detailLink}
+          aria-label={`Ver detalles de ${name}`}
+          className="absolute inset-0 z-10"
+        />
+      )}
+
       <div className="relative aspect-[4/3]">
         <Image
           src={image}
@@ -21,7 +30,7 @@ export default function WorkshopCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         {badge && (
-          <span className="absolute top-3 left-3 bg-brand-lavender/90 text-brand-deep text-xs font-body font-semibold px-3 py-1 rounded-pill backdrop-blur-sm">
+          <span className="absolute top-3 left-3 bg-brand-lavender/90 text-brand-deep text-xs font-body font-semibold px-3 py-1 rounded-pill backdrop-blur-sm z-20">
             {badge}
           </span>
         )}
@@ -58,19 +67,10 @@ export default function WorkshopCard({
         <Link
           href={ctaLink}
           {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-          className="mt-1 bg-brand-green text-white rounded-pill px-5 py-2.5 font-body font-semibold text-sm text-center hover:opacity-90 transition-opacity"
+          className="relative z-20 mt-1 bg-brand-green text-white rounded-pill px-5 py-2.5 font-body font-semibold text-sm text-center hover:opacity-90 transition-opacity"
         >
           {buttonText}
         </Link>
-
-        {detailLink && (
-          <Link
-            href={detailLink}
-            className="text-center text-brand-green text-sm font-body font-medium hover:underline underline-offset-4"
-          >
-            Ver detalles del taller →
-          </Link>
-        )}
       </div>
     </div>
   );

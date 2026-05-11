@@ -3,15 +3,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { INSTAGRAM_BRAND } from '@/lib/constants';
+import type { HeroContent } from '@/lib/cms';
 
-export default function Hero() {
+export default function Hero({ content }: { content: HeroContent }) {
   return (
     <section className="relative w-full h-screen min-h-[420px] overflow-hidden">
       {/* Background image */}
       <Image
-        src="/fotos/foto2.jpeg"
-        alt="Taller de acuarela y arteterapia con Josefina Faine en Santiago"
+        src={content.imagenFondo.src}
+        alt={content.imagenFondo.alt}
         fill
         priority
         className="object-cover -scale-x-100"
@@ -33,7 +33,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="mb-3 text-[0.82rem] tracking-[0.18em] uppercase text-brand-deep/80 font-body"
         >
-          Acuarela · Autocuidado · Expresión
+          {content.eyebrow}
         </motion.p>
 
         <motion.h1
@@ -43,7 +43,7 @@ export default function Hero() {
           className="font-display font-bold text-[clamp(2rem,5vw,4.2rem)] leading-[1.06] text-brand-deep mb-6"
           style={{ textShadow: '0 2px 12px rgba(255,255,255,0.4)' }}
         >
-          Talleres para crear, sentir y habitar tu mundo interior a través del arte
+          {content.titulo}
         </motion.h1>
 
         <motion.div
@@ -53,39 +53,43 @@ export default function Hero() {
           className="flex flex-wrap gap-3"
         >
           <Link
-            href="/#talleres"
+            href={content.botonPrimario.link}
             className="bg-brand-green text-white rounded-pill px-7 py-3.5 font-body font-semibold text-sm hover:opacity-90 transition-opacity"
           >
-            Ver talleres
+            {content.botonPrimario.texto}
           </Link>
-          <Link
-            href="/contacto"
-            className="border border-brand-deep/30 text-brand-deep rounded-pill px-7 py-3.5 font-body font-semibold text-sm hover:bg-brand-deep/5 transition-colors"
-          >
-            Reservar mi lugar
-          </Link>
-          <Link
-            href={INSTAGRAM_BRAND}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram @arteyterapiasalud"
-            className="inline-flex items-center justify-center w-[52px] h-[52px] border border-brand-deep/30 rounded-full hover:bg-brand-deep/5 transition-colors"
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#ig-gradient)" strokeWidth="2">
-              <defs>
-                <linearGradient id="ig-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stopColor="#FEDA75" />
-                  <stop offset="0.25" stopColor="#FA7E1E" />
-                  <stop offset="0.5" stopColor="#D62976" />
-                  <stop offset="0.75" stopColor="#962FBF" />
-                  <stop offset="1" stopColor="#4F5BD5" />
-                </linearGradient>
-              </defs>
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-gradient)" stroke="none" />
-            </svg>
-          </Link>
+          {content.botonSecundario && (
+            <Link
+              href={content.botonSecundario.link}
+              className="border border-brand-deep/30 text-brand-deep rounded-pill px-7 py-3.5 font-body font-semibold text-sm hover:bg-brand-deep/5 transition-colors"
+            >
+              {content.botonSecundario.texto}
+            </Link>
+          )}
+          {content.instagramUrl && (
+            <Link
+              href={content.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="inline-flex items-center justify-center w-[52px] h-[52px] border border-brand-deep/30 rounded-full hover:bg-brand-deep/5 transition-colors"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#ig-gradient)" strokeWidth="2">
+                <defs>
+                  <linearGradient id="ig-gradient" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stopColor="#FEDA75" />
+                    <stop offset="0.25" stopColor="#FA7E1E" />
+                    <stop offset="0.5" stopColor="#D62976" />
+                    <stop offset="0.75" stopColor="#962FBF" />
+                    <stop offset="1" stopColor="#4F5BD5" />
+                  </linearGradient>
+                </defs>
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-gradient)" stroke="none" />
+              </svg>
+            </Link>
+          )}
         </motion.div>
       </div>
     </section>

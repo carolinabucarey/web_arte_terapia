@@ -6,11 +6,11 @@ import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SemanalCarousel from '@/components/SemanalCarousel';
+import { notFound } from 'next/navigation';
 import { getCourseSchema, getBreadcrumbSchema } from '@/lib/schema';
-import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, SEMANAL_GALLERY } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, SEMANAL_GALLERY } from '@/lib/constants';
+import { getTallerBySlug } from '@/lib/cms';
 import { formatCLP } from '@/lib/utils';
-
-const workshop = WORKSHOPS.find((w) => w.slug === 'semanal')!;
 
 export const metadata: Metadata = {
   title: 'Talleres Semanales de Acuarela | josefinafainearte.cl',
@@ -33,7 +33,10 @@ const BREADCRUMB_ITEMS = [
   { name: 'Taller Semanal', url: `${SITE_URL}/talleres/semanal` },
 ];
 
-export default function TallerSemanalPage() {
+export default async function TallerSemanalPage() {
+  const workshop = await getTallerBySlug('semanal');
+  if (!workshop) notFound();
+
   const courseSchema = getCourseSchema({
     name: workshop.name,
     description: workshop.description,

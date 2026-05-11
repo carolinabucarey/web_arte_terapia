@@ -10,6 +10,7 @@ import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import { getFAQSchema } from '@/lib/schema';
 import { HOME_FAQS } from '@/lib/faqs';
+import { getHero } from '@/lib/cms';
 
 export const metadata: Metadata = {
   title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
@@ -25,8 +26,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
   const faqSchema = getFAQSchema(HOME_FAQS);
+  const hero = await getHero();
 
   return (
     <>
@@ -35,7 +37,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <main id="main-content">
-        <Hero />
+        <Hero content={hero} />
         <About />
         <InstructorProfile />
         <WorkshopGrid />

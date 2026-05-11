@@ -5,7 +5,8 @@ import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Link from 'next/link';
 import { getEventSchema, getBreadcrumbSchema, getFAQSchema } from '@/lib/schema';
-import { WORKSHOPS, SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/constants';
+import { getTalleres } from '@/lib/cms';
 import { TALLERES_FAQS } from '@/lib/faqs';
 
 export const metadata: Metadata = {
@@ -27,10 +28,11 @@ const BREADCRUMB_ITEMS = [
   { name: 'Talleres', url: `${SITE_URL}/talleres` },
 ];
 
-export default function TalleresPage() {
+export default async function TalleresPage() {
   const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
   const faqSchema = getFAQSchema(TALLERES_FAQS);
-  const eventSchemas = WORKSHOPS
+  const workshops = await getTalleres();
+  const eventSchemas = workshops
     .map((w) => getEventSchema({ name: w.name, description: w.description, date: w.date, price: w.price }))
     .filter((schema): schema is NonNullable<typeof schema> => schema !== null);
 
@@ -69,7 +71,7 @@ export default function TalleresPage() {
           </div>
         </section>
 
-        <WorkshopGrid />
+        <WorkshopGrid workshops={workshops} />
 
         <section className="section-padding bg-bg-warm">
           <div className="max-w-reading mx-auto text-center">
