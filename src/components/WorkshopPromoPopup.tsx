@@ -1,0 +1,176 @@
+'use client';
+
+import Image from 'next/image';
+import { useEffect, useMemo, useState } from 'react';
+import { trackEvent } from '@/lib/analytics';
+import { WORKSHOPS } from '@/lib/constants';
+import { formatCLP } from '@/lib/utils';
+
+const SHOW_DELAY_MS = 1200;
+const PROMO_WINDOW_DAYS = 30;
+
+export default function WorkshopPromoPopup() {
+  const [open, setOpen] = useState(false);
+  const [imgIdx, setImgIdx] = useState(0);
+
+  const workshop = useMemo(() => {
+    const now = Date.now();
+    const horizon = now + PROMO_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+    return WORKSHOPS
+      .filter((w) => {
+        if (!w.isoDate) return false;
+        const t = Date.parse(w.isoDate);
+        return Number.isFinite(t) && t >= now && t <= horizon;
+      })
+      .sort((a, b) => Date.parse(a.isoDate!) - Date.parse(b.isoDate!))[0];
+  }, []);
+
+  const promoId = workshop?.id ?? '';
+  const storageKey = promoId ? `promo-dismissed:${promoId}` : '';
+  const images = workshop?.images && workshop.images.length > 0 ? workshop.images : workshop ? [workshop.image] : [];
+
+  useEffect(() => {
+    if (!open || images.length <= 1) return;
+    const t = window.setInterval(() => {
+      setImgIdx((i) => (i + 1) % images.length);
+    }, 3500);
+    return () => window.clearInterval(t);
+  }, [open, images.length]);
+
+  useEffect(() => {
+    if (!workshop) return;
+    if (typeof window === 'undefined') return;
+
+    let dismissed = false;
+    try {
+      dismissed = window.sessionStorage.getItem(storageKey) === '1';
+    } catch {}
+
+    if (dismissed) return;
+
+    const t = window.setTimeout(() => {
+      setOpen(true);
+      trackEvent('promo_popup_view', { workshop_id: promoId });
+    }, SHOW_DELAY_MS);
+
+    return () => window.clearTimeout(t);
+  }, [workshop, promoId, storageKey]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close('escape'); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  if (!workshop) return null;
+
+  const close = (reason: 'x' | 'backdrop' | 'escape' | 'cta') => {
+    setOpen(false);
+    try { window.sessionStorage.setItem(storageKey, '1'); } catch {}
+    if (reason !== 'cta') {
+      trackEvent('promo_popup_dismiss', { workshop_id: promoId, reason });
+    }
+  };
+
+  const handleCtaClick = () => {
+    trackEvent('promo_popup_cta_click', { workshop_id: promoId });
+    trackEvent('generate_lead', { workshop_id: promoId, method: 'whatsapp', source: 'promo_popup' });
+    close('cta');
+  };
+
+  if (!open) return null;
+
+  const priceLabel = workshop.price === 'consultar' ? 'Consultar' : formatCLP(workshop.price);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="promo-popup-title"
+      className="fixed inset-0 z-[1100] flex items-center justify-center p-4 bg-brand-deep/60 backdrop-blur-sm"
+      onClick={(e) => { if (e.target === e.currentTarget) close('backdrop'); }}
+    >
+      <div className="relative bg-white rounded-card shadow-card-hover max-w-md w-full overflow-hidden">
+        <button
+          type="button"
+          onClick={() => close('x')}
+          aria-label="Cerrar"
+          className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-text-main flex items-center justify-center shadow-card"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+
+        <div className="relative aspect-[4/3] bg-bg-warm overflow-hidden">
+          {images.map((src, i) => (
+            <div
+              key={src}
+              className={`absolute inset-0 transition-opacity duration-700 ${i === imgIdx ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            >
+              <Image
+                src={src}
+                alt={`${workshop.name} — imagen ${i + 1}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 448px"
+                priority={i === 0}
+              />
+            </div>
+          ))}
+          {workshop.badge && (
+            <span className="absolute top-3 left-3 bg-brand-lavender/90 text-brand-deep text-xs font-body font-semibold px-3 py-1 rounded-pill backdrop-blur-sm">
+              {workshop.badge}
+            </span>
+          )}
+          {images.length > 1 && (
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setImgIdx(i)}
+                  aria-label={`Imagen ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all ${i === imgIdx ? 'w-6 bg-white' : 'w-1.5 bg-white/60 hover:bg-white/80'}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="p-6 flex flex-col gap-3 text-center">
+          <p className="text-brand-green text-xs font-body font-semibold tracking-wide uppercase">
+            Nuevo taller · Cupos limitados
+          </p>
+          <h3 id="promo-popup-title" className="font-display font-semibold text-2xl text-text-main leading-tight">
+            {workshop.name}
+          </h3>
+          <p className="text-text-muted font-body text-sm leading-relaxed">
+            {workshop.date}{workshop.time ? ` · ${workshop.time}` : ''} · {priceLabel}
+          </p>
+          <p className="text-text-muted font-body text-sm leading-relaxed">
+            {workshop.description}
+          </p>
+
+          <a
+            href={workshop.ctaLink}
+            onClick={handleCtaClick}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 bg-brand-green text-white rounded-pill px-6 py-3 font-body font-semibold text-sm hover:opacity-90 transition-opacity"
+          >
+            {workshop.ctaText ?? 'Reserva tu cupo'}
+          </a>
+          <button
+            type="button"
+            onClick={() => close('x')}
+            className="text-text-muted font-body text-xs underline underline-offset-4 hover:text-text-main transition-colors"
+          >
+            Ahora no
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -21,12 +21,14 @@ export interface Workshop {
   tagline: string;
   description: string;
   date: string;
+  isoDate?: string;
   time: string;
   duration: string;
   price: number | 'consultar';
   groupSize: number;
   level: string;
   image: string;
+  images?: string[];
   ctaLink: string;
   ctaText?: string;
   badge?: string;
@@ -50,6 +52,23 @@ export const WORKSHOPS: Workshop[] = [
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber horarios y reservar mi lugar en el taller semanal de acuarela.')}`,
     badge: 'Nuestro taller más querido',
     detailLink: '/talleres/semanal',
+  },
+  {
+    id: 'cerezo-en-flor',
+    slug: 'cerezo-en-flor',
+    name: 'Workshop Cerezo en Flor en Acuarela',
+    tagline: 'Sesión única · Apto para principiantes',
+    description: 'Un domingo para pintar tu propio cerezo en flor en acuarela y soltar la semana. Aprenderás el manejo del agua y verás paso a paso cómo crear flores, ramas y composición. Materiales y coffee break incluidos.',
+    date: 'Domingo 17 de mayo',
+    isoDate: '2026-05-17T16:00:00-04:00',
+    time: '16:00 a 19:00',
+    duration: '3 horas · sesión única',
+    price: 33000,
+    groupSize: 7,
+    level: 'Apto para principiantes',
+    image: '/fotos/cerezo-en-flor.jpg',
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Cerezo en Flor en Acuarela del domingo 17 de mayo.')}`,
+    badge: 'Cupos limitados',
   },
   {
     id: 'grupos-cerrados',
