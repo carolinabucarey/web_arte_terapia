@@ -156,15 +156,6 @@ export default function SobreJosefinaPage() {
                   etérea, emocional y en constante transformación.
                 </p>
               </div>
-              <a
-                href="https://www.instagram.com/arte.jose.fa/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-brand-water font-body font-medium text-sm mt-5 hover:text-brand-deep transition-colors"
-              >
-                Ver más en @arte.jose.fa
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
-              </a>
             </AnimateOnScroll>
           </div>
         </section>
