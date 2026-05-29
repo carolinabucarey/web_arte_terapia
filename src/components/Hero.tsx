@@ -7,7 +7,7 @@ import { INSTAGRAM_BRAND } from '@/lib/constants';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[420px] overflow-hidden">
+    <section className="relative w-full min-h-screen overflow-hidden flex items-center py-[clamp(96px,12vh,140px)]">
       {/* Background image */}
       <Image
         src="/fotos/foto2.jpeg"
@@ -22,11 +22,31 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-0 h-[100px] bg-gradient-to-b from-white/80 to-transparent z-[1]" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-deep/[0.35]" />
 
-      {/* Glassmorphism card */}
-      <div
-        className="absolute left-[clamp(20px,5vw,64px)] right-[clamp(20px,5vw,64px)] bottom-[clamp(24px,6vw,56px)] max-w-[760px] p-[clamp(22px,4vw,34px)] rounded-3xl border border-white/[0.28] backdrop-blur-[12px] shadow-card-hover"
-        style={{ background: 'rgba(199,184,214,0.18)' }}
-      >
+      {/* Two columns: flower image (left) + text (right) */}
+      <div className="relative z-[2] w-full max-w-container mx-auto px-[clamp(20px,5vw,64px)] grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,56px)] items-center">
+        {/* Left: additional photo */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="order-2 lg:order-1"
+        >
+          <Image
+            src="/fotos/flor-acuarela.jpg"
+            alt="Acuarela de una flor pintada en un taller de Josefina Faine"
+            width={1068}
+            height={634}
+            priority
+            className="w-full h-auto rounded-3xl border border-white/40 shadow-card-hover object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        </motion.div>
+
+        {/* Right: text card */}
+        <div
+          className="order-1 lg:order-2 p-[clamp(22px,4vw,34px)] rounded-3xl border border-white/[0.28] backdrop-blur-[12px] shadow-card-hover"
+          style={{ background: 'rgba(199,184,214,0.18)' }}
+        >
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,7 +60,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="font-display font-bold text-[clamp(2rem,5vw,4.2rem)] leading-[1.06] text-brand-deep mb-6"
+          className="font-display font-bold text-[clamp(2rem,4vw,3.4rem)] leading-[1.06] text-brand-deep mb-6"
           style={{ textShadow: '0 2px 12px rgba(255,255,255,0.4)' }}
         >
           Talleres para crear, sentir y habitar tu mundo interior a través del arte
@@ -87,6 +107,7 @@ export default function Hero() {
             </svg>
           </Link>
         </motion.div>
+        </div>
       </div>
     </section>
   );
