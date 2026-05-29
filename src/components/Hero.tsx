@@ -22,30 +22,12 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-0 h-[100px] bg-gradient-to-b from-white/80 to-transparent z-[1]" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-deep/[0.35]" />
 
-      {/* Two columns: flower image (left) + text (right) */}
-      <div className="relative z-[2] w-full max-w-container mx-auto px-[clamp(20px,5vw,64px)] grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,56px)] items-center">
-        {/* Left: additional photo */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="order-2 lg:order-1"
-        >
-          <Image
-            src="/fotos/flor-acuarela.jpg"
-            alt="Acuarela de una flor pintada en un taller de Josefina Faine"
-            width={1068}
-            height={634}
-            priority
-            className="w-full h-auto rounded-3xl border border-white/40 shadow-card-hover object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </motion.div>
-
-        {/* Right: text card */}
+      {/* Text card on the right, over the background photo */}
+      <div className="relative z-[2] w-full max-w-container mx-auto px-[clamp(20px,5vw,64px)] grid grid-cols-1 lg:grid-cols-2 items-center">
+        {/* Text card */}
         <div
-          className="order-1 lg:order-2 p-[clamp(22px,4vw,34px)] rounded-3xl border border-white/[0.28] backdrop-blur-[12px] shadow-card-hover"
-          style={{ background: 'rgba(199,184,214,0.18)' }}
+          className="lg:col-start-2 p-[clamp(22px,4vw,34px)] rounded-3xl border border-white/40 backdrop-blur-[16px] shadow-card-hover"
+          style={{ background: 'rgba(199,184,214,0.45)' }}
         >
         <motion.p
           initial={{ opacity: 0, y: 10 }}
