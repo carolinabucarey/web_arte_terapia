@@ -8,7 +8,7 @@ export const INSTAGRAM_PERSONAL = 'https://www.instagram.com/arte.jose.fa/';
 
 export const NAV_LINKS = [
   { label: 'Inicio', href: '/' },
-  { label: 'Obras de alumnos', href: '/#obras-alumnos' },
+  { label: 'Obras de alumnas', href: '/#obras-alumnas' },
   { label: 'Talleres', href: '/#talleres' },
   { label: 'Arte terapia', href: '/arte-terapia' },
   { label: 'Sobre mí', href: '/sobre-josefina' },
