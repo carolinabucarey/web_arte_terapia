@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
+import StudentWorks from '@/components/StudentWorks';
 import About from '@/components/About';
 import InstructorProfile from '@/components/InstructorProfile';
 import WorkshopGrid from '@/components/WorkshopGrid';
@@ -36,6 +37,7 @@ export default function HomePage() {
       />
       <main id="main-content">
         <Hero />
+        <StudentWorks />
         <About />
         <InstructorProfile />
         <WorkshopGrid />
