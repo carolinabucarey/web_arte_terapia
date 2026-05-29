@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import WorkshopPromoPopup from '@/components/WorkshopPromoPopup';
 import { getLocalBusinessSchema, getWebSiteSchema } from '@/lib/schema';
 
 const playfair = Playfair_Display({
@@ -81,7 +80,6 @@ gtag('config', 'AW-18139986626');`,
         <Navbar />
         {children}
         <WhatsAppButton />
-        <WorkshopPromoPopup />
       </body>
     </html>
   );
