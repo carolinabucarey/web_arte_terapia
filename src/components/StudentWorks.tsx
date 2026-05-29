@@ -32,11 +32,11 @@ export default function StudentWorks() {
   if (STUDENT_WORKS.length === 0) return null;
 
   return (
-    <section id="obras-alumnas" className="section-padding bg-white">
+    <section id="obras-alumnos" className="section-padding bg-white">
       <div className="max-w-container mx-auto">
         <AnimateOnScroll>
           <SectionHeader
-            label="Obras de alumnas"
+            label="Obras de alumnos"
             title="Lo que florece en cada taller"
             centered
           />
