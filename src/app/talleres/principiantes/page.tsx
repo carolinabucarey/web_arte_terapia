@@ -11,12 +11,13 @@ import { formatCLP } from '@/lib/utils';
 const workshop = WORKSHOPS.find((w) => w.slug === 'principiantes')!;
 
 export const metadata: Metadata = {
-  title: 'Workshop de Acuarela para Principiantes | josefinafainearte.cl',
+  title: 'Workshop de Acuarela para Principiantes | Josefina Fainé',
   description:
     'Inicia en la acuarela desde cero. Crearemos una obra en acuarela y un marcapáginas plastificado. Sábado 6 de junio, 16:00 a 19:15 hrs en Providencia (metro Los Leones). Materiales y coffee break incluidos. Sin experiencia previa.',
   alternates: { canonical: '/talleres/principiantes' },
   openGraph: {
-    title: 'Workshop de Acuarela para Principiantes | Josefina Faine',
+    siteName: 'Josefina Fainé',
+    title: 'Workshop de Acuarela para Principiantes | Josefina Fainé',
     description:
       'Una obra en acuarela + un marcapáginas plastificado. Sábado 6 de junio en Providencia. Materiales y coffee break incluidos. Sin experiencia previa.',
     url: 'https://www.josefinafainearte.cl/talleres/principiantes',

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     'Sesiones de arteterapia con Josefina Fainé, magíster en Artes en la Salud y Arteterapia (U. Finis Terrae). Un espacio para acompañar tu proceso a través del arte en Santiago.',
   alternates: { canonical: '/arte-terapia' },
   openGraph: {
+    siteName: 'Josefina Fainé',
     title: 'Arte terapia con Josefina Fainé',
     description:
       'Acompañamiento terapéutico a través del arte. Sesiones con Josefina Fainé, arteterapeuta titulada en Santiago.',

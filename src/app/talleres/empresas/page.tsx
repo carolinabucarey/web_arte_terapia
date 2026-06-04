@@ -10,12 +10,13 @@ import { WORKSHOPS, SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
 const workshop = WORKSHOPS.find((w) => w.slug === 'empresas')!;
 
 export const metadata: Metadata = {
-  title: 'Talleres para Empresas | josefinafainearte.cl',
+  title: 'Talleres para Empresas | Josefina Fainé',
   description:
     'Talleres de arteterapia y experiencias creativas para empresas en Santiago. Fomenta el bienestar, la creatividad y la cohesión de tu equipo. Coordinación previa online para definir objetivos, formato y duración.',
   alternates: { canonical: '/talleres/empresas' },
   openGraph: {
-    title: 'Talleres para Empresas | Josefina Faine',
+    siteName: 'Josefina Fainé',
+    title: 'Talleres para Empresas | Josefina Fainé',
     description:
       'Experiencias de arteterapia para equipos. Bienestar, creatividad y cohesión a través del arte. Adaptado a las necesidades de tu empresa.',
     url: 'https://www.josefinafainearte.cl/talleres/empresas',

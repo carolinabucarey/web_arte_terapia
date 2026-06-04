@@ -9,13 +9,14 @@ import { getPersonSchema, getBreadcrumbSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Josefina Faine — Artista Visual y Arteterapeuta | Santiago',
+  title: 'Josefina Fainé — Artista Visual y Arteterapeuta | Santiago',
   description:
     'Conoce a Josefina Fainé, licenciada en Artes Visuales (U. Mayor) y magíster en Arteterapia (U. Finis Terrae). 15 años de experiencia. Guía creativa de talleres de acuarela en Santiago.',
   alternates: { canonical: '/sobre-josefina' },
   openGraph: {
-    title: 'Josefina Faine — Artista Visual y Arteterapeuta',
-    description: 'Conoce a Josefina Faine, guía creativa de talleres de acuarela en Santiago.',
+    siteName: 'Josefina Fainé',
+    title: 'Josefina Fainé — Artista Visual y Arteterapeuta',
+    description: 'Conoce a Josefina Fainé, guía creativa de talleres de acuarela en Santiago.',
     url: 'https://www.josefinafainearte.cl/sobre-josefina',
     type: 'profile',
     images: ['/og-image.jpg'],
@@ -157,12 +158,12 @@ export default function SobreJosefinaPage() {
                 </p>
               </div>
               <a
-                href="https://www.instagram.com/arte.jose.fa/"
+                href="https://www.instagram.com/arteyterapiasalud/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-brand-water font-body font-medium text-sm mt-5 hover:text-brand-deep transition-colors"
               >
-                Ver más en @arte.jose.fa
+                Ver más en @arteyterapiasalud
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
               </a>
             </AnimateOnScroll>

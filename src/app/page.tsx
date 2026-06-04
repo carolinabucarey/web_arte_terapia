@@ -13,12 +13,13 @@ import { getFAQSchema } from '@/lib/schema';
 import { HOME_FAQS } from '@/lib/faqs';
 
 export const metadata: Metadata = {
-  title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
+  title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Fainé',
   description:
-    'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Faine.',
+    'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Fainé.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
+    siteName: 'Josefina Fainé',
+    title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Fainé',
     description: 'Talleres de acuarela terapéutica en Santiago, Chile. Reserva tu lugar.',
     url: 'https://www.josefinafainearte.cl',
     type: 'website',

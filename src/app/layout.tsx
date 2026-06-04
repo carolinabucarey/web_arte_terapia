@@ -21,15 +21,15 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.josefinafainearte.cl'),
-  title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
+  title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Fainé',
   description:
-    'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Faine.',
+    'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Fainé.',
   alternates: { canonical: '/' },
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Talleres de acuarela y arteterapia en Santiago — Josefina Faine' }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Talleres de acuarela y arteterapia en Santiago — Josefina Fainé' }],
     locale: 'es_CL',
     type: 'website',
-    siteName: 'Arte y Terapia Salud',
+    siteName: 'Josefina Fainé',
   },
   other: {
     'geo.region': 'CL-RM',

@@ -1,4 +1,5 @@
-export const SITE_NAME = 'Arte y Terapia Salud';
+export const SITE_NAME = 'Arte y Terapia Salud'; // Visual/business identity: navbar, footer, PWA, email, LocalBusiness listing
+export const BRAND_NAME = 'Josefina Fainé'; // Canonical metadata brand: title suffix, OG siteName, WebSite schema
 export const SITE_URL = 'https://www.josefinafainearte.cl';
 export const WHATSAPP_NUMBER = '56956900447';
 export const WHATSAPP_MESSAGE = 'Hola! Me gustaría saber sobre los talleres';

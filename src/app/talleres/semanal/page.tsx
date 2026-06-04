@@ -6,19 +6,21 @@ import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SemanalCarousel from '@/components/SemanalCarousel';
-import { getCourseSchema, getBreadcrumbSchema } from '@/lib/schema';
+import { getCourseSchema, getBreadcrumbSchema, getFAQSchema } from '@/lib/schema';
 import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, SEMANAL_GALLERY } from '@/lib/constants';
+import { TALLERES_FAQS } from '@/lib/faqs';
 import { formatCLP } from '@/lib/utils';
 
 const workshop = WORKSHOPS.find((w) => w.slug === 'semanal')!;
 
 export const metadata: Metadata = {
-  title: 'Talleres Semanales de Acuarela | josefinafainearte.cl',
+  title: 'Taller Semanal de Acuarela en Santiago | Josefina Fainé',
   description:
-    'Un encuentro semanal para explorar la acuarela a tu ritmo, en grupos de máximo 6 personas. Acompañamiento cercano y personalizado. Sin experiencia previa necesaria.',
+    'Taller semanal de acuarela en Santiago, en grupos de máximo 6 personas y a tu ritmo. Sin experiencia previa. Reserva tu lugar con Josefina Fainé.',
   alternates: { canonical: '/talleres/semanal' },
   openGraph: {
-    title: 'Talleres Semanales de Acuarela | Josefina Faine',
+    siteName: 'Josefina Fainé',
+    title: 'Talleres Semanales de Acuarela | Josefina Fainé',
     description:
       'Grupos de máximo 6 personas. Acompañamiento personalizado. Sin experiencia previa necesaria.',
     url: 'https://www.josefinafainearte.cl/talleres/semanal',
@@ -42,6 +44,7 @@ export default function TallerSemanalPage() {
     price: workshop.price,
   });
   const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
+  const faqSchema = getFAQSchema(TALLERES_FAQS);
 
   return (
     <>
@@ -53,6 +56,10 @@ export default function TallerSemanalPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <main id="main-content" className="pt-[88px]">
         {/* Hero del taller */}
         <section className="section-padding bg-gradient-to-b from-bg-cream to-white">
@@ -63,10 +70,10 @@ export default function TallerSemanalPage() {
                 Talleres semanales
               </p>
               <h1 className="font-display font-semibold text-3xl md:text-4xl lg:text-[2.75rem] text-text-main leading-tight mb-4">
-                Un espacio para aprender acuarela desde un lugar libre
+                Taller semanal de acuarela en Santiago: aprende desde un lugar libre
               </h1>
               <p className="text-text-muted font-body text-lg max-w-reading leading-relaxed">
-                Cada semana, un encuentro íntimo para explorar, crear y reconectar contigo a través del color.
+                Cada semana, un encuentro íntimo y presencial en Santiago para explorar, crear y reconectar contigo a través del color.
               </p>
             </AnimateOnScroll>
 
@@ -201,6 +208,14 @@ export default function TallerSemanalPage() {
                 </p>
                 <p>
                   Es un lugar de encuentro donde lo humano y lo artístico se cruzan de forma natural.
+                  Si quieres conocer el enfoque que sostiene estos encuentros, te invito a leer sobre la{' '}
+                  <Link href="/arte-terapia" className="text-brand-lavender-dark underline underline-offset-2 hover:text-brand-deep transition-colors">
+                    acuarela como arteterapia
+                  </Link>{' '}
+                  y a conocer{' '}
+                  <Link href="/sobre-josefina" className="text-brand-lavender-dark underline underline-offset-2 hover:text-brand-deep transition-colors">
+                    quién es Josefina Fainé
+                  </Link>.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -263,6 +278,34 @@ export default function TallerSemanalPage() {
           </div>
         </section>
 
+        {/* Preguntas frecuentes */}
+        <section className="section-padding">
+          <div className="max-w-reading mx-auto">
+            <AnimateOnScroll>
+              <SectionHeader label="Preguntas frecuentes" title="Resolvemos tus dudas" centered />
+            </AnimateOnScroll>
+
+            <AnimateOnScroll delay={0.1}>
+              <div className="mt-8 flex flex-col gap-4">
+                {TALLERES_FAQS.map((faq) => (
+                  <details
+                    key={faq.question}
+                    className="group rounded-2xl border border-border bg-white p-5 md:p-6"
+                  >
+                    <summary className="flex cursor-pointer items-center justify-between gap-4 font-display font-semibold text-text-main text-lg list-none">
+                      {faq.question}
+                      <span className="text-brand-lavender-dark transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <p className="mt-3 text-text-muted font-body text-base leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </section>
+
         {/* CTA final */}
         <section className="section-padding bg-gradient-to-b from-bg-warm to-bg-cream">
           <div className="max-w-reading mx-auto text-center">
@@ -272,7 +315,11 @@ export default function TallerSemanalPage() {
               </h2>
               <p className="text-text-muted font-body text-base leading-relaxed mb-8">
                 Los cupos son limitados para mantener la experiencia personalizada.
-                Si quieres reservar tu lugar o tienes preguntas, escríbenos.
+                Si quieres reservar tu lugar o tienes preguntas, escríbenos. También puedes explorar{' '}
+                <Link href="/talleres" className="text-brand-lavender-dark underline underline-offset-2 hover:text-brand-deep transition-colors">
+                  todos los talleres de acuarela
+                </Link>{' '}
+                disponibles.
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <a

@@ -22,7 +22,7 @@ function getStudentWorks() {
 
   return files.map((file, i) => ({
     src: `/fotos/alumnas/${file}`,
-    alt: `Acuarela creada por una alumna del taller de Josefina Faine — obra ${i + 1}`,
+    alt: `Acuarela creada por una alumna del taller de Josefina Fainé — obra ${i + 1}`,
   }));
 }
 
