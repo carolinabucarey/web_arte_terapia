@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       'Experiencias de arteterapia para equipos. Bienestar, creatividad y cohesión a través del arte. Adaptado a las necesidades de tu empresa.',
     url: 'https://www.josefinafainearte.cl/talleres/empresas',
     type: 'website',
-    images: ['/og-image.jpg'],
+    images: ['/fotos/empresas.jpg'],
   },
 };
 

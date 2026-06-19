@@ -31,6 +31,13 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Josefina Fainé',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Fainé',
+    description:
+      'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte.',
+    images: ['/og-image.jpg'],
+  },
   other: {
     'geo.region': 'CL-RM',
     'geo.placename': 'Santiago',

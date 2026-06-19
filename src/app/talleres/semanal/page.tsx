@@ -25,7 +25,7 @@ export const metadata: Metadata = {
       'Grupos de máximo 6 personas. Acompañamiento personalizado. Sin experiencia previa necesaria.',
     url: 'https://www.josefinafainearte.cl/talleres/semanal',
     type: 'website',
-    images: ['/og-image.jpg'],
+    images: ['/fotos/foto1.jpeg'],
   },
 };
 
