@@ -13,13 +13,13 @@ const workshop = WORKSHOPS.find((w) => w.slug === 'principiantes')!;
 export const metadata: Metadata = {
   title: 'Workshop de Acuarela para Principiantes | Josefina Fainé',
   description:
-    'Inicia en la acuarela desde cero. Crearemos una obra en acuarela y un marcapáginas plastificado. Sábado 6 de junio, 16:00 a 19:15 hrs en Providencia (metro Los Leones). Materiales y coffee break incluidos. Sin experiencia previa.',
+    'Inicia en la acuarela desde cero. Crearemos una obra en acuarela y un marcapáginas plastificado, en Providencia (metro Los Leones). Materiales y coffee break incluidos. Sin experiencia previa. Consulta la próxima fecha.',
   alternates: { canonical: '/talleres/principiantes' },
   openGraph: {
     siteName: 'Josefina Fainé',
     title: 'Workshop de Acuarela para Principiantes | Josefina Fainé',
     description:
-      'Una obra en acuarela + un marcapáginas plastificado. Sábado 6 de junio en Providencia. Materiales y coffee break incluidos. Sin experiencia previa.',
+      'Una obra en acuarela + un marcapáginas plastificado, en Providencia. Materiales y coffee break incluidos. Sin experiencia previa. Consulta la próxima fecha.',
     url: 'https://www.josefinafainearte.cl/talleres/principiantes',
     type: 'website',
     images: ['/fotos/principiantes-junio.jpg'],
@@ -94,7 +94,7 @@ export default function TallerPrincipiantesPage() {
               <div className="mt-8 relative rounded-2xl overflow-hidden aspect-[1080/713] bg-brand-lavender/15">
                 <Image
                   src={workshop.image}
-                  alt="Workshop de Acuarela para Principiantes — sábado 6 de junio, 16:00 a 19:15 hrs en Providencia"
+                  alt="Workshop de Acuarela para Principiantes en Providencia, Santiago, con Josefina Fainé"
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 1120px"
@@ -202,10 +202,12 @@ export default function TallerPrincipiantesPage() {
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main w-[140px]">Fecha</td>
                         <td className="py-3 text-sm text-text-muted">{workshop.date}</td>
                       </tr>
-                      <tr>
-                        <td className="py-3 pr-4 text-sm font-semibold text-text-main">Horario</td>
-                        <td className="py-3 text-sm text-text-muted">{workshop.time} hrs</td>
-                      </tr>
+                      {workshop.time && (
+                        <tr>
+                          <td className="py-3 pr-4 text-sm font-semibold text-text-main">Horario</td>
+                          <td className="py-3 text-sm text-text-muted">{workshop.time} hrs</td>
+                        </tr>
+                      )}
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Duración</td>
                         <td className="py-3 text-sm text-text-muted">{workshop.duration}</td>
@@ -251,7 +253,7 @@ export default function TallerPrincipiantesPage() {
               </h2>
               <p className="text-text-muted font-body text-base leading-relaxed mb-8">
                 Los cupos son limitados para mantener la experiencia cercana y personalizada.
-                Escríbenos para reservar tu lugar del sábado 6 de junio.
+                Escríbenos para conocer la próxima fecha y reservar tu lugar.
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 <a
