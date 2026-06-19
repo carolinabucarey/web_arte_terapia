@@ -20,6 +20,21 @@ export const HOME_FAQS: FAQ[] = [
       'Los materiales (acuarelas, papel, pinceles), el acompañamiento personalizado de Josefina y un espacio cálido para crear. Te llevas tu obra terminada.',
   },
   {
+    question: '¿Cuánto cuesta un taller de acuarela en Santiago?',
+    answer:
+      'Los workshops de sesión única tienen un valor desde $33.000 e incluyen todos los materiales y un coffee break. El taller semanal se cotiza según la modalidad; escríbenos por WhatsApp y te contamos los valores vigentes.',
+  },
+  {
+    question: '¿La acuarela ayuda a reducir el estrés y la ansiedad?',
+    answer:
+      'Sí. Pintar en acuarela favorece un estado de calma y atención plena: el fluir del agua y el color invita a soltar la mente y volver al presente. Por eso los talleres combinan la técnica con un enfoque de autocuidado y bienestar emocional, guiados por una arteterapeuta titulada.',
+  },
+  {
+    question: '¿Hacen talleres de acuarela para empresas?',
+    answer:
+      'Sí, ofrecemos talleres de arteterapia y experiencias creativas para empresas y equipos en Santiago, pensados para fomentar el bienestar, la creatividad y la cohesión. Coordinamos objetivos, formato y duración a la medida de cada grupo.',
+  },
+  {
     question: '¿Cómo reservo mi lugar?',
     answer:
       'Puedes reservar por WhatsApp al +56 9 5690 0447 o a través del formulario de contacto del sitio. Los cupos son limitados para mantener la experiencia personalizada.',
@@ -51,5 +66,15 @@ export const TALLERES_FAQS: FAQ[] = [
     question: '¿Puedo regalar un taller?',
     answer:
       'Sí, los workshops de sesión única son ideales para regalar. Escríbenos por WhatsApp y te ayudamos con la coordinación y un voucher de regalo.',
+  },
+  {
+    question: '¿Dónde quedan los talleres y cómo llego?',
+    answer:
+      'Los talleres son presenciales en Providencia, Santiago, a pasos del metro Los Leones. La dirección exacta se confirma al reservar tu cupo.',
+  },
+  {
+    question: '¿Cuándo son las próximas fechas?',
+    answer:
+      'Abrimos nuevas fechas de forma regular según la demanda de cada taller. Escríbenos por WhatsApp al +56 9 5690 0447 y te avisamos apenas se confirme el próximo cupo del taller que te interesa.',
   },
 ];

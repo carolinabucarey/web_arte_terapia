@@ -7,6 +7,7 @@ import WorkshopGrid from '@/components/WorkshopGrid';
 import Benefits from '@/components/Benefits';
 import Gallery from '@/components/Gallery';
 import Testimonials from '@/components/Testimonials';
+import Faqs from '@/components/Faqs';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import { getFAQSchema } from '@/lib/schema';
@@ -45,6 +46,7 @@ export default function HomePage() {
         <Benefits />
         <Gallery />
         <Testimonials />
+        <Faqs items={HOME_FAQS} />
         <ContactForm />
       </main>
       <Footer />

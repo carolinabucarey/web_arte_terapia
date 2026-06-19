@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import WorkshopGrid from '@/components/WorkshopGrid';
 import Footer from '@/components/Footer';
+import Faqs from '@/components/Faqs';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Link from 'next/link';
@@ -71,6 +72,8 @@ export default function TalleresPage() {
         </section>
 
         <WorkshopGrid />
+
+        <Faqs items={TALLERES_FAQS} />
 
         <section className="section-padding bg-bg-warm">
           <div className="max-w-reading mx-auto text-center">
