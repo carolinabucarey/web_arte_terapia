@@ -34,6 +34,13 @@ export interface Workshop {
   ctaText?: string;
   badge?: string;
   detailLink?: string;
+  // Campos opcionales para la página de detalle (/talleres/[slug])
+  seoTitle?: string;
+  seoDescription?: string;
+  heading?: string;
+  intro?: string;
+  aprenderas?: string[];
+  incluye?: string[];
 }
 
 export const WORKSHOPS: Workshop[] = [
@@ -88,6 +95,17 @@ export const WORKSHOPS: Workshop[] = [
     image: '/fotos/cerezo-en-flor.jpg',
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Cerezo en Flor en Acuarela del domingo 17 de mayo.')}`,
     badge: 'Cupos limitados',
+    detailLink: '/talleres/cerezo-en-flor',
+    seoTitle: 'Taller Cerezo en Flor en Acuarela | Santiago',
+    seoDescription: 'Taller de acuarela para pintar tu propio cerezo en flor en Santiago. Manejo del agua paso a paso, apto para principiantes. Materiales y coffee break incluidos.',
+    heading: 'Pinta tu propio cerezo en flor en acuarela',
+    intro: 'Un domingo para soltar la semana pintando un cerezo en flor. Aprenderás a manejar el agua y a construir flores, ramas y composición paso a paso, en un grupo reducido y a tu ritmo.',
+    aprenderas: [
+      'El manejo del agua y la transparencia propia de la acuarela',
+      'Cómo pintar flores de cerezo con volumen y delicadeza',
+      'A componer ramas y equilibrar la composición',
+      'Una obra terminada lista para enmarcar',
+    ],
   },
   {
     id: 'triptico-arboles',
@@ -105,6 +123,17 @@ export const WORKSHOPS: Workshop[] = [
     image: '/fotos/triptico-arboles.jpg',
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Tríptico de Árboles en Acuarela del domingo 24 de mayo.')}`,
     badge: 'Cupos limitados',
+    detailLink: '/talleres/triptico-arboles',
+    seoTitle: 'Taller Tríptico de Árboles en Acuarela | Santiago',
+    seoDescription: 'Pinta un tríptico de árboles en acuarela en Santiago —otoño, sauce y cerezo en flor. Paso a paso, apto para principiantes. Materiales y coffee break incluidos.',
+    heading: 'Pinta un tríptico de árboles en acuarela',
+    intro: 'Un domingo para crear tu propio tríptico de árboles —otoño, sauce y cerezo en flor— y soltar la semana. Verás paso a paso cómo construir cada árbol con sus ramas, hojas y composición.',
+    aprenderas: [
+      'El manejo del agua y las transparencias de la acuarela',
+      'Cómo pintar tres árboles distintos: otoño, sauce y cerezo en flor',
+      'A trabajar ramas, hojas y follaje con naturalidad',
+      'A componer un tríptico equilibrado para llevar',
+    ],
   },
   {
     id: 'marmoleado',
@@ -122,6 +151,17 @@ export const WORKSHOPS: Workshop[] = [
     image: '/fotos/marmoleado.jpg',
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Marmoleado en Papel. Me interesa la fecha del:')}`,
     badge: 'Cupos limitados',
+    detailLink: '/talleres/marmoleado',
+    seoTitle: 'Taller de Marmoleado en Papel | Santiago',
+    seoDescription: 'Taller de marmoleado en papel en Santiago: crea 3 obras únicas con color y agua. Experiencia sensorial sin experiencia previa. Materiales y coffee break incluidos.',
+    heading: 'Crea piezas únicas con la técnica del marmoleado',
+    intro: 'Una experiencia sensorial donde el color, el agua y el movimiento se unen para crear patrones orgánicos imposibles de repetir. Harás 3 obras únicas en papel, sin necesidad de experiencia previa.',
+    aprenderas: [
+      'La técnica del marmoleado: pinturas que flotan sobre el agua',
+      'Cómo crear patrones orgánicos y diseños irrepetibles',
+      'El control del color y el movimiento sobre el agua',
+      '3 obras únicas en papel para llevar',
+    ],
   },
   {
     id: 'grupos-cerrados',
@@ -139,6 +179,23 @@ export const WORKSHOPS: Workshop[] = [
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Me gustaría coordinar un taller para grupo cerrado. ¿Me cuentas más?')}`,
     ctaText: 'Coordinar grupo',
     badge: 'Experiencia privada',
+    detailLink: '/talleres/grupos-cerrados',
+    seoTitle: 'Taller de Acuarela para Grupos Privados | Santiago',
+    seoDescription: 'Taller de acuarela privado y a medida en Santiago para amigas, familia o equipos. Una experiencia creativa para reconectar. Coordina fecha y detalles con Josefina Fainé.',
+    heading: 'Un taller de acuarela a la medida de tu grupo',
+    intro: 'Reúne a tus amigas, tu familia o tu equipo y vivan juntas una experiencia de acuarela diseñada a la medida. Una pausa creativa para reconectar a través del color, en un espacio íntimo y solo para ustedes.',
+    aprenderas: [
+      'Una experiencia diseñada según lo que tu grupo busca',
+      'Acuarela guiada paso a paso, apta para todos los niveles',
+      'Una pausa creativa para compartir y reconectar',
+      'Coordinación de fecha, lugar y temática a convenir',
+    ],
+    incluye: [
+      'Materiales para todo el grupo',
+      'Guía personalizada durante la sesión',
+      'Una experiencia adaptada a la ocasión',
+      'Coordinación previa de fecha y detalles',
+    ],
   },
   {
     id: 'empresas',
@@ -173,6 +230,17 @@ export const WORKSHOPS: Workshop[] = [
     image: '/fotos/pincel-oscuro.jpeg',
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop de Galaxias en Acuarela.')}`,
     badge: 'Acuarelas metalizadas',
+    detailLink: '/talleres/galaxias',
+    seoTitle: 'Taller de Galaxias en Acuarela | Santiago',
+    seoDescription: 'Taller para pintar galaxias en acuarela metalizada en Santiago. 3 obras en papel blanco y negro, sin experiencia previa. Materiales y coffee break incluidos.',
+    heading: 'Pinta tus propias galaxias en acuarela',
+    intro: 'Un viernes especial para soltar el estrés pintando galaxias con acuarelas metalizadas que hacen brillar el universo sobre el papel. Pintarás 3 obras —dos en papel blanco y una en papel negro—, sin experiencia previa.',
+    aprenderas: [
+      'A trabajar con acuarelas metalizadas sobre papel blanco y negro',
+      'Cómo crear profundidad, brillos y estrellas',
+      'El manejo del agua para lograr nebulosas y degradados',
+      '3 obras terminadas para llevar',
+    ],
   },
   {
     id: 'pinta-tu-mascota',
@@ -190,6 +258,17 @@ export const WORKSHOPS: Workshop[] = [
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop Pinta Tu Mascota en Acuarela.')}`,
     ctaText: 'Reserva tu cupo',
     badge: 'Tu mascota en acuarela',
+    detailLink: '/talleres/pinta-tu-mascota',
+    seoTitle: 'Taller Retrato de tu Mascota en Acuarela | Santiago',
+    seoDescription: 'Pinta el retrato de tu mascota en acuarela en Santiago, guiada paso a paso. Sin experiencia previa. Materiales y coffee break incluidos con Josefina Fainé.',
+    heading: 'Convierte el amor por tu mascota en una acuarela',
+    intro: 'Un espacio para desconectarte y pintar un retrato en acuarela de tu compañero peludo, guiada paso a paso. No necesitas experiencia previa, solo una foto de tu mascota y ganas de crear.',
+    aprenderas: [
+      'A interpretar la foto de tu mascota en acuarela',
+      'El manejo del agua, el color y las texturas del pelaje',
+      'Cómo capturar la expresión y el carácter de tu mascota',
+      'Un retrato terminado para llevar y atesorar',
+    ],
   },
   {
     id: 'flores',
@@ -206,6 +285,17 @@ export const WORKSHOPS: Workshop[] = [
     image: '/fotos/foto2.jpeg',
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop de Flores en Acuarela.')}`,
     badge: 'Flores en acuarela',
+    detailLink: '/talleres/flores',
+    seoTitle: 'Taller de Flores en Acuarela | Santiago',
+    seoDescription: 'Taller para pintar flores en acuarela en Santiago. Manejo del agua, composición floral y ejercicios para soltar bloqueos. Apto para todos los niveles.',
+    heading: 'Pinta flores en acuarela y suelta el estrés',
+    intro: 'Un taller para relajarte pintando flores en acuarela. Aprenderás tips para el manejo del agua, ejercicios para soltar bloqueos creativos y verás paso a paso cómo construir la flor de la sesión con sus ramas, hojas y composición.',
+    aprenderas: [
+      'El manejo del agua y las transparencias de la acuarela',
+      'Ejercicios para soltar bloqueos creativos',
+      'Cómo pintar flores, ramas, hojas y composiciones florales',
+      'A trabajar en papel de 300 gramos y llevarte tu obra',
+    ],
   },
   {
     id: 'hada-protectora',
@@ -222,6 +312,17 @@ export const WORKSHOPS: Workshop[] = [
     image: '/fotos/foto2.jpeg',
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop de Hada Protectora.')}`,
     badge: 'Arte terapéutico',
+    detailLink: '/talleres/hada-protectora',
+    seoTitle: 'Taller de Hada Protectora en Acuarela | Santiago',
+    seoDescription: 'Taller de acuarela como terapia en Santiago: crea tu hada protectora y conecta con tu mundo interior. Sin experiencia previa, materiales incluidos.',
+    heading: 'Crea tu hada protectora en acuarela',
+    intro: 'Un taller de acuarela como terapia donde crearás tu hada protectora: un espacio para agradecer, manifestar deseos y conectar con tu mundo interior a través del color. Sin experiencia previa, solo ganas de crear desde el corazón.',
+    aprenderas: [
+      'La acuarela como herramienta de expresión y autocuidado',
+      'Cómo dar forma y color a tu hada protectora',
+      'A conectar la intención y el símbolo con la pintura',
+      'Una obra personal y simbólica para llevar',
+    ],
   },
 ];
 
