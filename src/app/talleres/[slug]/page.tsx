@@ -6,13 +6,12 @@ import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { getCourseSchema, getBreadcrumbSchema } from '@/lib/schema';
-import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, type Workshop } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, type Workshop } from '@/lib/constants';
+import { getTalleres } from '@/lib/talleres-api';
 import { formatCLP } from '@/lib/utils';
 
 // Slugs con página estática propia y contenido a mano — no usan esta plantilla.
 const STATIC_SLUGS = new Set(['semanal', 'principiantes', 'empresas']);
-
-const DYNAMIC_WORKSHOPS = WORKSHOPS.filter((w) => !STATIC_SLUGS.has(w.slug));
 
 const DEFAULT_INCLUYE = [
   'Todos los materiales — acuarelas, pinceles y papel',
@@ -21,8 +20,10 @@ const DEFAULT_INCLUYE = [
   'Tu obra terminada para llevar',
 ];
 
-function getWorkshop(slug: string): Workshop | undefined {
-  return DYNAMIC_WORKSHOPS.find((w) => w.slug === slug);
+async function getWorkshop(slug: string): Promise<Workshop | undefined> {
+  if (STATIC_SLUGS.has(slug)) return undefined;
+  const talleres = await getTalleres();
+  return talleres.find((w) => w.slug === slug);
 }
 
 // La fecha es un one-off ya vencido si su isoDate quedó en el pasado.
@@ -35,12 +36,15 @@ function displayDate(workshop: Workshop): string {
   return workshop.date || 'Próximamente';
 }
 
-export function generateStaticParams() {
-  return DYNAMIC_WORKSHOPS.map((w) => ({ slug: w.slug }));
+export async function generateStaticParams() {
+  const talleres = await getTalleres();
+  return talleres
+    .filter((w) => !STATIC_SLUGS.has(w.slug))
+    .map((w) => ({ slug: w.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const workshop = getWorkshop(params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const workshop = await getWorkshop(params.slug);
   if (!workshop) return {};
 
   const title = workshop.seoTitle ?? `${workshop.name} | Josefina Fainé`;
@@ -62,8 +66,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function TallerDetallePage({ params }: { params: { slug: string } }) {
-  const workshop = getWorkshop(params.slug);
+export default async function TallerDetallePage({ params }: { params: { slug: string } }) {
+  const workshop = await getWorkshop(params.slug);
   if (!workshop) notFound();
 
   const breadcrumbItems = [
