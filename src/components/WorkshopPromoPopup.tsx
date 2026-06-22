@@ -156,6 +156,7 @@ export default function WorkshopPromoPopup() {
           <a
             href={workshop.ctaLink}
             onClick={handleCtaClick}
+            data-wa-skip-lead-event
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 bg-brand-green text-white rounded-pill px-6 py-3 font-body font-semibold text-sm hover:opacity-90 transition-opacity"
