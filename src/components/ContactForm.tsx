@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import SectionHeader from './SectionHeader';
 import AnimateOnScroll from './AnimateOnScroll';
 import { WHATSAPP_LINK, WHATSAPP_NUMBER, INSTAGRAM_BRAND } from '@/lib/constants';
+import { trackLeadConversion } from '@/lib/analytics';
 
 interface FormData {
   nombre: string;
@@ -46,13 +47,7 @@ export default function ContactForm() {
     }
 
     // Google Ads conversion event (lead form submission)
-    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        send_to: 'AW-18139986626/fodHCO7ut6ccEML16MlD',
-        value: 1.0,
-        currency: 'CLP',
-      });
-    }
+    trackLeadConversion();
 
     setStatus('success');
     reset();

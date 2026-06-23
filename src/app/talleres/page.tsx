@@ -1,20 +1,23 @@
 import type { Metadata } from 'next';
 import WorkshopGrid from '@/components/WorkshopGrid';
 import Footer from '@/components/Footer';
+import Faqs from '@/components/Faqs';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Link from 'next/link';
 import { getEventSchema, getBreadcrumbSchema, getFAQSchema } from '@/lib/schema';
-import { WORKSHOPS, SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/constants';
+import { getTalleres } from '@/lib/talleres-api';
 import { TALLERES_FAQS } from '@/lib/faqs';
 
 export const metadata: Metadata = {
-  title: 'Próximos Talleres de Acuarela | josefinafainearte.cl',
+  title: 'Próximos Talleres de Acuarela | Josefina Fainé',
   description:
     'Descubre los próximos talleres de acuarela y arteterapia en Santiago. Grupos pequeños, experiencia boutique. Sin experiencia previa necesaria.',
   alternates: { canonical: '/talleres' },
   openGraph: {
-    title: 'Próximos Talleres de Acuarela | josefinafainearte.cl',
+    siteName: 'Josefina Fainé',
+    title: 'Próximos Talleres de Acuarela | Josefina Fainé',
     description: 'Descubre los próximos talleres de acuarela y arteterapia en Santiago.',
     url: 'https://www.josefinafainearte.cl/talleres',
     type: 'website',
@@ -27,10 +30,11 @@ const BREADCRUMB_ITEMS = [
   { name: 'Talleres', url: `${SITE_URL}/talleres` },
 ];
 
-export default function TalleresPage() {
+export default async function TalleresPage() {
   const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
   const faqSchema = getFAQSchema(TALLERES_FAQS);
-  const eventSchemas = WORKSHOPS
+  const talleres = await getTalleres();
+  const eventSchemas = talleres
     .map((w) => getEventSchema({ name: w.name, description: w.description, date: w.date, price: w.price }))
     .filter((schema): schema is NonNullable<typeof schema> => schema !== null);
 
@@ -70,6 +74,8 @@ export default function TalleresPage() {
         </section>
 
         <WorkshopGrid />
+
+        <Faqs items={TALLERES_FAQS} />
 
         <section className="section-padding bg-bg-warm">
           <div className="max-w-reading mx-auto text-center">

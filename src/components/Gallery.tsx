@@ -4,8 +4,8 @@ import AnimateOnScroll from './AnimateOnScroll';
 
 const GALLERY_IMAGES = [
   { src: '/fotos/taller-grupal.jpeg', alt: 'Grupo del taller de acuarela en Santiago riendo mientras pintan', caption: 'Risas compartidas' },
-  { src: '/fotos/foto1.jpeg', alt: 'Acuarelas en proceso durante el taller de Josefina Faine', caption: 'Proceso creativo' },
-  { src: '/fotos/jose.png', alt: 'Josefina Faine guiando una sesión del taller de acuarela', caption: 'Guía creativa' },
+  { src: '/fotos/foto1.jpeg', alt: 'Acuarelas en proceso durante el taller de Josefina Fainé', caption: 'Proceso creativo' },
+  { src: '/fotos/jose.png', alt: 'Josefina Fainé guiando una sesión del taller de acuarela', caption: 'Guía creativa' },
   { src: '/fotos/mano-paisaje.jpeg', alt: 'Pincelada de acuarela sobre un paisaje en proceso', caption: 'Atención plena' },
   { src: '/fotos/pinceles-corazon.jpeg', alt: 'Pinceles de acuarela dentro de un corazón rosa — materiales del taller', caption: 'Nuestros materiales' },
   { src: '/fotos/pincel-oscuro.jpeg', alt: 'Pincel aplicando acuarela metálica sobre fondo oscuro', caption: 'Color y textura' },

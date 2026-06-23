@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL, INSTAGRAM_BRAND, INSTAGRAM_PERSONAL, WHATSAPP_NUMBER } from './constants';
+import { SITE_NAME, BRAND_NAME, SITE_URL, INSTAGRAM_BRAND, WHATSAPP_NUMBER } from './constants';
 
 const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}/;
 
@@ -36,7 +36,7 @@ export function getLocalBusinessSchema() {
       availableLanguage: ['Spanish'],
     },
     priceRange: '$$',
-    sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],
+    sameAs: [INSTAGRAM_BRAND],
   };
 }
 
@@ -44,7 +44,7 @@ export function getPersonSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Josefina Faine',
+    name: 'Josefina Fainé',
     jobTitle: 'Artista Visual y Arteterapeuta',
     description: 'Licenciada en Artes Visuales de la Universidad Mayor, magíster en Artes en la Salud y Arteterapia de la Universidad Finis Terrae. Guía creativa de talleres de acuarela en Santiago.',
     alumniOf: [
@@ -53,7 +53,7 @@ export function getPersonSchema() {
     ],
     url: `${SITE_URL}/sobre-josefina`,
     image: `${SITE_URL}/fotos/jose.png`,
-    sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],
+    sameAs: [INSTAGRAM_BRAND],
     worksFor: {
       '@type': 'Organization',
       name: SITE_NAME,
@@ -66,9 +66,9 @@ export function getWebSiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: SITE_NAME,
+    name: BRAND_NAME,
     url: SITE_URL,
-    description: 'Talleres de acuarela y arteterapia en Santiago, Chile. Reserva tu lugar con Josefina Faine.',
+    description: 'Talleres de acuarela y arteterapia en Santiago, Chile. Reserva tu lugar con Josefina Fainé.',
     inLanguage: 'es-CL',
   };
 }
@@ -101,12 +101,12 @@ export function getEventSchema(workshop: {
     },
     organizer: {
       '@type': 'Person',
-      name: 'Josefina Faine',
+      name: 'Josefina Fainé',
       url: `${SITE_URL}/sobre-josefina`,
     },
     performer: {
       '@type': 'Person',
-      name: 'Josefina Faine',
+      name: 'Josefina Fainé',
     },
     offers: {
       '@type': 'Offer',
@@ -140,7 +140,7 @@ export function getCourseSchema(workshop: {
       '@type': 'Organization',
       name: SITE_NAME,
       url: SITE_URL,
-      sameAs: [INSTAGRAM_BRAND, INSTAGRAM_PERSONAL],
+      sameAs: [INSTAGRAM_BRAND],
     },
     offers: {
       '@type': 'Offer',
@@ -166,7 +166,7 @@ export function getCourseSchema(workshop: {
       },
       instructor: {
         '@type': 'Person',
-        name: 'Josefina Faine',
+        name: 'Josefina Fainé',
         url: `${SITE_URL}/sobre-josefina`,
       },
     },

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import WorkshopPromoPopup from '@/components/WorkshopPromoPopup';
+import WhatsAppConversionTracker from '@/components/WhatsAppConversionTracker';
 import { getLocalBusinessSchema, getWebSiteSchema } from '@/lib/schema';
 
 const playfair = Playfair_Display({
@@ -22,15 +22,22 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.josefinafainearte.cl'),
-  title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Faine',
+  title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Fainé',
   description:
-    'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Faine.',
+    'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte. Reserva tu lugar con Josefina Fainé.',
   alternates: { canonical: '/' },
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Talleres de acuarela y arteterapia en Santiago — Josefina Faine' }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Talleres de acuarela y arteterapia en Santiago — Josefina Fainé' }],
     locale: 'es_CL',
     type: 'website',
-    siteName: 'Arte y Terapia Salud',
+    siteName: 'Josefina Fainé',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Talleres de Acuarela y Arteterapia en Santiago | Josefina Fainé',
+    description:
+      'Talleres de acuarela terapéutica en Santiago, Chile. Un espacio para crear, sentir y reconectar contigo a través del arte.',
+    images: ['/og-image.jpg'],
   },
   other: {
     'geo.region': 'CL-RM',
@@ -81,7 +88,7 @@ gtag('config', 'AW-18139986626');`,
         <Navbar />
         {children}
         <WhatsAppButton />
-        <WorkshopPromoPopup />
+        <WhatsAppConversionTracker />
       </body>
     </html>
   );
