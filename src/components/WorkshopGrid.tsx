@@ -1,11 +1,11 @@
-import { getTalleres } from '@/lib/talleres-api';
+import { WORKSHOPS } from '@/lib/constants';
 import { orderWorkshops } from '@/lib/utils';
 import SectionHeader from './SectionHeader';
 import AnimateOnScroll from './AnimateOnScroll';
 import WorkshopCard from './WorkshopCard';
 
-export default async function WorkshopGrid() {
-  const workshops = orderWorkshops(await getTalleres());
+export default function WorkshopGrid() {
+  const workshops = orderWorkshops(WORKSHOPS);
   return (
     <section id="talleres" className="section-padding bg-white">
       <div className="max-w-container mx-auto">
