@@ -34,6 +34,7 @@ export interface Workshop {
   ctaText?: string;
   badge?: string;
   detailLink?: string;
+  hidden?: boolean; // No se muestra en la grilla de talleres (la página de detalle sigue accesible)
   // Campos opcionales para la página de detalle (/talleres/[slug])
   seoTitle?: string;
   seoDescription?: string;
@@ -227,6 +228,7 @@ export const WORKSHOPS: Workshop[] = [
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop de Galaxias en Acuarela.')}`,
     badge: 'Acuarelas metalizadas',
     detailLink: '/talleres/galaxias',
+    hidden: true,
     seoTitle: 'Taller de Galaxias en Acuarela | Santiago',
     seoDescription: 'Taller para pintar galaxias en acuarela metalizada en Santiago. 3 obras en papel blanco y negro, sin experiencia previa. Materiales y coffee break incluidos.',
     heading: 'Pinta tus propias galaxias en acuarela',
@@ -282,6 +284,7 @@ export const WORKSHOPS: Workshop[] = [
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop de Flores en Acuarela.')}`,
     badge: 'Flores en acuarela',
     detailLink: '/talleres/flores',
+    hidden: true,
     seoTitle: 'Taller de Flores en Acuarela | Santiago',
     seoDescription: 'Taller para pintar flores en acuarela en Santiago. Manejo del agua, composición floral y ejercicios para soltar bloqueos. Apto para todos los niveles.',
     heading: 'Pinta flores en acuarela y suelta el estrés',
@@ -329,6 +332,7 @@ export const WORKSHOPS: Workshop[] = [
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber más sobre el Workshop de Hada Protectora.')}`,
     badge: 'Arte terapéutico',
     detailLink: '/talleres/hada-protectora',
+    hidden: true,
     seoTitle: 'Taller de Hada Protectora en Acuarela | Santiago',
     seoDescription: 'Taller de acuarela como terapia en Santiago: crea tu hada protectora y conecta con tu mundo interior. Sin experiencia previa, materiales incluidos.',
     heading: 'Crea tu hada protectora en acuarela',
