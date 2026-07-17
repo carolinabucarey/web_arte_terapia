@@ -10,7 +10,7 @@ import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, type Workshop } from '@/lib/constan
 import { formatCLP } from '@/lib/utils';
 
 // Slugs con página estática propia y contenido a mano — no usan esta plantilla.
-const STATIC_SLUGS = new Set(['semanal', 'principiantes', 'empresas']);
+const STATIC_SLUGS = new Set(['semanal', 'principiantes', 'empresas', 'gift-card']);
 
 const DYNAMIC_WORKSHOPS = WORKSHOPS.filter((w) => !STATIC_SLUGS.has(w.slug));
 

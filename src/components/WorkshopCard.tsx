@@ -52,7 +52,7 @@ export default function WorkshopCard({
         </div>
 
         <p className="text-xs text-text-muted font-body">
-          Máx. {groupSize} personas · {level}
+          {groupSize > 0 ? `Máx. ${groupSize} personas · ${level}` : level}
         </p>
 
         <p className="font-semibold text-text-main font-body text-lg mt-auto">{priceLabel}</p>
