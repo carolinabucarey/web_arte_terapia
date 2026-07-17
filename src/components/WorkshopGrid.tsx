@@ -5,7 +5,7 @@ import AnimateOnScroll from './AnimateOnScroll';
 import WorkshopCard from './WorkshopCard';
 
 export default function WorkshopGrid() {
-  const workshops = orderWorkshops(WORKSHOPS);
+  const workshops = orderWorkshops(WORKSHOPS.filter((w) => !w.hidden));
   return (
     <section id="talleres" className="section-padding bg-white">
       <div className="max-w-container mx-auto">
