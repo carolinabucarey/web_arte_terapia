@@ -46,8 +46,9 @@ export default function ContactForm() {
       // Silent — WhatsApp is the primary channel
     }
 
-    // Google Ads conversion event (lead form submission)
-    trackLeadConversion();
+    // Google Ads conversion event (lead form submission), con datos de primera
+    // parte para conversiones mejoradas.
+    trackLeadConversion({ email: data.email, phone: data.telefono });
 
     setStatus('success');
     reset();
