@@ -199,6 +199,12 @@ export default function TallerDetallePage({ params }: { params: { slug: string }
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main w-[140px]">Fecha</td>
                         <td className="py-3 text-sm text-text-muted">{displayDate(workshop)}</td>
                       </tr>
+                      {workshop.time && !isPastDate(workshop) && (
+                        <tr>
+                          <td className="py-3 pr-4 text-sm font-semibold text-text-main">Horario</td>
+                          <td className="py-3 text-sm text-text-muted">{workshop.time}</td>
+                        </tr>
+                      )}
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Duración</td>
                         <td className="py-3 text-sm text-text-muted">{workshop.duration}</td>
