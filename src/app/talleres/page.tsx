@@ -33,7 +33,7 @@ export default function TalleresPage() {
   const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
   const faqSchema = getFAQSchema(TALLERES_FAQS);
   const eventSchemas = WORKSHOPS
-    .map((w) => getEventSchema({ name: w.name, description: w.description, date: w.date, price: w.price }))
+    .map((w) => getEventSchema({ name: w.name, description: w.description, date: w.isoDate ?? w.date, price: w.price }))
     .filter((schema): schema is NonNullable<typeof schema> => schema !== null);
 
   return (
