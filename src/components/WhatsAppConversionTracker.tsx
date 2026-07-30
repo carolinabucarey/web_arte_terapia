@@ -1,7 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import { trackLeadConversion, trackEvent } from '@/lib/analytics';
+import {
+  type LeadIntent,
+  trackLeadConversion,
+  trackEvent,
+  trackLeadIntent,
+} from '@/lib/analytics';
 
 /**
  * Mounts once and listens for clicks on any anchor pointing to WhatsApp
@@ -19,13 +24,31 @@ export default function WhatsAppConversionTracker() {
       const href = anchor.getAttribute('href') || '';
       if (!/wa\.me|api\.whatsapp\.com/i.test(href)) return;
 
+      const pathname = window.location.pathname;
+      let leadIntent: LeadIntent | undefined;
+
+      if (pathname === '/talleres/empresas') {
+        leadIntent = 'empresas';
+      } else if (pathname === '/talleres/semanal') {
+        leadIntent = 'clases_permanentes';
+      }
+
       // Always count the click as a Google Ads lead conversion.
       trackLeadConversion();
+
+      // Send the two campaign-specific lead intents to Tag Manager.
+      if (leadIntent) {
+        trackLeadIntent(leadIntent);
+      }
 
       // Skip the GA4 generate_lead for links that fire their own richer event
       // (e.g. the promo popup) to avoid double counting.
       if (anchor.hasAttribute('data-wa-skip-lead-event')) return;
-      trackEvent('generate_lead', { method: 'whatsapp', source: 'link_click' });
+      trackEvent('generate_lead', {
+        method: 'whatsapp',
+        source: 'link_click',
+        lead_intent: leadIntent ?? 'general',
+      });
     };
 
     document.addEventListener('click', onClick, { capture: true });

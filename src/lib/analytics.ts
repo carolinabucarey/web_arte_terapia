@@ -1,13 +1,33 @@
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    dataLayer?: Array<Record<string, unknown> | IArguments>;
   }
 }
+
+export type LeadIntent = 'empresas' | 'clases_permanentes';
 
 export function trackEvent(eventName: string, params?: Record<string, string>) {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, params);
   }
+}
+
+/**
+ * Sends an intent-specific custom event to Google Tag Manager. These events
+ * let Google Ads optimize the company and permanent-class campaigns
+ * independently instead of grouping every WhatsApp click into one goal.
+ */
+export function trackLeadIntent(intent: LeadIntent) {
+  if (typeof window === 'undefined') return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: `lead_${intent}`,
+    lead_intent: intent,
+    lead_method: 'whatsapp',
+    page_path: window.location.pathname,
+  });
 }
 
 /** Google Ads lead conversion (shared by contact form and WhatsApp clicks). */
