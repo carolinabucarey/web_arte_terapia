@@ -24,7 +24,7 @@ export const metadata: Metadata = {
       'Una obra en acuarela + un marcapáginas plastificado, en Providencia. Materiales y coffee break incluidos. Sin experiencia previa. Consulta la próxima fecha.',
     url: 'https://www.josefinafainearte.cl/talleres/principiantes',
     type: 'website',
-    images: ['/fotos/principiantes-junio.jpg'],
+    images: ['/fotos/principiantes.jpg'],
   },
 };
 
