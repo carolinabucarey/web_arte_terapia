@@ -1,7 +1,5 @@
 import { SITE_NAME, BRAND_NAME, SITE_URL, INSTAGRAM_BRAND, WHATSAPP_NUMBER } from './constants';
 
-const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}/;
-
 export function getLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
@@ -76,17 +74,20 @@ export function getWebSiteSchema() {
 export function getEventSchema(workshop: {
   name: string;
   description: string;
-  date: string;
+  startDate: string;
+  endDate: string;
   price: number | 'consultar';
+  url: string;
+  image: string;
+  soldOut?: boolean;
 }) {
-  if (!ISO_DATE_RE.test(workshop.date)) return null;
-
   return {
     '@context': 'https://schema.org',
     '@type': 'Event',
     name: workshop.name,
     description: workshop.description,
-    startDate: workshop.date,
+    startDate: workshop.startDate,
+    endDate: workshop.endDate,
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     eventStatus: 'https://schema.org/EventScheduled',
     location: {
@@ -112,10 +113,12 @@ export function getEventSchema(workshop: {
       '@type': 'Offer',
       price: workshop.price === 'consultar' ? 0 : workshop.price,
       priceCurrency: 'CLP',
-      url: `${SITE_URL}/contacto`,
-      availability: 'https://schema.org/InStock',
+      url: workshop.url,
+      availability: workshop.soldOut
+        ? 'https://schema.org/SoldOut'
+        : 'https://schema.org/InStock',
     },
-    image: `${SITE_URL}/fotos/foto1.jpeg`,
+    image: `${SITE_URL}${workshop.image}`,
   };
 }
 

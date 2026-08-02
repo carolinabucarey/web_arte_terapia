@@ -6,9 +6,11 @@ import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { getCourseSchema, getBreadcrumbSchema } from '@/lib/schema';
 import { WORKSHOPS, SITE_URL, WHATSAPP_LINK } from '@/lib/constants';
-import { formatCLP } from '@/lib/utils';
+import { formatCLP, getWorkshopSchedules } from '@/lib/utils';
 
 const workshop = WORKSHOPS.find((w) => w.slug === 'principiantes')!;
+const schedules = getWorkshopSchedules(workshop);
+const usesSessions = Boolean(workshop.sessions?.length);
 
 export const metadata: Metadata = {
   title: 'Workshop de Acuarela para Principiantes | Josefina Fainé',
@@ -198,15 +200,37 @@ export default function TallerPrincipiantesPage() {
                 <div className="rounded-2xl border border-border bg-white p-6 md:p-8">
                   <table className="w-full text-left font-body">
                     <tbody className="divide-y divide-border">
-                      <tr>
-                        <td className="py-3 pr-4 text-sm font-semibold text-text-main w-[140px]">Fecha</td>
-                        <td className="py-3 text-sm text-text-muted">{workshop.date}</td>
-                      </tr>
-                      {workshop.time && (
+                      {usesSessions ? (
                         <tr>
-                          <td className="py-3 pr-4 text-sm font-semibold text-text-main">Horario</td>
-                          <td className="py-3 text-sm text-text-muted">{workshop.time} hrs</td>
+                          <td className="py-3 pr-4 text-sm font-semibold text-text-main w-[140px]">Fechas y horarios</td>
+                          <td className="py-3 text-sm text-text-muted">
+                            {schedules.length ? (
+                              <ul className="space-y-1.5">
+                                {schedules.map((item) => (
+                                  <li key={`${item.date}-${item.time}`}>
+                                    {item.date} · {item.time}
+                                    {item.status === 'sold-out' ? ' · Sin cupos' : ''}
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              'Próximamente'
+                            )}
+                          </td>
                         </tr>
+                      ) : (
+                        <>
+                          <tr>
+                            <td className="py-3 pr-4 text-sm font-semibold text-text-main w-[140px]">Fecha</td>
+                            <td className="py-3 text-sm text-text-muted">{schedules[0]?.date || 'Próximamente'}</td>
+                          </tr>
+                          {schedules[0]?.time && (
+                            <tr>
+                              <td className="py-3 pr-4 text-sm font-semibold text-text-main">Horario</td>
+                              <td className="py-3 text-sm text-text-muted">{schedules[0].time}</td>
+                            </tr>
+                          )}
+                        </>
                       )}
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Duración</td>

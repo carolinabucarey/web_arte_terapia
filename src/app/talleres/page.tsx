@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { getEventSchema, getBreadcrumbSchema, getFAQSchema } from '@/lib/schema';
 import { WORKSHOPS, SITE_URL } from '@/lib/constants';
 import { TALLERES_FAQS } from '@/lib/faqs';
+import { getUpcomingSessions } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Próximos Talleres de Acuarela | Josefina Fainé',
@@ -33,8 +34,20 @@ export default function TalleresPage() {
   const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
   const faqSchema = getFAQSchema(TALLERES_FAQS);
   const eventSchemas = WORKSHOPS
-    .map((w) => getEventSchema({ name: w.name, description: w.description, date: w.isoDate ?? w.date, price: w.price }))
-    .filter((schema): schema is NonNullable<typeof schema> => schema !== null);
+    .flatMap((workshop) =>
+      getUpcomingSessions(workshop).map((session) =>
+        getEventSchema({
+          name: workshop.name,
+          description: workshop.description,
+          startDate: `${session.date}T${session.startTime}:00`,
+          endDate: `${session.date}T${session.endTime}:00`,
+          price: workshop.price,
+          url: `${SITE_URL}/talleres/${workshop.slug}`,
+          image: workshop.image,
+          soldOut: session.status === 'sold-out',
+        }),
+      ),
+    );
 
   return (
     <>

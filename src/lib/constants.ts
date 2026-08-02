@@ -15,15 +15,28 @@ export const NAV_LINKS = [
   { label: 'Contacto', href: '/contacto' },
 ];
 
+export interface WorkshopSession {
+  /** Fecha local del taller en formato YYYY-MM-DD. */
+  date: string;
+  /** Hora local de inicio en formato HH:mm (24 horas). */
+  startTime: string;
+  /** Hora local de término en formato HH:mm (24 horas). */
+  endTime: string;
+  status?: 'available' | 'sold-out' | 'cancelled';
+}
+
 export interface Workshop {
   id: string;
   slug: string;
   name: string;
   tagline: string;
   description: string;
+  /** Texto de respaldo para talleres recurrentes o sin sesiones confirmadas. */
   date: string;
-  isoDate?: string;
+  /** Texto de respaldo para talleres recurrentes o sin sesiones confirmadas. */
   time: string;
+  /** Fechas y horarios confirmados. Permite publicar más de una edición del mismo taller. */
+  sessions?: WorkshopSession[];
   duration: string;
   price: number | 'consultar';
   groupSize: number;
@@ -51,19 +64,26 @@ export const WORKSHOPS: Workshop[] = [
     name: 'Workshop Animales Marinos en Acuarela',
     tagline: 'Sesión única · Apto para principiantes',
     description: 'Una tarde para sumergirte en el azul y pintar tus propios animales marinos en acuarela. Verás paso a paso cómo lograr las transparencias del agua, los degradados del mar y la forma de cada animal. Materiales y coffee break incluidos, en Providencia (metro Los Leones).',
-    date: 'Sábado 1 de agosto',
-    isoDate: '2026-08-01',
-    time: '16:00 a 19:00',
+    date: '',
+    time: '',
+    sessions: [
+      {
+        date: '2026-08-01',
+        startTime: '16:00',
+        endTime: '19:00',
+        status: 'available',
+      },
+    ],
     duration: '3 horas · sesión única',
     price: 34000,
     groupSize: 7,
     level: 'Apto para principiantes en la técnica',
     image: '/fotos/animales-marinos.jpg',
-    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Animales Marinos en Acuarela del sábado 1 de agosto.')}`,
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Animales Marinos en Acuarela. ¿Qué fechas tienen cupos?')}`,
     badge: 'Cupos limitados',
     detailLink: '/talleres/animales-marinos',
     seoTitle: 'Taller de Animales Marinos en Acuarela | Santiago',
-    seoDescription: 'Taller de acuarela para pintar animales marinos en Santiago, sábado 1 de agosto. Apto para principiantes. Materiales y coffee break incluidos.',
+    seoDescription: 'Taller de acuarela para pintar animales marinos en Santiago. Apto para principiantes. Materiales y coffee break incluidos. Consulta las próximas fechas.',
     heading: 'Pinta animales marinos en acuarela',
     intro: 'Una tarde de sábado para sumergirte en el azul y pintar tus propios animales marinos. Aprenderás a manejar el agua para lograr las transparencias del mar y verás paso a paso cómo construir cada animal, en un grupo reducido y a tu ritmo.',
     aprenderas: [

@@ -4,7 +4,12 @@ import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import { trackEvent } from '@/lib/analytics';
 import { WORKSHOPS } from '@/lib/constants';
-import { formatCLP } from '@/lib/utils';
+import {
+  formatCLP,
+  formatSessionDate,
+  formatSessionTime,
+  getUpcomingSessions,
+} from '@/lib/utils';
 
 const SHOW_DELAY_MS = 1200;
 const PROMO_WINDOW_DAYS = 30;
@@ -13,20 +18,29 @@ export default function WorkshopPromoPopup() {
   const [open, setOpen] = useState(false);
   const [imgIdx, setImgIdx] = useState(0);
 
-  const workshop = useMemo(() => {
-    const now = Date.now();
-    const horizon = now + PROMO_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+  const promotion = useMemo(() => {
+    const now = new Date();
+    const horizon = new Date(now.getTime() + PROMO_WINDOW_DAYS * 24 * 60 * 60 * 1000);
+
     return WORKSHOPS
-      .filter((w) => {
-        if (!w.isoDate) return false;
-        const t = Date.parse(w.isoDate);
-        return Number.isFinite(t) && t >= now && t <= horizon;
-      })
-      .sort((a, b) => Date.parse(a.isoDate!) - Date.parse(b.isoDate!))[0];
+      .flatMap((workshop) =>
+        getUpcomingSessions(workshop, now)
+          .filter((session) => session.status !== 'sold-out')
+          .map((session) => ({ workshop, session })),
+      )
+      .filter(({ session }) => new Date(`${session.date}T${session.startTime}:00`) <= horizon)
+      .sort((a, b) =>
+        `${a.session.date}T${a.session.startTime}`.localeCompare(
+          `${b.session.date}T${b.session.startTime}`,
+        ),
+      )[0];
   }, []);
 
+  const workshop = promotion?.workshop;
+  const session = promotion?.session;
+
   const promoId = workshop?.id ?? '';
-  const storageKey = promoId ? `promo-dismissed:${promoId}` : '';
+  const storageKey = promoId && session ? `promo-dismissed:${promoId}:${session.date}` : '';
   const images = workshop?.images && workshop.images.length > 0 ? workshop.images : workshop ? [workshop.image] : [];
 
   useEffect(() => {
@@ -63,7 +77,7 @@ export default function WorkshopPromoPopup() {
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
 
-  if (!workshop) return null;
+  if (!workshop || !session) return null;
 
   const close = (reason: 'x' | 'backdrop' | 'escape' | 'cta') => {
     setOpen(false);
@@ -147,7 +161,7 @@ export default function WorkshopPromoPopup() {
             {workshop.name}
           </h3>
           <p className="text-text-muted font-body text-sm leading-relaxed">
-            {workshop.date}{workshop.time ? ` · ${workshop.time}` : ''} · {priceLabel}
+            {formatSessionDate(session)} · {formatSessionTime(session)} · {priceLabel}
           </p>
           <p className="text-text-muted font-body text-sm leading-relaxed">
             {workshop.description}

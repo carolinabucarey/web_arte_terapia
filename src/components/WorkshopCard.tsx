@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { formatCLP } from '@/lib/utils';
+import { formatCLP, getWorkshopSchedule } from '@/lib/utils';
 import type { Workshop } from '@/lib/constants';
 
-export default function WorkshopCard({
-  name, tagline, description, date, time, duration, price, groupSize, level, image, ctaLink, ctaText, badge, detailLink,
-}: Workshop) {
+export default function WorkshopCard(workshop: Workshop) {
+  const {
+    name, tagline, description, duration, price, groupSize, level, image, ctaLink, ctaText, badge, detailLink,
+  } = workshop;
   const priceLabel = price === 'consultar' ? 'Consultar' : formatCLP(price);
   const isExternal = /^https?:\/\//.test(ctaLink);
   const buttonText = ctaText ?? 'Reservar mi lugar';
+  const { date, time } = getWorkshopSchedule(workshop);
   const dateTime = [date, time].filter(Boolean).join(' · ');
   return (
     <div className="h-full flex flex-col bg-white rounded-card border border-border shadow-card hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-lavender transition-all duration-300 ease-out overflow-hidden">

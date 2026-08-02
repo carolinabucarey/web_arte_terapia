@@ -9,9 +9,10 @@ import SemanalCarousel from '@/components/SemanalCarousel';
 import { getCourseSchema, getBreadcrumbSchema, getFAQSchema } from '@/lib/schema';
 import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, SEMANAL_GALLERY } from '@/lib/constants';
 import { TALLERES_FAQS } from '@/lib/faqs';
-import { formatCLP } from '@/lib/utils';
+import { formatCLP, getWorkshopSchedule } from '@/lib/utils';
 
 const workshop = WORKSHOPS.find((w) => w.slug === 'semanal')!;
+const schedule = getWorkshopSchedule(workshop);
 
 export const metadata: Metadata = {
   title: 'Taller Semanal de Acuarela en Santiago | Josefina Fainé',
@@ -240,7 +241,7 @@ export default function TallerSemanalPage() {
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Día</td>
-                        <td className="py-3 text-sm text-text-muted">{[workshop.date, workshop.time].filter(Boolean).join(' · ')}</td>
+                        <td className="py-3 text-sm text-text-muted">{[schedule.date, schedule.time].filter(Boolean).join(' · ')}</td>
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Duración</td>
