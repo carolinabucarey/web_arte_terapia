@@ -121,7 +121,7 @@ export const WORKSHOPS: Workshop[] = [
     time: '',
     sessions: [
       {
-        date: '2026-08-02',
+        date: '2026-08-22',
         startTime: '16:00',
         endTime: '19:00',
         status: 'available',
