@@ -36,7 +36,7 @@ export default function WorkshopCard(workshop: Workshop) {
 
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-text-muted font-body">
           {dateTime && (
-            <span className="flex items-center gap-1.5">
+            <span className="flex items-center gap-1.5 font-semibold text-text-main">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="3" y="4" width="18" height="18" rx="2" />
                 <path d="M16 2v4M8 2v4M3 10h18" />
