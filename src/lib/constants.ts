@@ -312,7 +312,7 @@ export const WORKSHOPS: Workshop[] = [
     date: 'Próximamente',
     time: 'A confirmar',
     duration: '4 horas · sesión única',
-    price: 38000,
+    price: 40000,
     groupSize: 6,
     level: 'Todos los niveles',
     image: '/fotos/mascota-nina.jpeg',
