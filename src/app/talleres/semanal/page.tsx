@@ -26,7 +26,7 @@ export const metadata: Metadata = {
       'Grupos de máximo 6 personas. Acompañamiento personalizado. Sin experiencia previa necesaria.',
     url: 'https://www.josefinafainearte.cl/talleres/semanal',
     type: 'website',
-    images: ['/fotos/tulipan-acuarela.jpg'],
+    images: ['/fotos/alumnas/obra-24.jpeg'],
   },
 };
 
@@ -81,7 +81,7 @@ export default function TallerSemanalPage() {
             <AnimateOnScroll delay={0.15}>
               <div className="mt-8 relative rounded-2xl overflow-hidden aspect-[16/7]">
                 <Image
-                  src="/fotos/tulipan-acuarela.jpg"
+                  src="/fotos/alumnas/obra-24.jpeg"
                   alt="Tulipán morado pintado en acuarela durante el taller semanal de Josefina Fainé"
                   fill
                   className="object-cover object-top"
