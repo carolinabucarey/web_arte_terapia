@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
+import WorkshopGrid from '@/components/WorkshopGrid';
 import StudentWorks from '@/components/StudentWorks';
 import About from '@/components/About';
 import InstructorProfile from '@/components/InstructorProfile';
-import WorkshopGrid from '@/components/WorkshopGrid';
 import Benefits from '@/components/Benefits';
 import Gallery from '@/components/Gallery';
 import Testimonials from '@/components/Testimonials';
@@ -39,10 +39,10 @@ export default function HomePage() {
       />
       <main id="main-content">
         <Hero />
+        <WorkshopGrid />
         <StudentWorks />
         <About />
         <InstructorProfile />
-        <WorkshopGrid />
         <Benefits />
         <Gallery />
         <Testimonials />
