@@ -110,7 +110,7 @@ export default function TallerDetallePage({ params }: { params: { slug: string }
                   src={workshop.image}
                   alt={`${workshop.name} en Santiago con Josefina Fainé`}
                   fill
-                  className="object-cover"
+                  className={`object-cover ${workshop.imagePosition ?? ''}`}
                   sizes="(max-width: 768px) 100vw, 1120px"
                   priority
                 />

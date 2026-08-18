@@ -42,6 +42,8 @@ export interface Workshop {
   groupSize: number;
   level: string;
   image: string;
+  /** Clase de object-position de Tailwind para encuadrar la foto (ej. 'object-top' en fotos verticales). */
+  imagePosition?: string;
   images?: string[];
   ctaLink: string;
   ctaText?: string;
@@ -106,7 +108,8 @@ export const WORKSHOPS: Workshop[] = [
     price: 'consultar',
     groupSize: 6,
     level: 'Todos los niveles',
-    image: '/fotos/foto1.jpeg',
+    image: '/fotos/tulipan-acuarela.jpg',
+    imagePosition: 'object-top',
     ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero saber horarios y reservar mi lugar en el taller semanal de acuarela.')}`,
     badge: 'Nuestro taller más querido',
     detailLink: '/talleres/semanal',

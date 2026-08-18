@@ -5,7 +5,7 @@ import type { Workshop } from '@/lib/constants';
 
 export default function WorkshopCard(workshop: Workshop) {
   const {
-    name, tagline, description, duration, price, groupSize, level, image, ctaLink, ctaText, badge, detailLink,
+    name, tagline, description, duration, price, groupSize, level, image, imagePosition, ctaLink, ctaText, badge, detailLink,
   } = workshop;
   const priceLabel = price === 'consultar' ? 'Consultar' : formatCLP(price);
   const isExternal = /^https?:\/\//.test(ctaLink);
@@ -19,7 +19,7 @@ export default function WorkshopCard(workshop: Workshop) {
           src={image}
           alt={name}
           fill
-          className="object-cover rounded-t-card"
+          className={`object-cover rounded-t-card ${imagePosition ?? ''}`}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         {badge && (
