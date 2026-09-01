@@ -45,6 +45,7 @@ export interface Workshop {
   /** Clase de object-position de Tailwind para encuadrar la foto (ej. 'object-top' en fotos verticales). */
   imagePosition?: string;
   images?: string[];
+  imageFit?: 'cover' | 'contain';
   ctaLink: string;
   ctaText?: string;
   badge?: string;
@@ -60,6 +61,46 @@ export interface Workshop {
 }
 
 export const WORKSHOPS: Workshop[] = [
+  {
+    id: 'yayoi-kusama',
+    slug: 'yayoi-kusama',
+    name: 'Workshop de Acuarela, Técnica Mixta y Lunares',
+    tagline: 'Sesión única · Inspirado en Yayoi Kusama',
+    description: 'Una experiencia creativa inspirada en el universo de Yayoi Kusama para explorar la acuarela, la técnica mixta y sus icónicos lunares. No necesitas experiencia previa. Materiales y coffee break incluidos, en Providencia (metro Los Leones).',
+    date: '',
+    time: '',
+    sessions: [
+      {
+        date: '2026-09-05',
+        startTime: '17:00',
+        endTime: '19:00',
+        status: 'available',
+      },
+    ],
+    duration: '2 horas · sesión única',
+    price: 33000,
+    groupSize: 6,
+    level: 'Sin experiencia previa',
+    image: '/fotos/taller-yayoi-kusama.jpeg',
+    images: [
+      '/fotos/taller-yayoi-kusama.jpeg',
+      '/fotos/taller-yayoi-kusama-inspiracion.jpeg',
+    ],
+    imageFit: 'contain',
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop de Acuarela, Técnica Mixta y Lunares inspirado en Yayoi Kusama.')}`,
+    badge: 'Máximo 6 cupos',
+    detailLink: '/talleres/yayoi-kusama',
+    seoTitle: 'Taller inspirado en Yayoi Kusama | Santiago',
+    seoDescription: 'Workshop de acuarela, técnica mixta y lunares inspirado en Yayoi Kusama en Santiago. Materiales y coffee break incluidos. Máximo 6 cupos.',
+    heading: 'Acuarela, técnica mixta y lunares inspirados en Yayoi Kusama',
+    intro: 'Una tarde para jugar con el color, la repetición y los lunares a través de la acuarela y la técnica mixta. Conocerás el universo visual de Yayoi Kusama y crearás una obra propia en un grupo de máximo seis personas.',
+    aprenderas: [
+      'A combinar acuarela y técnica mixta en una misma obra',
+      'A explorar el ritmo, la repetición y los lunares',
+      'A crear una composición inspirada en el universo visual de Yayoi Kusama',
+      'Una obra personal terminada para llevar',
+    ],
+  },
   {
     id: 'animales-marinos',
     slug: 'animales-marinos',

@@ -76,6 +76,7 @@ export default function TallerDetallePage({ params }: { params: { slug: string }
   const isExternalCta = /^https?:\/\//.test(workshop.ctaLink);
   const schedules = getWorkshopSchedules(workshop);
   const usesSessions = Boolean(workshop.sessions?.length);
+  const images = workshop.images?.length ? workshop.images : [workshop.image];
 
   return (
     <>
@@ -105,20 +106,31 @@ export default function TallerDetallePage({ params }: { params: { slug: string }
             </AnimateOnScroll>
 
             <AnimateOnScroll delay={0.15}>
-              <div className="mt-8 relative rounded-2xl overflow-hidden aspect-[4/3] md:aspect-[16/9] bg-brand-lavender/15">
-                <Image
-                  src={workshop.image}
-                  alt={`${workshop.name} en Santiago con Josefina Fainé`}
-                  fill
-                  className={`object-cover ${workshop.imagePosition ?? ''}`}
-                  sizes="(max-width: 768px) 100vw, 1120px"
-                  priority
-                />
-                {workshop.badge && (
-                  <span className="absolute top-4 left-4 bg-brand-lavender/90 text-brand-deep text-sm font-body font-semibold px-4 py-1.5 rounded-pill backdrop-blur-sm">
-                    {workshop.badge}
-                  </span>
-                )}
+              <div className={`mt-8 grid gap-4 ${images.length > 1 ? 'md:grid-cols-2' : ''}`}>
+                {images.map((src, index) => (
+                  <div
+                    key={src}
+                    className={`relative rounded-2xl overflow-hidden bg-brand-lavender/15 ${images.length > 1 ? 'aspect-square' : 'aspect-[4/3] md:aspect-[16/9]'}`}
+                  >
+                    <Image
+                      src={src}
+                      alt={index === 0
+                        ? `${workshop.name} en Santiago con Josefina Fainé`
+                        : `Inspiración para ${workshop.name}`}
+                      fill
+                      className={`${workshop.imageFit === 'contain' ? 'object-contain' : 'object-cover'} ${workshop.imagePosition ?? ''}`}
+                      sizes={images.length > 1
+                        ? '(max-width: 768px) 100vw, 50vw'
+                        : '(max-width: 768px) 100vw, 1120px'}
+                      priority={index === 0}
+                    />
+                    {index === 0 && workshop.badge && (
+                      <span className="absolute top-4 left-4 bg-brand-lavender/90 text-brand-deep text-sm font-body font-semibold px-4 py-1.5 rounded-pill backdrop-blur-sm">
+                        {workshop.badge}
+                      </span>
+                    )}
+                  </div>
+                ))}
               </div>
             </AnimateOnScroll>
           </div>
