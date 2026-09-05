@@ -62,6 +62,52 @@ export interface Workshop {
 
 export const WORKSHOPS: Workshop[] = [
   {
+    id: 'cocteles-en-acuarela',
+    slug: 'cocteles-en-acuarela',
+    name: 'Workshop de Cócteles en Acuarela',
+    tagline: 'Apto para principiantes',
+    description: 'Exploraremos transparencias, cristales, frutas y reflejos para pintar tu cóctel favorito en acuarela. No necesitas experiencia previa. Materiales, marco y picoteo con una mimosa incluidos, en Providencia (metro Los Leones).',
+    date: '',
+    time: '',
+    sessions: [
+      {
+        date: '2026-09-12',
+        startTime: '16:30',
+        endTime: '19:30',
+        status: 'available',
+      },
+      {
+        date: '2026-09-13',
+        startTime: '16:30',
+        endTime: '19:30',
+        status: 'available',
+      },
+    ],
+    duration: '3 horas · sesión única',
+    price: 39000,
+    groupSize: 7,
+    level: 'Apto para principiantes',
+    image: '/fotos/taller-cocteles-acuarela.jpg',
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop de Cócteles en Acuarela. ¿Qué fecha tienen cupos?')}`,
+    badge: 'Elige tu fecha',
+    detailLink: '/talleres/cocteles-en-acuarela',
+    seoTitle: 'Taller de Cócteles en Acuarela | Santiago',
+    seoDescription: 'Workshop de cócteles en acuarela en Santiago: transparencias, cristales, frutas y reflejos. Apto para principiantes. Materiales, marco y picoteo con una mimosa incluidos.',
+    heading: 'Pinta tu cóctel favorito en acuarela',
+    intro: 'Una tarde para explorar transparencias, cristales, frutas y reflejos a través de la acuarela y pintar tu cóctel favorito. Apto para principiantes, con picoteo y una mimosa para acompañar la sesión.',
+    aprenderas: [
+      'A representar transparencias y cristales en acuarela',
+      'Cómo pintar frutas con volumen y frescura',
+      'El manejo de luces y reflejos sobre el vidrio',
+      'Una obra enmarcada de tu cóctel favorito para llevar',
+    ],
+    incluye: [
+      'Materiales y marco para tu obra',
+      'Picoteo y una mimosa',
+      'Guía personalizada durante la sesión',
+    ],
+  },
+  {
     id: 'yayoi-kusama',
     slug: 'yayoi-kusama',
     name: 'Workshop de Acuarela, Técnica Mixta y Lunares',
