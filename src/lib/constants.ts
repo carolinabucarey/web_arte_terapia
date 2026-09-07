@@ -216,6 +216,12 @@ export const WORKSHOPS: Workshop[] = [
         endTime: '19:00',
         status: 'available',
       },
+      {
+        date: '2026-09-12',
+        startTime: '16:00',
+        endTime: '19:00',
+        status: 'available',
+      },
     ],
     duration: '3 horas · sesión única',
     price: 38000,
