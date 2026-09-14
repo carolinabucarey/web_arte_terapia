@@ -22,11 +22,20 @@ export function getUpcomingSessions(
   workshop: Workshop,
   referenceDate = new Date(),
 ): WorkshopSession[] {
+  // Las sesiones se realizan en Santiago, independiente de la zona del servidor o visitante.
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Santiago',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+  }).formatToParts(referenceDate);
+  const part = (type: Intl.DateTimeFormatPartTypes) => parts.find((p) => p.type === type)!.value;
+  const localNow = `${part('year')}-${part('month')}-${part('day')}T${part('hour')}:${part('minute')}:${part('second')}`;
+
   return [...(workshop.sessions ?? [])]
     .filter((session) => {
       if (session.status === 'cancelled') return false;
-      const sessionEnd = new Date(`${session.date}T${session.endTime}:00`);
-      return Number.isFinite(sessionEnd.getTime()) && sessionEnd >= referenceDate;
+      const sessionEnd = `${session.date}T${session.endTime}:00`;
+      return Number.isFinite(new Date(sessionEnd).getTime()) && sessionEnd > localNow;
     })
     .sort((a, b) =>
       `${a.date}T${a.startTime}`.localeCompare(`${b.date}T${b.startTime}`),
@@ -83,22 +92,10 @@ export function getWorkshopSchedules(
     : [];
 }
 
-/**
- * Ordena los talleres: los vigentes primero (en su orden original) y los que
- * ya pasaron al final, sin fecha. Un taller se considera pasado si tenía
- * sesiones publicadas y ya no queda ninguna vigente.
- */
-export function orderWorkshops(workshops: Workshop[]): Workshop[] {
-  const startOfToday = new Date();
-  startOfToday.setHours(0, 0, 0, 0);
-
-  const isPast = (w: Workshop): boolean =>
-    Boolean(w.sessions?.length) && getUpcomingSessions(w, startOfToday).length === 0;
-
-  const vigentes = workshops.filter((w) => !isPast(w));
-  const pasados = workshops
-    .filter(isPast)
-    .map((w) => ({ ...w, date: '', time: '' }));
-
-  return [...vigentes, ...pasados];
+/** Mantiene los talleres visibles con fechas vigentes y las ofertas recurrentes o a coordinar. */
+export function getActiveWorkshops(workshops: Workshop[], referenceDate = new Date()): Workshop[] {
+  return workshops.filter((workshop) =>
+    !workshop.hidden &&
+    (!workshop.sessions?.length || getUpcomingSessions(workshop, referenceDate).length > 0),
+  );
 }

@@ -9,6 +9,8 @@ import { getCourseSchema, getBreadcrumbSchema } from '@/lib/schema';
 import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, type Workshop } from '@/lib/constants';
 import { formatCLP, getWorkshopSchedules } from '@/lib/utils';
 
+export const revalidate = 60;
+
 // Slugs con página estática propia y contenido a mano — no usan esta plantilla.
 const STATIC_SLUGS = new Set(['semanal', 'principiantes', 'empresas', 'gift-card']);
 

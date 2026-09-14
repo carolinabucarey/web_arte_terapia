@@ -13,6 +13,8 @@ import Footer from '@/components/Footer';
 import { getFAQSchema } from '@/lib/schema';
 import { HOME_FAQS } from '@/lib/faqs';
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Talleres de Acuarela y Arteterapia Santiago | Josefina Fainé',
   description:

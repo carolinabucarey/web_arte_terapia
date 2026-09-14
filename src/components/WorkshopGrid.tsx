@@ -1,11 +1,11 @@
 import { WORKSHOPS } from '@/lib/constants';
-import { orderWorkshops } from '@/lib/utils';
+import { getActiveWorkshops } from '@/lib/utils';
 import SectionHeader from './SectionHeader';
 import AnimateOnScroll from './AnimateOnScroll';
 import WorkshopCard from './WorkshopCard';
 
 export default function WorkshopGrid() {
-  const workshops = orderWorkshops(WORKSHOPS.filter((w) => !w.hidden));
+  const workshops = getActiveWorkshops(WORKSHOPS);
   return (
     <section id="talleres" className="section-padding bg-white">
       <div className="max-w-container mx-auto">

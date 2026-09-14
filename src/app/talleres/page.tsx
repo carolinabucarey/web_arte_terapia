@@ -10,6 +10,8 @@ import { WORKSHOPS, SITE_URL } from '@/lib/constants';
 import { TALLERES_FAQS } from '@/lib/faqs';
 import { getUpcomingSessions } from '@/lib/utils';
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Próximos Talleres de Acuarela | Josefina Fainé',
   description:
@@ -34,6 +36,7 @@ export default function TalleresPage() {
   const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
   const faqSchema = getFAQSchema(TALLERES_FAQS);
   const eventSchemas = WORKSHOPS
+    .filter((workshop) => !workshop.hidden)
     .flatMap((workshop) =>
       getUpcomingSessions(workshop).map((session) =>
         getEventSchema({

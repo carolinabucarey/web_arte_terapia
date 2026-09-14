@@ -3,8 +3,9 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.josefinafainearte.cl';
   return [
-    { url: baseUrl, lastModified: new Date('2026-04-13'), changeFrequency: 'weekly', priority: 1 },
-    { url: `${baseUrl}/talleres`, lastModified: new Date('2026-04-28'), changeFrequency: 'weekly', priority: 0.9 },
+    { url: baseUrl, lastModified: new Date('2026-09-14'), changeFrequency: 'weekly', priority: 1 },
+    { url: `${baseUrl}/talleres`, lastModified: new Date('2026-09-14'), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/talleres/magnolias`, lastModified: new Date('2026-09-14'), changeFrequency: 'weekly', priority: 0.85 },
     { url: `${baseUrl}/talleres/semanal`, lastModified: new Date('2026-04-28'), changeFrequency: 'weekly', priority: 0.85 },
     { url: `${baseUrl}/talleres/principiantes`, lastModified: new Date('2026-05-30'), changeFrequency: 'weekly', priority: 0.85 },
     { url: `${baseUrl}/talleres/empresas`, lastModified: new Date('2026-04-28'), changeFrequency: 'monthly', priority: 0.8 },

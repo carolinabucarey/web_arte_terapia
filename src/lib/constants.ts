@@ -62,6 +62,36 @@ export interface Workshop {
 
 export const WORKSHOPS: Workshop[] = [
   {
+    id: 'magnolias',
+    slug: 'magnolias',
+    name: 'Workshop Magnolias en Acuarela',
+    tagline: 'Sesión única · Apto para principiantes',
+    description: 'Una tarde para pintar magnolias en acuarela, apta para principiantes en la técnica. Materiales y coffee break incluidos, en Providencia (metro Los Leones). Máximo 6 cupos.',
+    date: '',
+    time: '',
+    sessions: [
+      {
+        date: '2026-09-17',
+        startTime: '17:00',
+        endTime: '20:00',
+        status: 'available',
+      },
+    ],
+    duration: '3 horas · sesión única',
+    price: 33000,
+    groupSize: 6,
+    level: 'Apto para principiantes en la técnica',
+    image: '/fotos/workshop-magnolias.jpeg',
+    imageFit: 'contain',
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Magnolias en Acuarela del jueves 17 de septiembre, de 17:00 a 20:00 hrs.')}`,
+    badge: 'Máximo 6 cupos',
+    detailLink: '/talleres/magnolias',
+    seoTitle: 'Workshop Magnolias en Acuarela en Providencia | Josefina Fainé',
+    seoDescription: 'Workshop Magnolias en Acuarela: jueves 17 de septiembre de 2026, de 17:00 a 20:00 hrs, en Providencia. Apto para principiantes. Materiales y coffee break incluidos. $33.000.',
+    heading: 'Pinta magnolias en acuarela',
+    incluye: ['Materiales para la sesión', 'Coffee break'],
+  },
+  {
     id: 'principiantes',
     slug: 'principiantes',
     name: 'Workshop de Acuarela para Principiantes',
