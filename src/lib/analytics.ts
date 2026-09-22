@@ -22,7 +22,7 @@ export function trackEvent(eventName: string, params?: Record<string, string>) {
  * Records an intent-specific lead for Google Tag Manager and Google Ads so the
  * company and permanent-class campaigns can optimize independently.
  */
-export function trackLeadIntent(intent: LeadIntent) {
+export function trackLeadIntent(intent: LeadIntent, userData?: LeadUserData) {
   if (typeof window === 'undefined') return;
 
   window.dataLayer = window.dataLayer || [];
@@ -36,6 +36,7 @@ export function trackLeadIntent(intent: LeadIntent) {
   // Fire the campaign-specific Google Ads conversion directly. The custom
   // dataLayer event remains available in GTM for diagnostics and reporting.
   if (typeof window.gtag === 'function') {
+    setEnhancedConversionData(userData);
     window.gtag('event', 'conversion', {
       send_to: LEAD_INTENT_CONVERSION_SEND_TO[intent],
       value: 1.0,
@@ -53,6 +54,22 @@ export interface LeadUserData {
   phone?: string;
 }
 
+function normalizeEmail(raw: string): string | undefined {
+  const normalized = raw.trim().toLowerCase();
+  const match = normalized.match(/^([^\s@]+)@([^\s@]+\.[^\s@]+)$/);
+  if (!match) return undefined;
+
+  const [, localPart, domain] = match;
+
+  // Google asks advertisers to remove dots before gmail.com/googlemail.com.
+  const normalizedLocalPart =
+    domain === 'gmail.com' || domain === 'googlemail.com'
+      ? localPart.replace(/\./g, '')
+      : localPart;
+
+  return `${normalizedLocalPart}@${domain}`;
+}
+
 /**
  * Chilean phone numbers to E.164 (+56XXXXXXXXX), which is what enhanced
  * conversions requires. Returns undefined when the input doesn't look like a
@@ -60,22 +77,37 @@ export interface LeadUserData {
  */
 function normalizePhone(raw: string): string | undefined {
   const digits = raw.replace(/\D/g, '');
-  if (raw.trim().startsWith('+') && digits.length >= 8) return `+${digits}`;
-  if (digits.length === 11 && digits.startsWith('56')) return `+${digits}`;
-  if (digits.length === 9) return `+56${digits}`;
-  return undefined;
+  const e164Digits =
+    raw.trim().startsWith('+') || digits.startsWith('56')
+      ? digits
+      : digits.length === 9
+        ? `56${digits}`
+        : '';
+
+  return e164Digits.length >= 11 && e164Digits.length <= 15
+    ? `+${e164Digits}`
+    : undefined;
 }
 
 function buildUserData(userData: LeadUserData): Record<string, string> | undefined {
   const payload: Record<string, string> = {};
 
-  const email = userData.email?.trim().toLowerCase();
-  if (email && /^\S+@\S+\.\S+$/.test(email)) payload.email = email;
+  const email = userData.email ? normalizeEmail(userData.email) : undefined;
+  if (email) payload.email = email;
 
   const phone = userData.phone?.trim() ? normalizePhone(userData.phone) : undefined;
   if (phone) payload.phone_number = phone;
 
   return Object.keys(payload).length > 0 ? payload : undefined;
+}
+
+function setEnhancedConversionData(userData?: LeadUserData) {
+  if (!userData || typeof window.gtag !== 'function') return;
+
+  const enhanced = buildUserData(userData);
+  if (enhanced) {
+    window.gtag('set', 'user_data', enhanced);
+  }
 }
 
 /**
@@ -88,10 +120,7 @@ function buildUserData(userData: LeadUserData): Record<string, string> | undefin
 export function trackLeadConversion(userData?: LeadUserData) {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
 
-  const enhanced = userData ? buildUserData(userData) : undefined;
-  if (enhanced) {
-    window.gtag('set', 'user_data', enhanced);
-  }
+  setEnhancedConversionData(userData);
 
   window.gtag('event', 'conversion', {
     send_to: LEAD_CONVERSION_SEND_TO,

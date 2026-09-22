@@ -5,14 +5,28 @@ import { useForm } from 'react-hook-form';
 import SectionHeader from './SectionHeader';
 import AnimateOnScroll from './AnimateOnScroll';
 import { WHATSAPP_LINK, WHATSAPP_NUMBER, INSTAGRAM_BRAND } from '@/lib/constants';
-import { trackLeadConversion } from '@/lib/analytics';
+import {
+  type LeadIntent,
+  trackLeadConversion,
+  trackLeadIntent,
+} from '@/lib/analytics';
+
+type ContactInterest = LeadIntent | 'workshops' | 'otro';
 
 interface FormData {
   nombre: string;
   email: string;
+  interes: ContactInterest;
   mensaje: string;
   telefono?: string;
 }
+
+const INTEREST_LABELS: Record<ContactInterest, string> = {
+  clases_permanentes: 'Taller semanal de acuarela',
+  workshops: 'Workshop de una sesión',
+  empresas: 'Taller para empresa o grupo',
+  otro: 'Otra consulta',
+};
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -24,6 +38,7 @@ export default function ContactForm() {
     // Compose WhatsApp message with form data
     const lines = [
       `Hola Josefina! Soy ${data.nombre}.`,
+      `Me interesa: ${INTEREST_LABELS[data.interes]}.`,
       '',
       data.mensaje,
       '',
@@ -31,6 +46,16 @@ export default function ContactForm() {
       data.telefono ? `📱 ${data.telefono}` : null,
     ].filter(Boolean);
     const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+
+    const userData = { email: data.email, phone: data.telefono };
+
+    // Fire while the form values and user gesture are still available. Waiting
+    // for the email request can make browsers suspend the page after WhatsApp
+    // opens, which can prevent the enhanced conversion from being sent.
+    trackLeadConversion(userData);
+    if (data.interes === 'clases_permanentes' || data.interes === 'empresas') {
+      trackLeadIntent(data.interes, userData);
+    }
 
     // Open WhatsApp in a new tab (primary channel)
     window.open(waUrl, '_blank', 'noopener,noreferrer');
@@ -40,15 +65,11 @@ export default function ContactForm() {
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, interes: INTEREST_LABELS[data.interes] }),
       });
     } catch {
       // Silent — WhatsApp is the primary channel
     }
-
-    // Google Ads conversion event (lead form submission), con datos de primera
-    // parte para conversiones mejoradas.
-    trackLeadConversion({ email: data.email, phone: data.telefono });
 
     setStatus('success');
     reset();
@@ -105,6 +126,27 @@ export default function ContactForm() {
                 />
                 {errors.email && (
                   <p className="text-rose-600 text-xs font-body">{errors.email.message}</p>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="interes" className="font-semibold text-text-main text-sm font-body">
+                  Me interesa
+                </label>
+                <select
+                  id="interes"
+                  defaultValue=""
+                  className={inputClass}
+                  {...register('interes', { required: 'Selecciona una opción' })}
+                >
+                  <option value="" disabled>Selecciona una opción</option>
+                  <option value="clases_permanentes">Taller semanal de acuarela</option>
+                  <option value="workshops">Workshop de una sesión</option>
+                  <option value="empresas">Taller para empresa o grupo</option>
+                  <option value="otro">Otra consulta</option>
+                </select>
+                {errors.interes && (
+                  <p className="text-rose-600 text-xs font-body">{errors.interes.message}</p>
                 )}
               </div>
 

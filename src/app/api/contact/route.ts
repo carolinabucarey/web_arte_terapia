@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const { nombre, email, mensaje, telefono } = await request.json();
+    const { nombre, email, interes, mensaje, telefono } = await request.json();
 
     if (!nombre || !email || !mensaje) {
       return NextResponse.json({ error: 'Campos requeridos faltantes' }, { status: 400 });
@@ -27,6 +27,7 @@ export async function POST(request: Request) {
         <p><strong>Nombre:</strong> ${nombre}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Teléfono:</strong> ${telefono || 'No proporcionado'}</p>
+        <p><strong>Interés:</strong> ${interes || 'No especificado'}</p>
         <p><strong>Mensaje:</strong></p>
         <p>${mensaje}</p>
       `,
