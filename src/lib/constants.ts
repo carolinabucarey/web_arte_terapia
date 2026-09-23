@@ -62,6 +62,36 @@ export interface Workshop {
 
 export const WORKSHOPS: Workshop[] = [
   {
+    id: 'tulipanes',
+    slug: 'tulipanes',
+    name: 'Workshop Tulipanes en Acuarela',
+    tagline: 'Sesión única · Apto para principiantes',
+    description: 'Una mañana para pintar tulipanes en acuarela, apta para principiantes en la técnica. Materiales y coffee break incluidos, en Providencia (metro Los Leones). Máximo 6 cupos.',
+    date: '',
+    time: '',
+    sessions: [
+      {
+        date: '2026-09-27',
+        startTime: '11:00',
+        endTime: '14:00',
+        status: 'available',
+      },
+    ],
+    duration: '3 horas · sesión única',
+    price: 33000,
+    groupSize: 6,
+    level: 'Apto para principiantes en la técnica',
+    image: '/fotos/workshop-tulipanes.jpeg',
+    imageFit: 'contain',
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Tulipanes en Acuarela del domingo 27 de septiembre, de 11:00 a 14:00 hrs.')}`,
+    badge: 'Máximo 6 cupos',
+    detailLink: '/talleres/tulipanes',
+    seoTitle: 'Workshop Tulipanes en Acuarela en Providencia | Josefina Fainé',
+    seoDescription: 'Workshop Tulipanes en Acuarela: domingo 27 de septiembre de 2026, de 11:00 a 14:00 hrs, en Providencia. Apto para principiantes. Materiales y coffee break incluidos. $33.000.',
+    heading: 'Pinta tulipanes en acuarela',
+    incluye: ['Materiales para la sesión', 'Coffee break'],
+  },
+  {
     id: 'magnolias',
     slug: 'magnolias',
     name: 'Workshop Magnolias en Acuarela',
