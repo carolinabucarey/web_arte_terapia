@@ -19,23 +19,27 @@ export function trackEvent(eventName: string, params?: Record<string, string>) {
 }
 
 /**
- * Records an intent-specific lead for Google Tag Manager and Google Ads so the
+ * Records an intent-specific lead directly in GA4 and Google Ads so the
  * company and permanent-class campaigns can optimize independently.
+ *
+ * The old `lead_empresas` and `lead_clases_permanentes` dataLayer events are
+ * intentionally not emitted: the published GTM container also maps those
+ * events to the same Ads conversion labels, which would count each lead twice.
  */
 export function trackLeadIntent(intent: LeadIntent, userData?: LeadUserData) {
   if (typeof window === 'undefined') return;
 
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: `lead_${intent}`,
-    lead_intent: intent,
-    lead_method: 'whatsapp',
-    page_path: window.location.pathname,
-  });
-
-  // Fire the campaign-specific Google Ads conversion directly. The custom
-  // dataLayer event remains available in GTM for diagnostics and reporting.
   if (typeof window.gtag === 'function') {
+    // Preserve intent reporting in GA4 under a new event name that does not
+    // match the legacy GTM conversion triggers.
+    window.gtag('event', 'lead_intent', {
+      send_to: 'G-MXQHRV8XFY',
+      lead_intent: intent,
+      lead_method: 'whatsapp',
+      page_path: window.location.pathname,
+    });
+
+    // Fire the campaign-specific Google Ads conversion directly.
     setEnhancedConversionData(userData);
     window.gtag('event', 'conversion', {
       send_to: LEAD_INTENT_CONVERSION_SEND_TO[intent],

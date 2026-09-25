@@ -36,7 +36,7 @@ export default function WhatsAppConversionTracker() {
       // Always count the click as a Google Ads lead conversion.
       trackLeadConversion();
 
-      // Send the two campaign-specific lead intents to Tag Manager.
+      // Send the campaign-specific Google Ads conversion and GA4 intent event.
       if (leadIntent) {
         trackLeadIntent(leadIntent);
       }
