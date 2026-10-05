@@ -127,7 +127,7 @@ export default function WorkshopPromoPopup() {
                 src={src}
                 alt={`${workshop.name} — imagen ${i + 1}`}
                 fill
-                className="object-cover"
+                className={workshop.imageFit === 'contain' ? 'object-contain' : 'object-cover'}
                 sizes="(max-width: 768px) 100vw, 448px"
                 priority={i === 0}
               />
