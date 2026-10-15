@@ -62,6 +62,48 @@ export interface Workshop {
 
 export const WORKSHOPS: Workshop[] = [
   {
+    id: 'pinta-tu-catrina',
+    slug: 'pinta-tu-catrina',
+    name: 'Workshop Pinta tu Catrina',
+    tagline: 'Especial Día de Muertos · Dos fechas para elegir',
+    description: 'Personaliza tu catrina de yeso con tus colores favoritos y llévate una pieza única. Elige el domingo 18 o el sábado 31 de octubre. Materiales y coffee break incluidos, en Providencia (metro Los Leones). Máximo 6 cupos.',
+    date: '',
+    time: '',
+    sessions: [
+      {
+        date: '2026-10-18',
+        startTime: '17:00',
+        endTime: '20:00',
+        status: 'available',
+      },
+      {
+        date: '2026-10-31',
+        startTime: '15:00',
+        endTime: '18:00',
+        status: 'available',
+      },
+    ],
+    duration: '3 horas · sesión única',
+    price: 39000,
+    groupSize: 6,
+    level: 'Todos los niveles',
+    image: '/fotos/workshop-pinta-tu-catrina.jpg',
+    imageFit: 'contain',
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Josefina! Quiero reservar mi cupo en el Workshop Pinta tu Catrina, especial Día de Muertos. ¿Tienen disponibilidad para el domingo 18 de octubre de 17:00 a 20:00 o el sábado 31 de octubre de 15:00 a 18:00 hrs?')}`,
+    badge: 'Especial Día de Muertos',
+    detailLink: '/talleres/pinta-tu-catrina',
+    seoTitle: 'Pinta tu Catrina · Workshop Día de Muertos en Providencia | Josefina Fainé',
+    seoDescription: 'Pinta tu catrina de yeso en Providencia: 18 de octubre de 17:00 a 20:00 o 31 de octubre de 2026 de 15:00 a 18:00. $39.000, materiales y coffee break incluidos. Máximo 6 cupos.',
+    heading: 'Pinta tu Catrina · Especial Día de Muertos',
+    intro: 'Celebra el Día de Muertos con una experiencia creativa: personaliza tu catrina de yeso con tus colores favoritos y llévate una pieza única. Elige una de las dos fechas de octubre y disfruta de tres horas para pintar en un grupo de máximo seis personas.',
+    incluye: [
+      'Catrina de yeso para personalizar',
+      'Materiales para la sesión',
+      'Coffee break',
+      'Tu catrina pintada para llevar',
+    ],
+  },
+  {
     id: 'tulipanes',
     slug: 'tulipanes',
     name: 'Workshop Tulipanes en Acuarela',
