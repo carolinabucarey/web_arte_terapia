@@ -84,7 +84,7 @@ export const WORKSHOPS: Workshop[] = [
       },
     ],
     duration: '3 horas · sesión única',
-    price: 39000,
+    price: 33000,
     groupSize: 6,
     level: 'Todos los niveles',
     image: '/fotos/workshop-pinta-tu-catrina.jpg',
@@ -93,7 +93,7 @@ export const WORKSHOPS: Workshop[] = [
     badge: 'Especial Día de Muertos',
     detailLink: '/talleres/pinta-tu-catrina',
     seoTitle: 'Pinta tu Catrina · Workshop Día de Muertos en Providencia | Josefina Fainé',
-    seoDescription: 'Pinta tu catrina de yeso en Providencia: 18 de octubre de 17:00 a 20:00 o 31 de octubre de 2026 de 15:00 a 18:00. $39.000, materiales y coffee break incluidos. Máximo 6 cupos.',
+    seoDescription: 'Pinta tu catrina de yeso en Providencia: 18 de octubre de 17:00 a 20:00 o 31 de octubre de 2026 de 15:00 a 18:00. $33.000, materiales y coffee break incluidos. Máximo 6 cupos.',
     heading: 'Pinta tu Catrina · Especial Día de Muertos',
     intro: 'Celebra el Día de Muertos con una experiencia creativa: personaliza tu catrina de yeso con tus colores favoritos y llévate una pieza única. Elige una de las dos fechas de octubre y disfruta de tres horas para pintar en un grupo de máximo seis personas.',
     incluye: [
