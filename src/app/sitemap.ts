@@ -1,8 +1,11 @@
 import { MetadataRoute } from 'next';
+import { getWorkshops } from '@/lib/workshops';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 60;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.josefinafainearte.cl';
-  return [
+  const pages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date('2026-10-15'), changeFrequency: 'weekly', priority: 1 },
     { url: `${baseUrl}/talleres`, lastModified: new Date('2026-10-15'), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/talleres/pinta-tu-catrina`, lastModified: new Date('2026-10-15'), changeFrequency: 'weekly', priority: 0.85 },
@@ -20,4 +23,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/galeria`, lastModified: new Date('2026-04-13'), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/contacto`, lastModified: new Date('2026-04-13'), changeFrequency: 'monthly', priority: 0.8 },
   ];
+  const known = new Set(pages.map(page => page.url));
+  const workshops = await getWorkshops();
+  return [...pages, ...workshops.filter(w => !known.has(`${baseUrl}/talleres/${w.slug}`)).map(w => ({
+    url: `${baseUrl}/talleres/${w.slug}`, changeFrequency: 'weekly' as const, priority: 0.8,
+  }))];
 }
