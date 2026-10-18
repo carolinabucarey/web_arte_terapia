@@ -6,7 +6,8 @@ import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Link from 'next/link';
 import { getEventSchema, getBreadcrumbSchema, getFAQSchema } from '@/lib/schema';
-import { WORKSHOPS, SITE_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/constants';
+import { getWorkshops } from '@/lib/workshops';
 import { TALLERES_FAQS } from '@/lib/faqs';
 import { getUpcomingSessions } from '@/lib/utils';
 
@@ -32,10 +33,10 @@ const BREADCRUMB_ITEMS = [
   { name: 'Talleres', url: `${SITE_URL}/talleres` },
 ];
 
-export default function TalleresPage() {
+export default async function TalleresPage() {
   const breadcrumb = getBreadcrumbSchema(BREADCRUMB_ITEMS);
   const faqSchema = getFAQSchema(TALLERES_FAQS);
-  const eventSchemas = WORKSHOPS
+  const eventSchemas = (await getWorkshops())
     .filter((workshop) => !workshop.hidden)
     .flatMap((workshop) =>
       getUpcomingSessions(workshop).map((session) =>

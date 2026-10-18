@@ -6,7 +6,8 @@ import SectionHeader from '@/components/SectionHeader';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { getCourseSchema, getBreadcrumbSchema } from '@/lib/schema';
-import { WORKSHOPS, SITE_URL, WHATSAPP_LINK, type Workshop } from '@/lib/constants';
+import { SITE_URL, WHATSAPP_LINK, type Workshop } from '@/lib/constants';
+import { getWorkshop, getWorkshops } from '@/lib/workshops';
 import { formatCLP, getWorkshopSchedules } from '@/lib/utils';
 
 export const revalidate = 60;
@@ -14,7 +15,7 @@ export const revalidate = 60;
 // Slugs con página estática propia y contenido a mano — no usan esta plantilla.
 const STATIC_SLUGS = new Set(['semanal', 'principiantes', 'empresas', 'gift-card']);
 
-const DYNAMIC_WORKSHOPS = WORKSHOPS.filter((w) => !STATIC_SLUGS.has(w.slug));
+
 
 const DEFAULT_INCLUYE = [
   'Todos los materiales — acuarelas, pinceles y papel',
@@ -23,16 +24,12 @@ const DEFAULT_INCLUYE = [
   'Tu obra terminada para llevar',
 ];
 
-function getWorkshop(slug: string): Workshop | undefined {
-  return DYNAMIC_WORKSHOPS.find((w) => w.slug === slug);
+export async function generateStaticParams() {
+  return (await getWorkshops()).filter(w => !STATIC_SLUGS.has(w.slug)).map((w) => ({ slug: w.slug }));
 }
 
-export function generateStaticParams() {
-  return DYNAMIC_WORKSHOPS.map((w) => ({ slug: w.slug }));
-}
-
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const workshop = getWorkshop(params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const workshop = await getWorkshop(params.slug);
   if (!workshop) return {};
 
   const title = workshop.seoTitle ?? `${workshop.name} | Josefina Fainé`;
@@ -54,8 +51,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function TallerDetallePage({ params }: { params: { slug: string } }) {
-  const workshop = getWorkshop(params.slug);
+export default async function TallerDetallePage({ params }: { params: { slug: string } }) {
+  const workshop = await getWorkshop(params.slug);
   if (!workshop) notFound();
 
   const breadcrumbItems = [
@@ -73,8 +70,8 @@ export default function TallerDetallePage({ params }: { params: { slug: string }
   });
   const breadcrumb = getBreadcrumbSchema(breadcrumbItems);
 
-  const intro = workshop.intro ?? workshop.description;
-  const incluye = workshop.incluye ?? DEFAULT_INCLUYE;
+  const intro = workshop.intro || workshop.description;
+  const incluye = workshop.incluye?.length ? workshop.incluye : DEFAULT_INCLUYE;
   const isExternalCta = /^https?:\/\//.test(workshop.ctaLink);
   const schedules = getWorkshopSchedules(workshop);
   const usesSessions = Boolean(workshop.sessions?.length);
