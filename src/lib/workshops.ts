@@ -20,10 +20,10 @@ export const getWorkshops = cache(async (): Promise<Workshop[]> => {
     // Los talleres existentes siguen con su contenido actual hasta importarlos al admin.
     const existing = new Map(WORKSHOPS.map(workshop => [workshop.slug, workshop]));
     const managed = new Set(catalog.managedSlugs);
-    const special = new Set(['empresas', 'gift-card']);
+    const publishedInCode = new Set(['pajaritos-en-acuarela', 'empresas', 'gift-card']);
     return [
       ...catalog.workshops.map(workshop => ({ ...existing.get(workshop.slug), ...workshop })),
-      ...WORKSHOPS.filter(workshop => special.has(workshop.slug) && !managed.has(workshop.slug)),
+      ...WORKSHOPS.filter(workshop => publishedInCode.has(workshop.slug) && !managed.has(workshop.slug)),
     ];
   } catch (error) {
     console.error('No se pudo cargar el catálogo de Arte Admin:', error instanceof Error ? error.message : 'Error de conexión');

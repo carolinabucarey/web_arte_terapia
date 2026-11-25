@@ -240,7 +240,9 @@ export default async function TallerDetallePage({ params }: { params: { slug: st
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Grupo</td>
-                        <td className="py-3 text-sm text-text-muted">Máximo {workshop.groupSize} personas</td>
+                        <td className="py-3 text-sm text-text-muted">
+                          {workshop.groupSize > 0 ? `Máximo ${workshop.groupSize} personas` : 'Cupos limitados'}
+                        </td>
                       </tr>
                       <tr>
                         <td className="py-3 pr-4 text-sm font-semibold text-text-main">Nivel</td>

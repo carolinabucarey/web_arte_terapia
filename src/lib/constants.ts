@@ -62,6 +62,27 @@ export interface Workshop {
 
 export const WORKSHOPS: Workshop[] = [
   {
+    id: 'pajaritos-en-acuarela',
+    slug: 'pajaritos-en-acuarela',
+    name: 'Workshop Pajaritos en Acuarela',
+    tagline: 'Sesión única · Apto para principiantes',
+    description: 'Pinta un pajarito en acuarela con Josefina Fainé, artista visual y magíster en arteterapia. Nos reuniremos en Providencia, cerca del metro Los Leones. Incluye materiales y coffee break.',
+    date: '',
+    time: '',
+    sessions: [{ date: '2026-12-13', startTime: '11:00', endTime: '14:00' }],
+    duration: '3 horas',
+    price: 36000,
+    groupSize: 0,
+    level: 'Apto para principiantes',
+    image: '/fotos/workshop-pajaritos.jpg',
+    imageFit: 'contain',
+    ctaLink: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('¡Hola, Josefina! Me gustaría reservar un cupo para el Workshop Pajaritos en Acuarela del domingo 13 de diciembre, de 11:00 a 14:00. ¿Quedan cupos?')}`,
+    ctaText: 'Reservar por WhatsApp',
+    detailLink: '/talleres/pajaritos-en-acuarela',
+    seoDescription: 'Workshop Pajaritos en Acuarela con Josefina Fainé en Providencia. Domingo 13 de diciembre de 2026, de 11:00 a 14:00. $36.000 con materiales y coffee break incluidos.',
+    incluye: ['Materiales para pintar en acuarela', 'Coffee break'],
+  },
+  {
     id: 'pinta-tu-catrina',
     slug: 'pinta-tu-catrina',
     name: 'Workshop Pinta tu Catrina',
